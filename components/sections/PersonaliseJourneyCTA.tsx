@@ -39,8 +39,8 @@ export function PersonaliseJourneyCTA() {
                 Personalise your migration journey
               </h2>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-gray-600">
-                Experience the peace of mind with migration personalised for
-                you.
+                Get clear guidance on your options from a Registered Migration
+                Agent who takes the time to understand your situation.
               </p>
 
               <div className="mt-10 border-t border-gray-100 pt-8">

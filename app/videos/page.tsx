@@ -7,9 +7,9 @@ import { publishedVideos } from "@/data/videos";
 import { GeneralInfoNotice } from "@/components/ui/GeneralInfoNotice";
 
 export const metadata: Metadata = {
-  title: "Videos",
+  title: "Australian Visa Video Guides",
   description:
-    "Watch practical video guides from Learniiz Migration & Visa Services on Australian student, skilled, employer-sponsored and partner visas.",
+    "Practical video guides from Learniiz Migration & Visa Services on Australian student, skilled, employer-sponsored and partner visas."
 };
 
 export default function VideosPage() {
@@ -18,7 +18,7 @@ export default function VideosPage() {
       <PageHero
         eyebrow="Video library"
         title="Watch & learn about Australian visas"
-        subtitle="Clear, practical video explainers covering visa pathways, requirements and the latest migration updates."
+        subtitle="Clear, practical video explainers on visa pathways, requirements and migration updates. General information only."
       />
 
       <section className="bg-brand-surface py-20">

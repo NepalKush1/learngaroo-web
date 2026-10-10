@@ -6,11 +6,24 @@ export const agent = {
   marn: siteConfig.marn,
   photoSrc: "/agent-photo.jpg" as string | null,
   verifyUrl: "https://portal.mara.gov.au/search-the-register-of-migration-agents/" as string | null,
+  city: "Melbourne",
+  state: "Victoria",
+  registeredSince: "2024",
+  // Languages consultations can be held in. Leave empty to hide the row.
+  languages: ["English", "Nepali", "Hindi"] as string[],
+
+  // At-a-glance facts for the agent card (all drawn from the profile below).
+  quickFacts: [
+    { label: "Registered since", value: "2024" },
+    { label: "Based in", value: "Melbourne, VIC" },
+    { label: "In Australia since", value: "2015, as a student" },
+    { label: "Qualification", value: "Grad. Dip. Migration Law (ACU)" },
+  ],
 
   // Concise bio for the homepage — the full story lives in `fullProfile`
   // below and is rendered on the About page.
   shortBio:
-    "Kush Kumar Nepal is a Registered Migration Agent who began practising in 2024. Having first arrived in Australia as an international student in 2015, he combines firsthand migration experience with professional expertise gained through his Graduate Diploma in Australian Migration Law and Practice from Australian Catholic University. He provides clear, practical and personalised guidance to help clients understand their visa options and move forward with confidence.",
+    "Kush Kumar Nepal is a Registered Migration Agent who began practising in 2024. Having first arrived in Australia as an international student in 2015, he combines first-hand migration experience with professional expertise gained through his Graduate Diploma in Australian Migration Law and Practice from Australian Catholic University. He provides clear, practical and personalised guidance to help clients understand their visa options and move forward with confidence.",
 
   credibilityPoints: [
     "Former international student in Australia",
@@ -20,11 +33,11 @@ export const agent = {
 
   fullProfile: {
     introduction: [
-      "Kush Kumar Nepal understands the Australian migration journey from both a personal and professional perspective. He first arrived in Australia in 2015 as an international student, giving him firsthand experience of adapting to a new country, navigating the Australian education system and planning a long-term future in Australia.",
+      "Kush Kumar Nepal understands the Australian migration journey from both a personal and professional perspective. He first arrived in Australia in 2015 as an international student, giving him first-hand experience of adapting to a new country, navigating the Australian education system and planning a long-term future in Australia.",
       "His personal experience has shaped a practical and people-focused approach to migration advice. Kush believes clients should receive clear explanations, honest guidance and a realistic understanding of their available options, without unnecessary jargon or unrealistic promises.",
     ],
     education: [
-      "Kush has academic backgrounds in Mechanical Engineering and Automotive Engineering. He completed his master's degree at RMIT University in 2017, developing strong analytical, technical and problem-solving skills.",
+      "Kush has an academic background in Mechanical Engineering and Automotive Engineering. He completed his master's degree at RMIT University in 2017, developing strong analytical, technical and problem-solving skills.",
       "To build his professional expertise in Australian migration law, Kush later completed the Graduate Diploma in Australian Migration Law and Practice at Australian Catholic University. This qualification provided him with a strong foundation in Australian migration legislation, visa requirements, professional obligations and application procedures.",
     ],
     experience: [

@@ -7,7 +7,7 @@ import { ToolCards } from "@/components/sections/ToolsSection";
 export const metadata: Metadata = {
   title: "Free Migration Tools",
   description:
-    "Free tools for planning your move to Australia: a skilled visa points calculator, a visa pathway finder and PTE practice on Learniiz.",
+    "Free tools for planning your move to Australia: a skilled visa points calculator, a visa pathway finder and PTE practice on Learniiz."
 };
 
 export default function ToolsPage() {

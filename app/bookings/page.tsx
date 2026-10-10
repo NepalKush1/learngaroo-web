@@ -3,9 +3,9 @@ import { BookingsView } from "@/components/booking/BookingsView";
 import { paymentsEnabled } from "@/lib/server/config";
 
 export const metadata: Metadata = {
-  title: "Book a Consultation",
+  title: "Book a Migration Consultation",
   description:
-    "Book a paid consultation with Registered Migration Agent Kush Kumar Nepal (MARN 2418608). Choose your service, pick a time in Melbourne or your local time, and pay securely online.",
+    "Book a paid consultation with Registered Migration Agent Kush Kumar Nepal (MARN 2418608). Choose a service and time, and pay securely online.",
 };
 
 export default async function BookingsPage({

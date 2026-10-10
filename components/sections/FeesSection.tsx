@@ -16,7 +16,7 @@ export function FeesSection() {
           <SectionHeading
             eyebrow="Transparent pricing"
             title="Clear consultation fees, paid securely online"
-            subtitle="Every consultation is with a Registered Migration Agent. Fees include GST and are paid when you book."
+            subtitle="Every consultation is with a Registered Migration Agent. Fees include GST and are paid when you book. They cover the consultation only: Department of Home Affairs visa application charges are separate."
             align="center"
           />
         </Reveal>

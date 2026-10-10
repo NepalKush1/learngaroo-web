@@ -7,9 +7,9 @@ import { ConsultationCTA } from "@/components/sections/ConsultationCTA";
 import { TeamSection } from "@/components/sections/TeamSection";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Our Registered Migration Agent",
   description:
-    "Learniiz helps people navigate Australian visa, migration and education pathways with clear, personalised guidance.",
+    "Meet Kush Kumar Nepal (MARN 2418608), the Melbourne-based Registered Migration Agent behind Learniiz Migration & Visa Services.",
 };
 
 const values = [
@@ -36,7 +36,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About Learniiz"
         title="Helping you learn, migrate and work in Australia"
-        subtitle="Learniiz was founded to help people navigate Australian migration and education pathways with clarity and confidence, from the first assessment through to a lodged application."
+        subtitle="Learniiz was founded to help people understand Australian migration and education pathways with clarity and confidence, from the first assessment through to a lodged application."
       />
 
       <AgentFullStory />

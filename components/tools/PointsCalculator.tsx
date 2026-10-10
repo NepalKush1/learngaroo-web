@@ -274,7 +274,7 @@ export function PointsCalculator() {
             <p className="mt-1 text-sm text-gray-700">
               Moving to {englishUpgrade.to} English adds {englishUpgrade.gain} points
               {englishUpgrade.next && <> — reaching {englishUpgrade.next} adds {englishUpgrade.total}</>}.
-              English is often the fastest way to raise your score.
+              Improving your English is often one of the quickest ways to raise your score.
             </p>
             <a
               href={siteConfig.pte.signupUrl}
@@ -291,7 +291,8 @@ export function PointsCalculator() {
           <p className="font-heading font-bold text-brand-navy">Get your score checked by an agent</p>
           <p className="mt-1 text-sm text-gray-600">
             Points depend on how your skills assessment, work experience and study are
-            recognised. Invitation rounds often need well above {passMark} points.
+            recognised. Meeting the pass mark doesn&apos;t guarantee an invitation: invitations
+            often go to people with well above {passMark} points.
           </p>
           <Link
             href="/bookings"

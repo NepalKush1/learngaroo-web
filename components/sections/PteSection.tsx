@@ -4,7 +4,9 @@ import { Reveal } from "@/components/ui/Reveal";
 import { siteConfig } from "@/lib/site-config";
 
 // Cross-promotes the Learniiz PTE practice platform, framed around what it
-// means for a visa: English and NAATI CCL are worth points.
+// means for a visa: English and NAATI CCL are worth points. PTE scores are
+// the Home Affairs minimums for tests taken on or after 7 August 2025
+// (re-checked 10 October 2026).
 
 const levels = [
   { level: "Competent", points: 0, scores: "54 / 51 / 48 / 47" },
@@ -13,7 +15,7 @@ const levels = [
 ];
 
 const features = [
-  "AI scoring that mirrors the real exam",
+  "AI-scored practice in the PTE Academic format",
   "Full PTE mock tests with instant feedback",
   "IELTS and NAATI CCL practice too",
   "Detailed analytics on your weak spots",
@@ -30,9 +32,9 @@ export function PteSection() {
             Your English score is worth up to <span className="text-gradient-brand">20 points</span>
           </h2>
           <p className="mt-4 max-w-xl text-lg text-gray-600">
-            For skilled visas, moving from Competent to Superior English can be the single
-            biggest boost to your points. Practise on Learniiz — our own PTE, IELTS and NAATI
-            CCL platform — then plan your visa with us.
+            For points-tested skilled visas, moving from Competent to Superior English adds
+            20 points, often one of the biggest gains available. Practise on Learniiz, our own
+            PTE, IELTS and NAATI CCL platform, then plan your visa with us.
           </p>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             {features.map((feature) => (
@@ -90,8 +92,9 @@ export function PteSection() {
               <span className="font-heading text-3xl font-extrabold text-brand-green-light">+5</span>
             </div>
             <p className="mt-5 text-xs text-white/50">
-              PTE Academic thresholds per the Department of Home Affairs. Check the latest
-              requirements before you test.
+              Minimum PTE Academic score in each part, as set by the Department of Home Affairs
+              for tests taken on or after 7 August 2025. Check the latest requirements before
+              you test.
             </p>
           </div>
         </Reveal>

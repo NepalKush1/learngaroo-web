@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { Button, ArrowIcon } from "@/components/ui/Button";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, whatsappLink } from "@/lib/site-config";
 import { services } from "@/data/services";
 import { SocialIcon } from "@/components/icons/SocialIcon";
 import { ContactDetails } from "@/components/ui/ContactDetails";
@@ -33,15 +33,28 @@ export function Footer() {
           </p>
           <div className="mt-6 flex gap-3">
             {siteConfig.social.filter((item) => item.href).map((item) => (
-              <Link
+              <a
                 key={item.platform}
                 href={item.href}
-                aria-label={item.label}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${item.label} (opens in a new tab)`}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/10 transition-colors hover:bg-brand-green hover:ring-brand-green"
               >
                 <SocialIcon platform={item.platform} />
-              </Link>
+              </a>
             ))}
+            {whatsappLink() && (
+              <a
+                href={whatsappLink()!}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp (opens in a new tab)"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/10 transition-colors hover:bg-[#25d366] hover:ring-[#25d366]"
+              >
+                <SocialIcon platform="whatsapp" />
+              </a>
+            )}
           </div>
         </div>
 

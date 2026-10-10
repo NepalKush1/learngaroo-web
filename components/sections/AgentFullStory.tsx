@@ -105,9 +105,10 @@ export function AgentFullStory() {
             </div>
 
             <p className="mt-4 text-sm text-gray-500">
-              Migration advice on this site is provided under this
-              registration, recognised by the Office of the Migration
-              Agents Registration Authority (OMARA).
+              Migration advice is provided by {agent.name} under this
+              registration with the Office of the Migration Agents
+              Registration Authority (OMARA). Information on this website
+              is general only and is not advice about your circumstances.
             </p>
 
             <div className="mt-8">

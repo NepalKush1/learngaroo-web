@@ -17,19 +17,19 @@ export const services: Service[] = [
     shortLabel: "Student Visas",
     subclasses: ["500", "485"],
     summary:
-      "Guidance on the Student visa (subclass 500), Genuine Student requirements, and planning your pathway beyond graduation.",
+      "Guidance on the Student visa (subclass 500), the Genuine Student requirement and your options after graduation, such as the subclass 485 visa.",
     heroBlurb:
-      "Studying in Australia is often the first step of a longer journey. We help you understand Student visa (subclass 500) requirements, prepare a strong application, and plan ahead for post-study options such as the Temporary Graduate visa.",
+      "Studying in Australia is often the first step of a longer journey. We help you understand the Student visa (subclass 500) requirements, prepare a well-supported application and plan ahead for post-study options such as the Temporary Graduate visa (subclass 485).",
     whoItsFor: [
       "International students applying for their first Australian Student visa",
-      "Current students changing courses, providers or extending their stay",
-      "Students planning their pathway after graduation",
+      "Current students changing course or provider, or applying for a further Student visa",
+      "Graduates exploring the Temporary Graduate visa (subclass 485) and other post-study options",
     ],
     process: [
       "Course, provider and eligibility review",
       "Genuine Student and financial capacity guidance",
       "Application preparation and lodgement support",
-      "Planning for post-study visa options",
+      "Planning for post-study options, including the Temporary Graduate visa (subclass 485)",
     ],
   },
   {
@@ -38,18 +38,18 @@ export const services: Service[] = [
     shortLabel: "Skilled Visas",
     subclasses: ["189", "190", "491"],
     summary:
-      "Points-tested and nomination pathways to permanent residency for skilled workers, including subclass 189, 190 and 491 visas.",
+      "Points-tested skilled visas: Skilled Independent (subclass 189), Skilled Nominated (subclass 190) and Skilled Work Regional (Provisional) (subclass 491).",
     heroBlurb:
-      "For skilled professionals looking to live and work in Australia permanently, we help you understand your points score, occupation eligibility, and the state or territory nomination options available to you.",
+      "For skilled professionals who want to live and work in Australia, either permanently or first in regional Australia, we help you understand your points score, your occupation's eligibility and the state, territory or regional nomination options that may be open to you.",
     whoItsFor: [
-      "Skilled workers with an occupation on the relevant skilled occupation list",
-      "Professionals considering state or territory nomination",
+      "Skilled workers whose occupation is on the relevant skilled occupation list",
+      "Professionals considering state or territory nomination, or regional family sponsorship",
       "Applicants who want a clear points-test assessment before committing",
     ],
     process: [
       "Initial eligibility and points assessment",
       "Guidance on skills assessment requirements",
-      "Expression of Interest (EOI) and invitation strategy",
+      "SkillSelect Expression of Interest (EOI) and nomination strategy",
       "Visa application preparation and lodgement support",
     ],
   },
@@ -58,18 +58,18 @@ export const services: Service[] = [
     title: "Skills Assessments",
     shortLabel: "Skills Assessments",
     summary:
-      "Guidance through the formal skills assessment most skilled visa pathways require before you can apply.",
+      "Guidance on the formal skills assessment that most skilled and many employer-sponsored visas need before you can apply.",
     heroBlurb:
-      "Most skilled visa applications depend on a positive skills assessment from the relevant assessing authority. We help you identify the right authority, prepare your evidence, and respond to any follow-up requests.",
+      "Most skilled visa applications depend on a suitable skills assessment from the relevant assessing authority. We help you identify the right authority, prepare your evidence and respond to any follow-up requests.",
     whoItsFor: [
-      "Applicants preparing to lodge a skilled visa application",
+      "Applicants preparing for a skilled or employer-sponsored visa",
       "Professionals unsure which assessing authority applies to their occupation",
-      "Applicants needing help compiling qualification and employment evidence",
+      "Applicants who need help putting together qualification and employment evidence",
     ],
     process: [
       "Occupation and assessing authority identification",
       "Evidence and documentation review",
-      "Assessment application lodgement",
+      "Preparing and lodging the skills assessment application",
       "Support responding to requests for further information",
     ],
   },
@@ -79,17 +79,17 @@ export const services: Service[] = [
     shortLabel: "Employer-Sponsored",
     subclasses: ["482", "186", "494"],
     summary:
-      "Temporary and permanent visa pathways for skilled workers nominated by an approved Australian employer.",
+      "Employer sponsorship, including the Skills in Demand visa (subclass 482), Employer Nomination Scheme (subclass 186) and regional subclass 494 visa.",
     heroBlurb:
-      "For skilled workers with an employer ready to sponsor them, employer-sponsored visas offer a direct pathway to work and eventually settle in Australia. We help both employers and employees through nomination and application.",
+      "If an Australian employer is ready to sponsor you, an employer-sponsored visa can let you work in Australia and, for many people, lead to permanent residence. We help employers and employees with sponsorship, nomination and the visa application, across the Skills in Demand visa (subclass 482), the Employer Nomination Scheme (subclass 186) and the Skilled Employer Sponsored Regional (Provisional) visa (subclass 494).",
     whoItsFor: [
       "Skilled workers with a supportive Australian employer",
-      "Employers exploring sponsorship of overseas or existing visa-holding staff",
-      "Applicants moving from temporary sponsorship toward permanent residency",
+      "Employers considering sponsoring overseas workers or staff already in Australia on a visa",
+      "Subclass 482 and 494 visa holders planning a move to permanent residence",
     ],
     process: [
-      "Employer nomination eligibility review",
-      "Position and skills assessment guidance",
+      "Sponsorship and nomination eligibility review",
+      "Occupation, salary and skills assessment guidance",
       "Nomination and visa application preparation",
       "Lodgement and ongoing case support",
     ],
@@ -100,13 +100,13 @@ export const services: Service[] = [
     shortLabel: "Family & Partner",
     subclasses: ["820/801", "309/100", "300"],
     summary:
-      "Visa pathways for partners, spouses and other eligible family members to join or remain with family in Australia.",
+      "Partner visas (subclasses 820/801 and 309/100), the Prospective Marriage visa (subclass 300) and other family visa options.",
     heroBlurb:
       "Bringing a partner or family member to Australia involves detailed relationship and eligibility evidence. We help you build a clear, well-supported application from the start.",
     whoItsFor: [
-      "Partners and spouses of Australian citizens, permanent residents or eligible visa holders",
-      "Applicants navigating the temporary-to-permanent partner visa stages",
-      "Family members exploring other family-stream visa options",
+      "Partners and spouses of Australian citizens, permanent residents or eligible New Zealand citizens",
+      "Fiancé(e)s planning to come to Australia to marry (Prospective Marriage visa, subclass 300)",
+      "Applicants moving through the two stages of a partner visa, from temporary to permanent",
     ],
     process: [
       "Relationship and eligibility assessment",
@@ -121,13 +121,13 @@ export const services: Service[] = [
     shortLabel: "Visitor & Tourist",
     subclasses: ["600"],
     summary:
-      "Tourist and visitor visa guidance for family visits, holidays, and short business trips to Australia.",
+      "Guidance on the Visitor visa (subclass 600) for holidays, family visits and business visitor activities in Australia.",
     heroBlurb:
-      "Planning a trip to Australia to visit family, take a holiday, or attend business meetings? We help you choose the right visitor visa stream and put together a strong application.",
+      "Planning a trip to Australia to visit family, take a holiday or attend business meetings? We help you choose the right Visitor visa (subclass 600) stream and put together a well-supported application.",
     whoItsFor: [
       "Tourists and holidaymakers",
       "People visiting family or friends in Australia",
-      "Short-term business visitors",
+      "Business visitors attending meetings, conferences or negotiations",
     ],
     process: [
       "Purpose-of-visit and stream selection",
@@ -142,19 +142,19 @@ export const services: Service[] = [
     shortLabel: "ART Reviews",
     subclasses: ["ART"],
     summary:
-      "Guidance for clients facing a visa refusal or cancellation who may have a right to a review with the Administrative Review Tribunal.",
+      "Help after a visa refusal or cancellation, including whether you can apply for review by the Administrative Review Tribunal (ART) and by when.",
     heroBlurb:
-      "If you've received a visa refusal or cancellation decision, understanding your options and any applicable deadlines is critical. We help you assess your situation and understand what a review with the Administrative Review Tribunal may involve.",
+      "If you've received a visa refusal or cancellation decision, it's critical to understand your options and deadlines quickly. Not every decision can be reviewed, and time limits are strict. We help you assess your situation and understand what a review by the Administrative Review Tribunal (ART) may involve.",
     whoItsFor: [
       "Clients who have received a visa refusal or cancellation decision",
       "Applicants wanting to understand their review rights and deadlines",
-      "Clients considering a matter before the Administrative Review Tribunal",
+      "Clients considering an application to the Administrative Review Tribunal",
     ],
     process: [
       "Initial review of your decision letter and key dates",
-      "Assessment of your review rights and options",
+      "Assessment of your review rights and other options",
       "Guidance on next steps and required evidence",
-      "Referral to further application or representation services where appropriate",
+      "Next steps for a review application or representation, where appropriate",
     ],
   },
 ];

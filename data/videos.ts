@@ -16,7 +16,7 @@
 export const videoCategories = [
   "Student Visas",
   "Skilled Migration",
-  "Employer Sponsored",
+  "Employer-Sponsored",
   "Partner & Family",
   "Tips & Updates",
 ] as const;
@@ -44,7 +44,7 @@ export const introVideo: Pick<Video, "title" | "src" | "poster"> = {
 export const videos: Video[] = [
   {
     slug: "student-visa-500-explained",
-    title: "Student Visa (Subclass 500) explained",
+    title: "Student visa (subclass 500) explained",
     description:
       "Who can apply, the key requirements, and the common mistakes to avoid before you lodge.",
     category: "Student Visas",
@@ -56,7 +56,7 @@ export const videos: Video[] = [
     slug: "skilled-migration-points-test",
     title: "How the skilled migration points test works",
     description:
-      "A walkthrough of the points table for subclass 189, 190 and 491 — and how to strengthen your score.",
+      "A walkthrough of the points table for subclass 189, 190 and 491 visas, and how you may be able to improve your score.",
     category: "Skilled Migration",
     src: "",
     duration: "8 min",
@@ -64,10 +64,10 @@ export const videos: Video[] = [
   },
   {
     slug: "employer-sponsorship-482-186",
-    title: "Employer sponsorship: 482 vs 186",
+    title: "Employer sponsorship: subclass 482 vs subclass 186",
     description:
-      "Understanding temporary and permanent employer-sponsored pathways and which might suit you.",
-    category: "Employer Sponsored",
+      "The Skills in Demand (subclass 482) and Employer Nomination Scheme (subclass 186) visas compared, and which might suit you.",
+    category: "Employer-Sponsored",
     src: "",
     duration: "7 min",
     featured: true,
@@ -76,7 +76,7 @@ export const videos: Video[] = [
     slug: "partner-visa-evidence",
     title: "Partner visa: building strong relationship evidence",
     description:
-      "What the Department looks for across the four pillars of a genuine and continuing relationship.",
+      "The four areas the Department considers when assessing a genuine and continuing relationship.",
     category: "Partner & Family",
     src: "",
     duration: "9 min",
@@ -85,7 +85,7 @@ export const videos: Video[] = [
     slug: "visa-refusal-next-steps",
     title: "Received a visa refusal? Your next steps",
     description:
-      "Review rights, timeframes and options after a refusal — and why acting quickly matters.",
+      "Review rights, time limits and options after a refusal, and why acting quickly matters.",
     category: "Tips & Updates",
     src: "",
     duration: "5 min",

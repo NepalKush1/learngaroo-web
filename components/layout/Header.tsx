@@ -38,6 +38,7 @@ export function Header() {
           : "border-b border-transparent bg-white/60 backdrop-blur"
       }`}
     >
+      <div className="scroll-progress bg-gradient-brand absolute inset-x-0 bottom-0 h-0.5" aria-hidden="true" />
       <Container className="flex h-20 items-center justify-between gap-6">
         <Logo className="h-11 w-auto sm:h-12" />
 

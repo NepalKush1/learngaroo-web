@@ -6,7 +6,7 @@ import { VisaFinder } from "@/components/tools/VisaFinder";
 export const metadata: Metadata = {
   title: "Visa Pathway Finder",
   description:
-    "Answer three quick questions to find the Australian visa pathway and consultation that best fits your goals — study, skilled PR, employer sponsorship, partner, visitor or review.",
+    "Answer three quick questions to find a starting point for your Australian visa: study, skilled, employer-sponsored, partner, visitor or review."
 };
 
 export default function VisaFinderPage() {

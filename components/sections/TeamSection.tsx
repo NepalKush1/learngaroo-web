@@ -6,7 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 // hidden until at least one member has a name.
 const team: { name: string; role: string }[] = [
   { name: "", role: "Migration Case Manager" },
-  { name: "", role: "Education & Enrolment Advisor" },
+  { name: "", role: "Education & Enrolment Adviser" },
   { name: "", role: "Client Services Lead" },
 ];
 

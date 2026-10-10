@@ -15,10 +15,10 @@ type Goal = "study" | "skilled" | "employer" | "family" | "visit" | "refused";
 
 const GOALS: { value: Goal; label: string; description: string }[] = [
   { value: "study", label: "Study in Australia", description: "Courses, Student visa, post-study options" },
-  { value: "skilled", label: "Permanent residency (skilled)", description: "Points-tested 189, 190 or 491 visas" },
+  { value: "skilled", label: "Skilled migration (points-tested)", description: "Subclass 189, 190 or 491 visas" },
   { value: "employer", label: "Work for an Australian employer", description: "Employer sponsorship and nomination" },
-  { value: "family", label: "Join my partner or family", description: "Partner, spouse and family visas" },
-  { value: "visit", label: "Visit, holiday or business trip", description: "Visitor and tourist visas" },
+  { value: "family", label: "Join my partner or family", description: "Partner, Prospective Marriage and family visas" },
+  { value: "visit", label: "Visit, holiday or business trip", description: "Visitor visa (subclass 600)" },
   { value: "refused", label: "My visa was refused or cancelled", description: "Review rights and deadlines" },
 ];
 
@@ -37,21 +37,21 @@ function recommend(location: Location, goal: Goal, hasAssessment: boolean | null
         primary: "student-visas",
         note:
           location === "onshore"
-            ? "Already studying here? We can help with course changes, extensions and planning your pathway after graduation."
-            : "Your English test score is a key part of your application — start practising early.",
+            ? "Already studying here? We can help with changing course, applying for a further Student visa and planning your options after graduation."
+            : "Most Student visa applicants need to show their English language ability, often with a test score, so start practising early.",
         pte: true,
       };
     case "skilled":
       return hasAssessment
         ? {
             primary: "skilled-visas",
-            note: "With a skills assessment in hand, the next step is maximising your points and choosing between 189, 190 and 491.",
+            note: "With a skills assessment in hand, the next steps are checking your points and choosing between the subclass 189, 190 and 491 visas.",
             pte: true,
           }
         : {
             primary: "skills-assessments",
             also: ["skilled-visas"],
-            note: "Most skilled visas need a positive skills assessment first — that's the best place to start.",
+            note: "Points-tested skilled visas need a suitable skills assessment before you can be invited to apply, so that's usually the place to start.",
             pte: true,
           };
     case "employer":
@@ -64,7 +64,7 @@ function recommend(location: Location, goal: Goal, hasAssessment: boolean | null
       return {
         primary: "art-reviews",
         urgent: true,
-        note: "Review applications have strict time limits that start from the date you receive the decision. Book as soon as possible and have your decision letter ready.",
+        note: "Not every decision can be reviewed, and review applications have strict time limits. Your decision letter should tell you whether you can apply for review and by when. Book as soon as possible and have the letter ready.",
       };
   }
 }
@@ -245,7 +245,7 @@ export function VisaFinder() {
 
       <p className="text-xs text-gray-500">
         This guide suggests a starting point only and isn&apos;t migration advice. Your
-        options depend on your full circumstances — a consultation is the best way to confirm
+        options depend on your full circumstances, and a consultation is the way to confirm
         them.
       </p>
     </div>

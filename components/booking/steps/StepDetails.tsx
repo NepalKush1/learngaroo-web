@@ -591,18 +591,20 @@ export function StepDetails({
           online through our secure payment provider, Stripe.
         </p>
         <p className="text-base leading-relaxed text-gray-600">
-          At the time of booking, the full appointment fee is charged. Our
-          payment platform deducts a processing fee, and the remaining
-          balance is deposited into our trust account.
+          The full consultation fee is charged when you book. Our payment
+          provider deducts a processing fee, and the remaining balance is
+          held in our client account until your consultation has taken
+          place.
         </p>
         <p className="text-base leading-relaxed text-gray-600">
-          Following your appointment, we will issue you an invoice for your
-          records. No further action is required on your part, we will apply
-          the funds held in our trust account toward payment of that invoice.
+          After your appointment, we will issue you a tax invoice and apply
+          the funds held in our client account to it. No further action is
+          needed from you.
         </p>
         <p className="text-base leading-relaxed text-gray-600">
-          In the event of a refund, please note that processing fees are
-          non-refundable.
+          If a refund applies, the payment provider&apos;s processing fee is
+          non-refundable. The consultation fee does not include any visa
+          application charge payable to the Department of Home Affairs.
         </p>
 
         <label className="flex items-start gap-3 border-t border-amber-200 pt-4 text-base font-medium text-brand-navy">

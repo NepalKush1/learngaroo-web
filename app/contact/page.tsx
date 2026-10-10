@@ -6,9 +6,9 @@ import { ContactForm } from "@/components/sections/ContactForm";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact Us",
   description:
-    "Get in touch with Learniiz to book a consultation about your visa, migration or study pathway.",
+    "Contact Learniiz Migration & Visa Services in Melbourne with a question about your visa, migration or study pathway, or to arrange a consultation.",
 };
 
 export default function ContactPage() {
@@ -16,8 +16,8 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Get in touch"
-        title="Book a consultation"
-        subtitle="Tell us a little about your situation and we'll get back to you with the right next steps."
+        title="Contact us"
+        subtitle="Tell us a little about your situation and we'll get back to you about the next steps. Ready to book? Use the Book a Consultation button to choose a time."
       />
 
       <section className="py-20">

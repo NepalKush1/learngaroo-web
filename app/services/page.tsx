@@ -6,9 +6,9 @@ import { ConsultationCTA } from "@/components/sections/ConsultationCTA";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Australian Visa & Migration Services",
   description:
-    "Migration assistance across skilled visas, skills assessments, employer sponsorship, family and partner visas, and visitor visas.",
+    "Help with Australian student, skilled, employer-sponsored, partner and visitor visas, skills assessments and ART reviews from a Registered Migration Agent.",
 };
 
 export default function ServicesPage() {

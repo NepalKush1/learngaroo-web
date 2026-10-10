@@ -14,7 +14,7 @@ export const siteConfig = {
   tagline: "Your journey. Our guidance.",
   values: "Professional. Transparent. Trusted.",
   description:
-    "Learniiz Migration & Visa Services provides guidance on Australian visas and migration pathways — from skilled visas and skills assessments to employer sponsorship, family and partner visas, and visitor visas.",
+    "Melbourne-based Registered Migration Agent helping with student, skilled, employer-sponsored, partner and visitor visas, skills assessments and ART reviews.",
   marn: "2418608",
   abn: "29 634 374 913",
   // Sister product — Learniiz PTE / IELTS / NAATI CCL practice platform.
@@ -41,12 +41,41 @@ export const siteConfig = {
     hours: "Mon–Fri, 9am–5pm (Melbourne time)",
     // Mobile number with country code, digits only (e.g. "61400000000").
     // When set, WhatsApp buttons appear on the site.
-    whatsapp: "",
+    whatsapp: "61433252946",
+    whatsappDisplay: "+61 433 252 946",
   },
-  // Add each profile URL to show its icon in the footer; empty ones are hidden.
+  // Add each profile URL to show it on the site; empty ones are hidden.
   social: [
-    { label: "LinkedIn", platform: "linkedin", href: "" },
-    { label: "Instagram", platform: "instagram", href: "" },
-    { label: "Facebook", platform: "facebook", href: "" },
+    {
+      label: "Facebook",
+      platform: "facebook",
+      handle: "Learniiz Migration",
+      href: "https://www.facebook.com/profile.php?id=61593540567576",
+      blurb: "Visa updates, announcements and community news.",
+    },
+    {
+      label: "Instagram",
+      platform: "instagram",
+      handle: "@learniiz_migration",
+      href: "https://www.instagram.com/learniiz_migration",
+      blurb: "Visa tips, reels and behind-the-scenes from the practice.",
+    },
+    {
+      label: "TikTok",
+      platform: "tiktok",
+      handle: "@learniiz_visa",
+      href: "https://www.tiktok.com/@learniiz_visa",
+      blurb: "Quick, plain-English explainers on Australian visas.",
+    },
+    { label: "LinkedIn", platform: "linkedin", handle: "", href: "", blurb: "" },
   ],
 };
+
+const DEFAULT_WHATSAPP_MESSAGE =
+  "Hi Learniiz, I found you through your website and would like to ask about a visa.";
+
+// wa.me chat link with a prefilled message, or null until a number is set.
+export function whatsappLink(message = DEFAULT_WHATSAPP_MESSAGE): string | null {
+  const { whatsapp } = siteConfig.contact;
+  return whatsapp ? `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}` : null;
+}

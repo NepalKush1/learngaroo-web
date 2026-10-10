@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, whatsappLink } from "@/lib/site-config";
 
 // Phone / email / address / hours / ABN list. Values left empty in
 // lib/site-config.ts are skipped, so nothing unconfirmed is ever shown.
@@ -9,7 +9,8 @@ export function ContactDetails({
   className?: string;
   linkClassName?: string;
 }) {
-  const { phone, email, address, hours } = siteConfig.contact;
+  const { phone, email, address, hours, whatsappDisplay } = siteConfig.contact;
+  const whatsappHref = whatsappLink();
 
   return (
     <ul className={className}>
@@ -17,6 +18,13 @@ export function ContactDetails({
         <li>
           <a href={`tel:${phone.replace(/\s+/g, "")}`} className={linkClassName}>
             {phone}
+          </a>
+        </li>
+      )}
+      {whatsappHref && (
+        <li>
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className={linkClassName}>
+            WhatsApp {whatsappDisplay}
           </a>
         </li>
       )}

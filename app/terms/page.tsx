@@ -41,8 +41,9 @@ export default function TermsPage() {
         </p>
         <p>
           Advice is based on the information you give us and the law and policy in force at the
-          time. We can&apos;t guarantee the outcome of any visa application or review — decisions
-          are made by the Department of Home Affairs or the Administrative Review Tribunal.
+          time. We can&apos;t guarantee the outcome of any visa application or review, because
+          decisions are made by the Department of Home Affairs or the Administrative Review
+          Tribunal.
         </p>
       </section>
 
@@ -52,13 +53,18 @@ export default function TermsPage() {
           <li>The consultation fee shown when you book is payable in full at the time of booking.</li>
           <li>Fees are in Australian dollars and include GST where shown.</li>
           <li>
+            The consultation fee covers the consultation only. It does not include visa application
+            charges payable to the Department of Home Affairs, or third-party costs such as skills
+            assessment, English test, translation or medical fees.
+          </li>
+          <li>
             Payments are processed by our payment provider, Stripe. Your card details are entered
             directly with Stripe and are never seen or stored by us.
           </li>
           <li>
             Our payment provider deducts a processing fee, and the balance is held in our client
             account until the consultation has taken place. We then issue a tax invoice and apply
-            the funds to it — no further action is needed from you.
+            the funds to it. No further action is needed from you.
           </li>
           <li>Please do not make any other payment unless we have specifically asked you to.</li>
         </ul>
@@ -95,8 +101,8 @@ export default function TermsPage() {
         <h2>5. Your responsibilities</h2>
         <p>
           Please give us complete and accurate information, and tell us about any important
-          dates — such as a visa expiry, a refusal or a review deadline — when you book. Time
-          limits for reviews are strict and we can&apos;t extend them.
+          dates (such as a visa expiry, a refusal or a review deadline) when you book. Time
+          limits for reviews are strict, and we can&apos;t extend them.
         </p>
       </section>
 

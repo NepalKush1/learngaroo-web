@@ -25,7 +25,7 @@ export const consultations: ConsultationService[] = [
     category: "Migration Consultation",
     title: "Student Visa Consultation",
     description:
-      "For international students seeking guidance on the Student visa (subclass 500), course changes, extensions and post-study pathways.",
+      "For international students seeking guidance on the Student visa (subclass 500), changing course, applying for a further Student visa and post-study options.",
     consultantName: "Kush Kumar Nepal",
     durationMinutes: 30,
     priceInCents: 15000,
@@ -40,7 +40,7 @@ export const consultations: ConsultationService[] = [
     category: "Migration Consultation",
     title: "Skilled Visa Consultation",
     description:
-      "For clients seeking guidance on skilled migration pathways, including subclasses 189, 190 and 491, points eligibility and state nomination options.",
+      "For clients seeking guidance on points-tested skilled visas (subclasses 189, 190 and 491), points eligibility and state or territory nomination options.",
     consultantName: "Kush Kumar Nepal",
     durationMinutes: 30,
     priceInCents: 15000,
@@ -55,7 +55,7 @@ export const consultations: ConsultationService[] = [
     category: "Migration Consultation",
     title: "Skills Assessment Consultation",
     description:
-      "For clients who need guidance on the appropriate assessing authority, occupation selection, eligibility and skills assessment requirements.",
+      "For clients who need guidance on choosing the right assessing authority and occupation, eligibility and skills assessment requirements.",
     consultantName: "Kush Kumar Nepal",
     durationMinutes: 30,
     priceInCents: 15000,
@@ -68,9 +68,9 @@ export const consultations: ConsultationService[] = [
     id: "employer-sponsored-ens",
     slug: "employer-sponsored-visas",
     category: "Migration Consultation",
-    title: "Employer-Sponsored & ENS",
+    title: "Employer-Sponsored Visa Consultation",
     description:
-      "For employers and skilled workers seeking guidance on employer-sponsored visa pathways, including the Employer Nomination Scheme.",
+      "For employers and skilled workers seeking guidance on employer sponsorship, including the Skills in Demand (subclass 482), Employer Nomination Scheme (subclass 186) and subclass 494 visas.",
     consultantName: "Kush Kumar Nepal",
     durationMinutes: 30,
     priceInCents: 18000,
@@ -85,7 +85,7 @@ export const consultations: ConsultationService[] = [
     category: "Migration Consultation",
     title: "Family and Partner Visa Consultation",
     description:
-      "For partners, spouses and eligible family members seeking guidance on Australian family and partner visa pathways.",
+      "For partners, spouses and fiancé(e)s seeking guidance on Australian partner visas (subclasses 820/801 and 309/100) and the Prospective Marriage visa (subclass 300).",
     consultantName: "Kush Kumar Nepal",
     durationMinutes: 30,
     priceInCents: 18000,
@@ -100,7 +100,7 @@ export const consultations: ConsultationService[] = [
     category: "Migration Consultation",
     title: "Visitor and Tourist Visa Consultation",
     description:
-      "For people planning to visit Australia for tourism, family visits or short-term business purposes.",
+      "For people planning to visit Australia on a Visitor visa (subclass 600) for a holiday, a family visit or business visitor activities.",
     consultantName: "Kush Kumar Nepal",
     durationMinutes: 30,
     priceInCents: 15000,
@@ -115,14 +115,14 @@ export const consultations: ConsultationService[] = [
     category: "Migration Consultation",
     title: "ART Review Consultation",
     description:
-      "For clients seeking an initial consultation about a visa refusal, visa cancellation or a possible Administrative Review Tribunal matter.",
+      "For clients seeking an initial consultation about a visa refusal, a visa cancellation or a possible application to the Administrative Review Tribunal (ART).",
     consultantName: "Kush Kumar Nepal",
     durationMinutes: 30,
     priceInCents: 20000,
     currency: "AUD",
     gstIncluded: true,
     active: true,
-    bookingNotice: "Please have your decision letter and relevant dates available before the consultation.",
+    bookingNotice: "Please have your decision letter, the date you received it and any review deadline ready before the consultation.",
     displayOrder: 6,
   },
 ];

@@ -100,7 +100,7 @@ export default async function ServiceDetailPage({
       )}
 
       <ConsultationCTA
-        title={`Ask about the ${service.title}`}
+        title={`Questions about ${service.title}?`}
         subtitle="Book a consultation and we'll walk you through your eligibility and next steps."
       />
     </>
