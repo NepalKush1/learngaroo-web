@@ -1,27 +1,36 @@
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Button, ArrowIcon } from "@/components/ui/Button";
 
 export function ConsultationCTA({
-  title = "Ready to start your migration or study journey?",
+  title = "Ready to start your migration journey?",
   subtitle = "Book a consultation and we'll help you understand the pathway that fits your situation.",
 }: {
   title?: string;
   subtitle?: string;
 }) {
   return (
-    <section className="bg-gradient-to-r from-brand-teal to-brand-blue py-16 text-white">
-      <Container className="flex flex-col items-center gap-6 text-center">
-        <h2 className="font-heading max-w-2xl text-3xl font-semibold">{title}</h2>
-        <p className="max-w-xl text-lg text-blue-50">{subtitle}</p>
-        <Link
-          href="/bookings"
-          className="group inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-lg font-semibold text-brand-navy transition-colors hover:bg-gray-100"
-        >
-          <span className="relative inline-block">
-            Book a Consultation
-            <span className="absolute inset-x-0 -bottom-1 h-0.5 origin-left scale-x-0 bg-brand-navy transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
-          </span>
-        </Link>
+    <section className="py-20">
+      <Container>
+        <div className="bg-gradient-brand relative overflow-hidden rounded-[2rem] px-8 py-16 text-center text-white shadow-[0_30px_60px_-25px_rgba(31,127,83,0.55)] sm:px-16">
+          <div className="bg-dots pointer-events-none absolute inset-0 opacity-40 invert" aria-hidden="true" />
+          <div
+            className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/15 blur-2xl"
+            aria-hidden="true"
+          />
+          <div className="relative flex flex-col items-center gap-6">
+            <h2 className="font-heading max-w-2xl text-3xl font-extrabold sm:text-4xl">{title}</h2>
+            <p className="max-w-xl text-lg text-white/85">{subtitle}</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Button href="/bookings" variant="outline" className="border-transparent text-base">
+                Book a Consultation
+                <ArrowIcon />
+              </Button>
+              <Button href="/contact" variant="ghost-light" className="text-base">
+                Contact us
+              </Button>
+            </div>
+          </div>
+        </div>
       </Container>
     </section>
   );

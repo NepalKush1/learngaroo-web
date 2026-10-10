@@ -22,10 +22,10 @@ export function NavLinks({ className = "" }: { className?: string }) {
           <Link
             key={item.href}
             href={item.href}
-            className={`rounded-2xl border px-4 py-2.5 text-lg font-medium transition-all duration-200 ${
+            className={`relative rounded-full px-3.5 py-2 text-[15px] font-semibold transition-colors duration-200 ${
               isActive
-                ? "border-brand-blue text-brand-blue"
-                : "border-transparent text-brand-navy hover:border-brand-blue hover:text-brand-blue"
+                ? "bg-brand-mint text-brand-primary"
+                : "text-brand-navy/80 hover:bg-brand-surface hover:text-brand-navy"
             }`}
           >
             {item.label}

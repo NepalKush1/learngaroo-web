@@ -36,7 +36,7 @@ export function StepReview({
           <button
             type="button"
             onClick={onEditService}
-            className="text-sm font-semibold text-brand-blue hover:underline"
+            className="text-sm font-semibold text-brand-primary hover:underline"
           >
             Edit
           </button>
@@ -60,7 +60,7 @@ export function StepReview({
           <button
             type="button"
             onClick={onEditSlot}
-            className="text-sm font-semibold text-brand-blue hover:underline"
+            className="text-sm font-semibold text-brand-primary hover:underline"
           >
             Edit
           </button>
@@ -75,7 +75,7 @@ export function StepReview({
           <button
             type="button"
             onClick={onEditDetails}
-            className="text-sm font-semibold text-brand-blue hover:underline"
+            className="text-sm font-semibold text-brand-primary hover:underline"
           >
             Edit
           </button>
@@ -120,7 +120,7 @@ export function StepReview({
       <button
         type="button"
         onClick={onConfirm}
-        className="inline-flex w-full items-center justify-center rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-blue-dark"
+        className="inline-flex w-full items-center justify-center rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-dark"
       >
         Submit Booking Request
       </button>

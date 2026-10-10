@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { Button, ArrowIcon } from "@/components/ui/Button";
+import { Eyebrow } from "@/components/ui/SectionHeading";
 import { MarnBadge } from "@/components/ui/MarnBadge";
 import { Reveal } from "@/components/ui/Reveal";
 import { agent } from "@/data/agent";
@@ -33,7 +34,7 @@ export function AgentProfile() {
       <Container>
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
           <Reveal>
-            <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl lg:max-w-none">
+            <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-[2rem] shadow-[0_30px_60px_-30px_rgba(11,26,46,0.45)] lg:max-w-none">
               {agent.photoSrc ? (
                 <Image
                   src={agent.photoSrc}
@@ -51,16 +52,11 @@ export function AgentProfile() {
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="flex items-center gap-3">
-              <span className="h-px w-8 bg-brand-teal" aria-hidden="true" />
-              <p className="text-base font-semibold uppercase tracking-[0.2em] text-brand-teal sm:text-lg">
-                Meet Your Migration Agent
-              </p>
-            </div>
-            <p className="font-heading mt-2 text-2xl font-semibold text-brand-navy sm:text-3xl">
+            <Eyebrow>Meet your migration agent</Eyebrow>
+            <p className="font-heading mt-4 text-3xl font-extrabold text-brand-navy sm:text-4xl">
               {agent.name}
             </p>
-            <p className="mt-1 text-base font-medium text-brand-blue">
+            <p className="mt-1 text-base font-medium text-brand-primary">
               {agent.title}
             </p>
             <p className="mt-4 max-w-lg text-gray-600">{agent.shortBio}</p>
@@ -81,15 +77,13 @@ export function AgentProfile() {
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <Button href="/bookings" className="group text-xl">
-                <span className="relative inline-block">
-                  Book a Consultation
-                  <span className="absolute inset-x-0 -bottom-1 h-0.5 origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
-                </span>
+              <Button href="/bookings">
+                Book a Consultation
+                <ArrowIcon />
               </Button>
               <Link
                 href="/about#kush-kumar-nepal"
-                className="text-sm font-semibold text-brand-blue hover:underline"
+                className="text-sm font-semibold text-brand-primary hover:underline"
               >
                 Read Kush&apos;s Full Story →
               </Link>

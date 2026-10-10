@@ -6,7 +6,7 @@ import { ConsultationCTA } from "@/components/sections/ConsultationCTA";
 export const metadata: Metadata = {
   title: "News & Updates",
   description:
-    "The latest news and updates from Learngaroo on Australian visa and migration pathways.",
+    "The latest news and updates from Learniiz on Australian visa and migration pathways.",
 };
 
 export default function NewsPage() {
@@ -15,7 +15,7 @@ export default function NewsPage() {
       <PageHero
         eyebrow="News & Updates"
         title="Latest Australian Visa & Migration News"
-        subtitle="Migration rule changes, visa processing updates and Learngaroo news — coming soon."
+        subtitle="Migration rule changes, visa processing updates and Learniiz news — coming soon."
       />
 
       <section className="py-20">

@@ -5,7 +5,7 @@ import { PageHero } from "@/components/sections/PageHero";
 export const metadata: Metadata = {
   title: "Consultation Terms and Conditions",
   description:
-    "Consultation Terms and Conditions for Learngaroo migration and education consultations.",
+    "Consultation Terms and Conditions for Learniiz migration and education consultations.",
 };
 
 export default function TermsPage() {

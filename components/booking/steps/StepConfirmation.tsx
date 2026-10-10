@@ -10,8 +10,8 @@ export function StepConfirmation({
   slot: SelectedSlot;
 }) {
   return (
-    <div className="rounded-2xl border border-dashed border-brand-teal/40 bg-brand-surface p-8 text-center">
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-teal/15 text-brand-teal">
+    <div className="rounded-2xl border border-dashed border-brand-green/40 bg-brand-surface p-8 text-center">
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-green/15 text-brand-primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75l1.5 1.5L15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>

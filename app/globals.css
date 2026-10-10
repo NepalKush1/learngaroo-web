@@ -1,15 +1,27 @@
 @import "tailwindcss";
 
+/*
+ * Learniiz brand palette — sampled from the Learniiz logo.
+ *   green  → the logo mark and "iiz"
+ *   navy   → the "Learn" wordmark
+ *   blue   → the end of the logo's green→blue ring gradient
+ * `primary` is a deeper green that keeps white text above WCAG AA contrast,
+ * so it's used for buttons, links and small text on light backgrounds.
+ */
 :root {
   --background: #ffffff;
-  --foreground: #0b2545;
+  --foreground: #0b1a2e;
 
-  --brand-navy: #0b2545;
-  --brand-navy-light: #16345f;
-  --brand-teal: #14b8a6;
-  --brand-blue: #1e88e5;
-  --brand-blue-dark: #1666b3;
-  --brand-surface: #f5f9fb;
+  --brand-navy: #0b1a2e;
+  --brand-navy-light: #15304f;
+  --brand-green: #3c9f6c;
+  --brand-green-light: #6fcf97;
+  --brand-primary: #1f7f53;
+  --brand-primary-dark: #17663f;
+  --brand-blue: #398fe8;
+  --brand-blue-dark: #2272c9;
+  --brand-surface: #f3f8f5;
+  --brand-mint: #e7f5ed;
 }
 
 @theme inline {
@@ -17,18 +29,43 @@
   --color-foreground: var(--foreground);
   --color-brand-navy: var(--brand-navy);
   --color-brand-navy-light: var(--brand-navy-light);
-  --color-brand-teal: var(--brand-teal);
+  --color-brand-green: var(--brand-green);
+  --color-brand-green-light: var(--brand-green-light);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-dark: var(--brand-primary-dark);
   --color-brand-blue: var(--brand-blue);
   --color-brand-blue-dark: var(--brand-blue-dark);
   --color-brand-surface: var(--brand-surface);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-newsreader);
+  --color-brand-mint: var(--brand-mint);
+  --font-sans: var(--font-manrope);
+  --font-heading: var(--font-manrope);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+.font-heading {
+  letter-spacing: -0.025em;
+}
+
+/* Green → blue, matching the logo ring. */
+.text-gradient-brand {
+  background-image: linear-gradient(100deg, var(--brand-green) 0%, var(--brand-blue) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-gradient-brand {
+  background-image: linear-gradient(120deg, var(--brand-primary) 0%, var(--brand-green) 45%, var(--brand-blue) 100%);
+}
+
+/* Subtle dotted backdrop used behind light hero sections. */
+.bg-dots {
+  background-image: radial-gradient(rgba(11, 26, 46, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 .reveal {
@@ -51,6 +88,10 @@ body {
   animation: float-blob 12s ease-in-out infinite;
 }
 
+.float-slow {
+  animation: float-y 7s ease-in-out infinite;
+}
+
 @keyframes gradient-pan {
   0% {
     background-position: 0% 50%;
@@ -70,6 +111,16 @@ body {
   }
 }
 
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
@@ -78,7 +129,8 @@ body {
   }
 
   .hero-gradient-animated,
-  .hero-blob {
+  .hero-blob,
+  .float-slow {
     animation: none;
   }
 }

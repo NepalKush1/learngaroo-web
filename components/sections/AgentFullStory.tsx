@@ -46,7 +46,7 @@ function ProfileSection({
     <Reveal>
       <div className="flex gap-4">
         {icon && (
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-teal/15 to-brand-blue/15 text-brand-blue">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-green/15 to-brand-blue/15 text-brand-primary">
             <SectionIcon name={icon} />
           </div>
         )}
@@ -87,15 +87,15 @@ export function AgentFullStory() {
 
           <Reveal delay={100}>
             <div className="flex items-center gap-3">
-              <span className="h-px w-8 bg-brand-teal" aria-hidden="true" />
-              <p className="text-base font-semibold uppercase tracking-[0.2em] text-brand-teal sm:text-lg">
+              <span className="h-px w-8 bg-brand-green" aria-hidden="true" />
+              <p className="text-base font-semibold uppercase tracking-[0.2em] text-brand-primary sm:text-lg">
                 Meet Your Migration Agent
               </p>
             </div>
             <p className="font-heading mt-2 text-2xl font-semibold text-brand-navy sm:text-3xl">
               {agent.name}
             </p>
-            <p className="mt-1 text-base font-medium text-brand-blue">
+            <p className="mt-1 text-base font-medium text-brand-primary">
               Registered Migration Agent since 2024 — MARN {agent.marn}
             </p>
 
@@ -145,7 +145,7 @@ export function AgentFullStory() {
           />
 
           <Reveal>
-            <blockquote className="rounded-2xl border-l-4 border-brand-teal bg-brand-surface p-6">
+            <blockquote className="rounded-2xl border-l-4 border-brand-green bg-brand-surface p-6">
               <p className="font-heading text-lg font-medium italic text-brand-navy">
                 &ldquo;{fullProfile.closingStatement}&rdquo;
               </p>

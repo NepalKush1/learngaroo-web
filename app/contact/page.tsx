@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Learngaroo to book a consultation about your visa, migration or study pathway.",
+    "Get in touch with Learniiz to book a consultation about your visa, migration or study pathway.",
 };
 
 export default function ContactPage() {
@@ -35,6 +35,7 @@ export default function ContactPage() {
                 <li>{siteConfig.contact.email}</li>
                 <li>{siteConfig.contact.address}</li>
                 <li>{siteConfig.contact.hours}</li>
+                <li>ABN {siteConfig.abn}</li>
               </ul>
             </div>
             <div className="rounded-2xl bg-brand-surface p-6">

@@ -39,7 +39,7 @@ export function BookingWizard({
         <button
           type="button"
           onClick={onChangeService}
-          className="text-sm font-semibold text-brand-blue hover:underline"
+          className="text-sm font-semibold text-brand-primary hover:underline"
         >
           Change service
         </button>
@@ -59,18 +59,18 @@ export function BookingWizard({
               aria-current={isActive ? "step" : undefined}
               className={`flex items-center gap-2.5 text-base font-semibold transition-colors ${
                 isActive
-                  ? "text-brand-blue"
+                  ? "text-brand-primary"
                   : isDone
-                    ? "text-brand-teal"
+                    ? "text-brand-primary"
                     : "text-gray-400"
               }`}
             >
               <span
                 className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-all ${
                   isActive
-                    ? "bg-brand-blue text-white shadow-md ring-4 ring-brand-blue/15"
+                    ? "bg-brand-primary text-white shadow-md ring-4 ring-brand-primary/15"
                     : isDone
-                      ? "bg-brand-teal text-white"
+                      ? "bg-brand-green text-white"
                       : "bg-gray-100 text-gray-400"
                 }`}
               >

@@ -32,7 +32,7 @@ export function PersonaliseJourneyCTA() {
         <div className="grid overflow-hidden rounded-[2rem] bg-white shadow-2xl ring-1 ring-black/5 lg:grid-cols-2">
           <Reveal>
             <div className="flex h-full flex-col justify-center p-10 sm:p-14">
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-blue">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-primary">
                 Personalised Support
               </p>
               <h2 className="font-heading mt-4 text-3xl font-semibold tracking-tight text-brand-navy sm:text-4xl">
@@ -44,14 +44,14 @@ export function PersonaliseJourneyCTA() {
               </p>
 
               <div className="mt-10 border-t border-gray-100 pt-8">
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-blue">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-primary">
                   Get in Touch
                 </p>
                 <a
                   href={telHref}
-                  className="mt-4 inline-flex items-center gap-4 rounded-2xl bg-brand-surface px-5 py-4 transition-colors hover:bg-brand-blue/10"
+                  className="mt-4 inline-flex items-center gap-4 rounded-2xl bg-brand-surface px-5 py-4 transition-colors hover:bg-brand-primary/10"
                 >
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-blue text-white shadow-md shadow-brand-blue/30">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary text-white shadow-md shadow-brand-primary/30">
                     <PhoneIcon />
                   </span>
                   <span>

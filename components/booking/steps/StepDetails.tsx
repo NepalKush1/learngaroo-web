@@ -297,7 +297,7 @@ function Field({
 }
 
 const inputClasses =
-  "w-full rounded-xl border border-gray-300 px-4 py-3 text-base text-brand-navy transition-colors focus:border-brand-blue focus:outline-none focus:ring-4 focus:ring-brand-blue/10";
+  "w-full rounded-xl border border-gray-300 px-4 py-3 text-base text-brand-navy transition-colors focus:border-brand-primary focus:outline-none focus:ring-4 focus:ring-brand-primary/10";
 
 function EmailChipsField({
   emails,
@@ -339,7 +339,7 @@ function EmailChipsField({
       hint="Use a comma or press enter/return to add additional email addresses."
       required
     >
-      <div className="flex flex-wrap items-center gap-2 rounded-xl border border-gray-300 px-3.5 py-2.5 transition-colors focus-within:border-brand-blue focus-within:ring-4 focus-within:ring-brand-blue/10">
+      <div className="flex flex-wrap items-center gap-2 rounded-xl border border-gray-300 px-3.5 py-2.5 transition-colors focus-within:border-brand-primary focus-within:ring-4 focus-within:ring-brand-primary/10">
         {emails.map((email) => (
           <span
             key={email}
@@ -368,7 +368,7 @@ function EmailChipsField({
         <button
           type="button"
           onClick={commitDraft}
-          className="shrink-0 rounded-full bg-brand-surface px-3.5 py-1.5 text-sm font-semibold text-brand-blue transition-colors hover:bg-gray-100"
+          className="shrink-0 rounded-full bg-brand-surface px-3.5 py-1.5 text-sm font-semibold text-brand-primary transition-colors hover:bg-gray-100"
         >
           Add
         </button>
@@ -420,7 +420,7 @@ export function StepDetails({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
-      <div className="space-y-6 rounded-2xl border border-blue-100 bg-blue-50/60 p-6 sm:p-7">
+      <div className="space-y-6 rounded-2xl border border-brand-primary/15 bg-brand-mint/60 p-6 sm:p-7">
         <div>
           <h3 className="font-heading text-xl font-semibold text-brand-navy">
             Contact Details
@@ -621,7 +621,7 @@ export function StepDetails({
             type="checkbox"
             checked={values.agreeTerms as unknown as boolean}
             onChange={(e) => update("agreeTerms", e.target.checked as unknown as true)}
-            className="mt-0.5 h-5 w-5 rounded border-gray-300 text-brand-blue focus:ring-brand-blue"
+            className="mt-0.5 h-5 w-5 rounded border-gray-300 text-brand-primary focus:ring-brand-primary"
           />
           <span>
             I have read and agree to the terms above
@@ -635,7 +635,7 @@ export function StepDetails({
 
       <button
         type="submit"
-        className="inline-flex w-full items-center justify-center rounded-full bg-brand-blue px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-colors hover:bg-brand-blue-dark hover:shadow-md sm:w-auto"
+        className="inline-flex w-full items-center justify-center rounded-full bg-brand-primary px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-colors hover:bg-brand-primary-dark hover:shadow-md sm:w-auto"
       >
         Continue to Payment
       </button>

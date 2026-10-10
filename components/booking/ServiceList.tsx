@@ -37,7 +37,7 @@ export function ServiceList({
                     {service.title}
                   </h3>
                   {isSelected && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-brand-blue px-2.5 py-1 text-xs font-semibold text-white">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-brand-primary px-2.5 py-1 text-xs font-semibold text-white">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-3 w-3" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
@@ -59,7 +59,7 @@ export function ServiceList({
 
             <div className="flex shrink-0 flex-col items-start gap-4 pl-[76px] sm:items-end sm:gap-3 sm:pl-0">
               <div className="sm:text-right">
-                <p className="text-xs font-semibold uppercase tracking-wider text-brand-teal">
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-primary">
                   {service.currency}
                 </p>
                 <p className="font-heading text-3xl font-bold text-brand-navy">
@@ -74,7 +74,7 @@ export function ServiceList({
                 type="button"
                 onClick={() => onSelect(service)}
                 aria-label={`Book ${service.title}`}
-                className="inline-flex w-full items-center justify-center rounded-full bg-brand-blue px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-brand-blue-dark hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue sm:w-auto sm:px-8"
+                className="inline-flex w-full items-center justify-center rounded-full bg-brand-primary px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-brand-primary-dark hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary sm:w-auto sm:px-8"
               >
                 Book Consultation
               </button>

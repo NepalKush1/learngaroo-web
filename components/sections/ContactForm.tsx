@@ -51,7 +51,7 @@ export function ContactForm() {
           <select
             id="service"
             name="service"
-            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-blue focus:outline-none"
+            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-primary focus:outline-none"
           >
             <option value="">Select a service</option>
             {services.map((service) => (
@@ -75,13 +75,13 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
-          className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-blue focus:outline-none"
+          className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-primary focus:outline-none"
         />
       </div>
 
       <button
         type="submit"
-        className="inline-flex items-center justify-center rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-blue-dark"
+        className="inline-flex items-center justify-center rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-dark"
       >
         Send Enquiry
       </button>
@@ -121,7 +121,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-blue focus:outline-none"
+        className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-primary focus:outline-none"
       />
     </div>
   );

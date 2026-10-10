@@ -1,6 +1,6 @@
 export function MarnBadge({ marn }: { marn: string }) {
   return (
-    <div className="inline-flex items-center gap-3 rounded-2xl border border-brand-teal/30 bg-brand-surface px-4 py-3">
+    <div className="inline-flex items-center gap-3 rounded-2xl border border-brand-green/30 bg-brand-surface px-4 py-3">
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-navy text-white">
         <svg
           viewBox="0 0 24 24"

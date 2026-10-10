@@ -11,7 +11,7 @@ import { bookingNotice } from "@/lib/booking-notice";
 import { agent } from "@/data/agent";
 import type { ConsultationService } from "@/data/consultations";
 
-const NOTICE_SESSION_KEY = "learngaroo-booking-notice-seen";
+const NOTICE_SESSION_KEY = "learniiz-booking-notice-seen";
 
 function noSubscription() {
   return () => {};
@@ -51,13 +51,13 @@ export default function BookingsPage() {
       {/* Compact hero */}
       <section className="bg-gradient-to-br from-brand-navy to-brand-navy-light py-14 text-white">
         <Container className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-teal">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-primary">
             Book a Consultation
           </p>
           <h1 className="font-heading mx-auto mt-2 max-w-2xl text-3xl font-semibold sm:text-4xl">
             Choose the Migration Service You Need
           </h1>
-          <p className="mx-auto mt-3 max-w-xl text-blue-100">
+          <p className="mx-auto mt-3 max-w-xl text-white/70">
             Select the service that best matches your situation, then choose
             a convenient date and time to speak with a Registered Migration
             Agent.
@@ -73,12 +73,12 @@ export default function BookingsPage() {
               />
             ) : (
               <div className="flex h-32 w-32 items-center justify-center rounded-full bg-white/10 ring-4 ring-white/30">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-14 w-14 text-brand-teal" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-14 w-14 text-brand-primary" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a7.5 7.5 0 0115 0" />
                 </svg>
               </div>
             )}
-            <p className="text-sm font-medium text-brand-teal">
+            <p className="text-sm font-medium text-brand-primary">
               Consultations with {agent.name} — {agent.title}, MARN{" "}
               {agent.marn}
             </p>
@@ -103,7 +103,7 @@ export default function BookingsPage() {
             <button
               type="button"
               onClick={() => setManualNoticeOpen(true)}
-              className="text-base font-semibold text-brand-blue hover:underline"
+              className="text-base font-semibold text-brand-primary hover:underline"
             >
               {bookingNotice.reopenLabel}
             </button>

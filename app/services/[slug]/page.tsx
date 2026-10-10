@@ -59,7 +59,7 @@ export default async function ServiceDetailPage({
             <ul className="mt-4 space-y-3">
               {service.whoItsFor.map((item) => (
                 <li key={item} className="flex gap-3 text-lg text-gray-600">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-blue" />
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-primary" />
                   {item}
                 </li>
               ))}

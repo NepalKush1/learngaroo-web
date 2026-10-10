@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/SectionHeading";
 
 export function PageHero({
   eyebrow,
@@ -10,22 +11,23 @@ export function PageHero({
   subtitle?: string;
 }) {
   return (
-    <section className="hero-gradient-animated relative overflow-hidden bg-gradient-to-br from-brand-navy to-brand-navy-light py-20 text-white">
+    <section className="relative overflow-hidden bg-brand-navy py-20 text-white sm:py-24">
+      <div className="bg-dots pointer-events-none absolute inset-0 opacity-30 invert" aria-hidden="true" />
       <div
-        className="hero-blob pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand-teal/20 blur-3xl"
+        className="hero-blob pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-green/25 blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="hero-blob pointer-events-none absolute -bottom-32 left-1/3 h-80 w-80 rounded-full bg-brand-blue/20 blur-3xl"
         aria-hidden="true"
       />
       <Container className="relative">
-        {eyebrow && (
-          <p className="text-sm font-semibold uppercase tracking-wide text-brand-teal">
-            {eyebrow}
-          </p>
-        )}
-        <h1 className="font-heading mt-2 max-w-3xl text-4xl font-semibold sm:text-5xl">
+        {eyebrow && <Eyebrow tone="light">{eyebrow}</Eyebrow>}
+        <h1 className="font-heading mt-5 max-w-3xl text-4xl font-extrabold sm:text-5xl lg:text-6xl">
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-4 max-w-2xl text-lg text-blue-100">{subtitle}</p>
+          <p className="mt-5 max-w-2xl text-lg text-white/70">{subtitle}</p>
         )}
       </Container>
     </section>

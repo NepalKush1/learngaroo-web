@@ -90,7 +90,7 @@ export function BookingNoticeModal({
         <ul className="mt-4 space-y-3 text-sm text-gray-600">
           {bookingNotice.paragraphs.map((paragraph) => (
             <li key={paragraph} className="flex gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-teal" />
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green" />
               {paragraph}
             </li>
           ))}
@@ -98,13 +98,13 @@ export function BookingNoticeModal({
 
         <p className="mt-5 text-sm text-gray-600">
           Read our{" "}
-          <Link href={bookingNotice.termsHref} className="font-semibold text-brand-blue hover:underline">
+          <Link href={bookingNotice.termsHref} className="font-semibold text-brand-primary hover:underline">
             {bookingNotice.termsLabel}
           </Link>
           , or contact us at{" "}
           <a
             href={`mailto:${bookingNotice.contactEmail}`}
-            className="font-semibold text-brand-blue hover:underline"
+            className="font-semibold text-brand-primary hover:underline"
           >
             {bookingNotice.contactEmail}
           </a>
@@ -114,7 +114,7 @@ export function BookingNoticeModal({
         <button
           type="button"
           onClick={onClose}
-          className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-blue-dark"
+          className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-dark"
         >
           I understand, continue
         </button>

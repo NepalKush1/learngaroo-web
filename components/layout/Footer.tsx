@@ -1,6 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Logo } from "@/components/ui/Logo";
+import { Button, ArrowIcon } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site-config";
 import { services } from "@/data/services";
 import { SocialIcon } from "@/components/icons/SocialIcon";
@@ -9,49 +10,48 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 border-t border-gray-100 bg-brand-surface">
-      <Container className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative overflow-hidden bg-brand-navy text-white">
+      <div className="bg-gradient-brand h-1 w-full" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-brand-green/15 blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-brand-blue/15 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <Container className="relative grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          <div className="relative h-28 w-28">
-            <Image src="/logo.png" alt={siteConfig.name} fill className="object-contain" />
-          </div>
-          <p className="mt-4 max-w-xs text-sm text-gray-600">
+          <Logo tone="light" className="h-14 w-auto" />
+          <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/65">
             {siteConfig.description}
           </p>
-          <div className="mt-5 flex gap-3">
+          <p className="mt-4 text-sm font-semibold text-brand-green-light">
+            {siteConfig.values}
+          </p>
+          <div className="mt-6 flex gap-3">
             {siteConfig.social.map((item) => (
               <Link
                 key={item.platform}
                 href={item.href}
                 aria-label={item.label}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand-navy transition-colors hover:bg-brand-blue hover:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/10 transition-colors hover:bg-brand-green hover:ring-brand-green"
               >
                 <SocialIcon platform={item.platform} />
               </Link>
             ))}
           </div>
-          <Link
-            href="/contact"
-            className="group mt-6 inline-flex items-center justify-center rounded-full bg-brand-blue px-5 py-2.5 text-lg font-semibold text-white transition-colors hover:bg-brand-blue-dark"
-          >
-            <span className="relative inline-block">
-              Book a Consultation
-              <span className="absolute inset-x-0 -bottom-1 h-0.5 origin-left scale-x-0 bg-white transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
-            </span>
-          </Link>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-brand-navy">
+          <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-white/50">
             Explore
           </h3>
-          <ul className="mt-4 space-y-2">
+          <ul className="mt-4 space-y-2.5">
             {siteConfig.nav.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-base text-gray-600 hover:text-brand-blue"
-                >
+                <Link href={item.href} className="text-[15px] text-white/80 transition-colors hover:text-brand-green-light">
                   {item.label}
                 </Link>
               </li>
@@ -60,15 +60,15 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-brand-navy">
+          <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-white/50">
             Services
           </h3>
-          <ul className="mt-4 space-y-2">
-            {services.slice(0, 5).map((service) => (
+          <ul className="mt-4 space-y-2.5">
+            {services.slice(0, 6).map((service) => (
               <li key={service.slug}>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="text-base text-gray-600 hover:text-brand-blue"
+                  className="text-[15px] text-white/80 transition-colors hover:text-brand-green-light"
                 >
                   {service.shortLabel}
                 </Link>
@@ -78,24 +78,28 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-brand-navy">
+          <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-white/50">
             Contact
           </h3>
-          <ul className="mt-4 space-y-2 text-base text-gray-600">
+          <ul className="mt-4 space-y-2.5 text-[15px] text-white/80">
             <li>{siteConfig.contact.phone}</li>
             <li>{siteConfig.contact.email}</li>
             <li>{siteConfig.contact.address}</li>
             <li>{siteConfig.contact.hours}</li>
           </ul>
+          <Button href="/bookings" className="mt-6">
+            Book a Consultation
+            <ArrowIcon />
+          </Button>
         </div>
       </Container>
 
-      <div className="border-t border-gray-200">
-        <Container className="flex flex-col gap-2 py-6 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+      <div className="relative border-t border-white/10">
+        <Container className="flex flex-col gap-2 py-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {siteConfig.name}. All rights reserved.
+            © {year} {siteConfig.fullName}. All rights reserved.
           </p>
-          <p>Registered Migration Agent — MARN {siteConfig.marn}</p>
+          <p>ABN {siteConfig.abn} · Registered Migration Agent — MARN {siteConfig.marn}</p>
         </Container>
       </div>
     </footer>

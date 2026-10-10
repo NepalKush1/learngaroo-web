@@ -33,7 +33,7 @@ export function TeamSection() {
       <Container>
         <SectionHeading
           eyebrow="Our Team"
-          title="The rest of the Learngaroo team"
+          title="The rest of the Learniiz team"
           subtitle="Team profiles are being finalised — check back soon, or ask us directly when you book a consultation."
           align="center"
         />

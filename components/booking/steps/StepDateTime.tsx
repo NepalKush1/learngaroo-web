@@ -164,11 +164,11 @@ function Calendar({
               aria-pressed={isSelected}
               className={`aspect-square rounded-lg text-sm font-medium transition-colors ${
                 isSelected
-                  ? "bg-brand-blue text-white"
+                  ? "bg-brand-primary text-white"
                   : isAvailable
                     ? "text-brand-navy hover:bg-brand-surface"
                     : "cursor-not-allowed text-gray-300"
-              } ${isToday && !isSelected ? "ring-1 ring-inset ring-brand-teal" : ""}`}
+              } ${isToday && !isSelected ? "ring-1 ring-inset ring-brand-green" : ""}`}
             >
               {date.getDate()}
             </button>
@@ -238,7 +238,7 @@ export function StepDateTime({
                         label: `${activeDay.label} · ${slot.label}`,
                       })
                     }
-                    className="rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-medium text-brand-navy transition-colors hover:border-brand-blue hover:bg-brand-surface"
+                    className="rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-medium text-brand-navy transition-colors hover:border-brand-primary hover:bg-brand-surface"
                   >
                     {slot.label}
                   </button>

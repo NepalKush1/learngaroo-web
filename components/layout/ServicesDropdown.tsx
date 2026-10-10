@@ -7,10 +7,10 @@ export function ServicesDropdown({ active = false }: { active?: boolean }) {
     <div className="group relative flex h-full items-center">
       <Link href="/services" className="flex h-full items-center">
         <span
-          className={`flex items-center gap-1 rounded-2xl border px-4 py-2.5 text-lg font-medium transition-all duration-200 ${
+          className={`flex items-center gap-1 rounded-full px-3.5 py-2 text-[15px] font-semibold transition-colors duration-200 ${
             active
-              ? "border-brand-blue text-brand-blue"
-              : "border-transparent text-brand-navy group-hover:border-brand-blue group-hover:text-brand-blue"
+              ? "bg-brand-mint text-brand-primary"
+              : "text-brand-navy/80 group-hover:bg-brand-surface group-hover:text-brand-navy"
           }`}
         >
           Services
@@ -36,7 +36,7 @@ export function ServicesDropdown({ active = false }: { active?: boolean }) {
                   href={`/services/${service.slug}`}
                   className="group/item flex items-center gap-3.5 rounded-2xl px-3.5 py-3 text-base font-medium text-brand-navy transition-all duration-200 hover:translate-x-1 hover:bg-brand-surface"
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-teal/15 to-brand-blue/15 text-brand-blue transition-colors group-hover/item:from-brand-teal/25 group-hover/item:to-brand-blue/25">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-green/15 to-brand-blue/15 text-brand-primary transition-colors group-hover/item:from-brand-green/25 group-hover/item:to-brand-blue/25">
                     <ServiceIcon slug={service.slug} className="h-5 w-5" />
                   </span>
                   {service.shortLabel}
@@ -46,7 +46,7 @@ export function ServicesDropdown({ active = false }: { active?: boolean }) {
           </ul>
           <Link
             href="/services"
-            className="mt-2 block rounded-2xl border-t border-gray-100 px-3.5 pt-3.5 pb-1 text-base font-semibold text-brand-blue hover:text-brand-blue-dark"
+            className="mt-2 block rounded-2xl border-t border-gray-100 px-3.5 pt-3.5 pb-1 text-base font-semibold text-brand-primary hover:text-brand-primary-dark"
           >
             View all services →
           </Link>

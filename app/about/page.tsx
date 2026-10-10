@@ -9,7 +9,7 @@ import { TeamSection } from "@/components/sections/TeamSection";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learngaroo helps people navigate Australian visa, migration and education pathways with clear, personalised guidance.",
+    "Learniiz helps people navigate Australian visa, migration and education pathways with clear, personalised guidance.",
 };
 
 const values = [
@@ -34,9 +34,9 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About Learngaroo"
+        eyebrow="About Learniiz"
         title="Helping you learn, migrate and work in Australia"
-        subtitle="Learngaroo was founded to help people navigate Australian migration and education pathways with clarity and confidence, from the first assessment through to a lodged application."
+        subtitle="Learniiz was founded to help people navigate Australian migration and education pathways with clarity and confidence, from the first assessment through to a lodged application."
       />
 
       <AgentFullStory />

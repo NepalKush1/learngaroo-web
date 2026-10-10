@@ -188,7 +188,7 @@ export function WorldFlightMap() {
 
         <g mask="url(#world-flight-map-mask)">
           <path d={MAP_PATHS.otherLand} className="fill-white/[0.09]" fillRule="evenodd" />
-          <path d={MAP_PATHS.australia} className="fill-brand-blue/80" fillRule="evenodd" />
+          <path d={MAP_PATHS.australia} className="fill-brand-green/90" fillRule="evenodd" />
         </g>
 
         {ROUTES.map((route) => (
@@ -198,7 +198,7 @@ export function WorldFlightMap() {
             d={route.d}
             fill="none"
             stroke="currentColor"
-            className="text-brand-teal/40"
+            className="text-brand-green/40"
             strokeWidth={1.5}
             strokeDasharray="4 5"
           />
@@ -206,7 +206,7 @@ export function WorldFlightMap() {
 
         {ROUTES.map((route) => (
           <g key={`${route.id}-marker`}>
-            <circle cx={route.from.x} cy={route.from.y} r={5} className="fill-brand-teal" />
+            <circle cx={route.from.x} cy={route.from.y} r={5} className="fill-brand-green" />
             <text
               x={route.from.x + route.labelDx}
               y={route.from.y + route.labelDy}
@@ -223,7 +223,7 @@ export function WorldFlightMap() {
           cx={AUSTRALIA_POS.x}
           cy={AUSTRALIA_POS.y}
           r={11}
-          className="fill-brand-blue"
+          className="fill-brand-green"
         />
         <text
           x={AUSTRALIA_POS.x}
