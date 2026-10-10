@@ -11,6 +11,12 @@ import { WorldFlightMap } from "@/components/sections/WorldFlightMap";
 import { ServiceIcon } from "@/components/icons/ServiceIcon";
 import { VideoShowcase } from "@/components/video/VideoShowcase";
 import { IntroVideoButton } from "@/components/video/IntroVideoButton";
+import { ToolsSection } from "@/components/sections/ToolsSection";
+import { WhyLearniiz } from "@/components/sections/WhyLearniiz";
+import { PteSection } from "@/components/sections/PteSection";
+import { FeesSection } from "@/components/sections/FeesSection";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { services } from "@/data/services";
 import { siteConfig } from "@/lib/site-config";
 
@@ -94,6 +100,12 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+            <Link
+              href="/tools/points-calculator"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-primary hover:underline"
+            >
+              Planning a skilled visa? Check your points free →
+            </Link>
           </Reveal>
 
           <Reveal delay={120} className="relative">
@@ -173,12 +185,18 @@ export default function Home() {
         </Container>
       </section>
 
+      <ToolsSection />
+
+      <WhyLearniiz />
+
       <VideoShowcase />
 
       <AgentProfile />
 
+      <PteSection />
+
       {/* ── Process ──────────────────────────────────────────────────── */}
-      <section className="py-24">
+      <section className="bg-brand-surface py-24">
         <Container>
           <Reveal>
             <SectionHeading
@@ -207,6 +225,12 @@ export default function Home() {
           </div>
         </Container>
       </section>
+
+      <FeesSection />
+
+      <TestimonialsSection />
+
+      <FaqSection />
 
       {/* ── Global reach ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-brand-navy py-24 text-white">

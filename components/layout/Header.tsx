@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { Button, ArrowIcon } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { siteConfig } from "@/lib/site-config";
-import { NavLinks } from "./NavLinks";
+import { NavLinks, ExternalIcon } from "./NavLinks";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -72,6 +72,20 @@ export function Header() {
         <div id="mobile-menu" className="border-t border-gray-100 bg-white lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {siteConfig.nav.map((item) => {
+              if (item.external) {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener"
+                    className="flex items-center gap-2 rounded-xl px-4 py-3 text-base font-semibold text-brand-primary hover:bg-brand-surface"
+                  >
+                    {item.label}
+                    <ExternalIcon />
+                  </a>
+                );
+              }
               const isActive =
                 item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
               return (

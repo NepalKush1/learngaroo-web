@@ -52,11 +52,22 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5">
             {siteConfig.nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-[15px] text-white/80 transition-colors hover:text-brand-green-light">
-                  {item.label}
-                </Link>
+                {item.external ? (
+                  <a href={item.href} target="_blank" rel="noopener" className="text-[15px] text-white/80 transition-colors hover:text-brand-green-light">
+                    {item.label} ↗
+                  </a>
+                ) : (
+                  <Link href={item.href} className="text-[15px] text-white/80 transition-colors hover:text-brand-green-light">
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
+            <li>
+              <Link href="/tools/points-calculator" className="text-[15px] text-white/80 transition-colors hover:text-brand-green-light">
+                Points Calculator
+              </Link>
+            </li>
           </ul>
         </div>
 

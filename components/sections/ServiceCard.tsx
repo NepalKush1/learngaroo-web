@@ -19,6 +19,15 @@ export function ServiceCard({ service }: { service: Service }) {
       <h3 className="font-heading mt-5 text-xl font-bold text-brand-navy">
         {service.title}
       </h3>
+      {service.subclasses && (
+        <ul className="mt-2 flex flex-wrap gap-1.5" aria-label="Visa subclasses">
+          {service.subclasses.map((subclass) => (
+            <li key={subclass} className="rounded-full bg-brand-surface px-2.5 py-0.5 text-xs font-bold text-brand-navy/70 ring-1 ring-gray-200">
+              {subclass === "ART" ? subclass : `Subclass ${subclass}`}
+            </li>
+          ))}
+        </ul>
+      )}
       <p className="mt-2 flex-1 text-[15px] leading-relaxed text-gray-600">{service.summary}</p>
       <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-brand-primary">
         Learn more

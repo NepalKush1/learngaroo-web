@@ -2,6 +2,8 @@ export interface Service {
   slug: string;
   title: string;
   shortLabel: string;
+  // Visa subclasses covered, shown as tags on service cards.
+  subclasses?: string[];
   summary: string;
   heroBlurb: string;
   whoItsFor: string[];
@@ -13,6 +15,7 @@ export const services: Service[] = [
     slug: "student-visas",
     title: "Student Visas",
     shortLabel: "Student Visas",
+    subclasses: ["500", "485"],
     summary:
       "Guidance on the Student visa (subclass 500), Genuine Student requirements, and planning your pathway beyond graduation.",
     heroBlurb:
@@ -33,6 +36,7 @@ export const services: Service[] = [
     slug: "skilled-visas",
     title: "Skilled Visas",
     shortLabel: "Skilled Visas",
+    subclasses: ["189", "190", "491"],
     summary:
       "Points-tested and nomination pathways to permanent residency for skilled workers, including subclass 189, 190 and 491 visas.",
     heroBlurb:
@@ -73,6 +77,7 @@ export const services: Service[] = [
     slug: "employer-sponsored-visas",
     title: "Employer-Sponsored Visas",
     shortLabel: "Employer-Sponsored",
+    subclasses: ["482", "186", "494"],
     summary:
       "Temporary and permanent visa pathways for skilled workers nominated by an approved Australian employer.",
     heroBlurb:
@@ -93,6 +98,7 @@ export const services: Service[] = [
     slug: "family-partner-visas",
     title: "Family and Partner Visas",
     shortLabel: "Family & Partner",
+    subclasses: ["820/801", "309/100", "300"],
     summary:
       "Visa pathways for partners, spouses and other eligible family members to join or remain with family in Australia.",
     heroBlurb:
@@ -113,6 +119,7 @@ export const services: Service[] = [
     slug: "visitor-tourist-visas",
     title: "Visitor and Tourist Visas",
     shortLabel: "Visitor & Tourist",
+    subclasses: ["600"],
     summary:
       "Tourist and visitor visa guidance for family visits, holidays, and short business trips to Australia.",
     heroBlurb:
@@ -133,6 +140,7 @@ export const services: Service[] = [
     slug: "art-reviews",
     title: "ART Reviews",
     shortLabel: "ART Reviews",
+    subclasses: ["ART"],
     summary:
       "Guidance for clients facing a visa refusal or cancellation who may have a right to a review with the Administrative Review Tribunal.",
     heroBlurb:
