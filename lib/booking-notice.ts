@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/site-config";
+
 // Content for the "Important Booking Information" modal shown on the
 // booking page. Kept as plain data so it can be edited without touching
 // component code.
@@ -13,6 +15,6 @@ export const bookingNotice = {
   ],
   termsHref: "/terms",
   termsLabel: "Consultation Terms and Conditions",
-  contactEmail: "hello@learniiz.example",
+  contactEmail: siteConfig.contact.email,
   reopenLabel: "Booking and Payment Information",
 };

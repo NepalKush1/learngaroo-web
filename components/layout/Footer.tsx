@@ -5,6 +5,7 @@ import { Button, ArrowIcon } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site-config";
 import { services } from "@/data/services";
 import { SocialIcon } from "@/components/icons/SocialIcon";
+import { ContactDetails } from "@/components/ui/ContactDetails";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -31,7 +32,7 @@ export function Footer() {
             {siteConfig.values}
           </p>
           <div className="mt-6 flex gap-3">
-            {siteConfig.social.map((item) => (
+            {siteConfig.social.filter((item) => item.href).map((item) => (
               <Link
                 key={item.platform}
                 href={item.href}
@@ -64,7 +65,7 @@ export function Footer() {
             Services
           </h3>
           <ul className="mt-4 space-y-2.5">
-            {services.slice(0, 6).map((service) => (
+            {services.map((service) => (
               <li key={service.slug}>
                 <Link
                   href={`/services/${service.slug}`}
@@ -81,12 +82,10 @@ export function Footer() {
           <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-white/50">
             Contact
           </h3>
-          <ul className="mt-4 space-y-2.5 text-[15px] text-white/80">
-            <li>{siteConfig.contact.phone}</li>
-            <li>{siteConfig.contact.email}</li>
-            <li>{siteConfig.contact.address}</li>
-            <li>{siteConfig.contact.hours}</li>
-          </ul>
+          <ContactDetails
+            className="mt-4 space-y-2.5 text-[15px] text-white/80"
+            linkClassName="transition-colors hover:text-brand-green-light"
+          />
           <Button href="/bookings" className="mt-6">
             Book a Consultation
             <ArrowIcon />
@@ -99,7 +98,11 @@ export function Footer() {
           <p>
             © {year} {siteConfig.fullName}. All rights reserved.
           </p>
-          <p>ABN {siteConfig.abn} · Registered Migration Agent — MARN {siteConfig.marn}</p>
+          <p className="flex flex-wrap gap-x-4 gap-y-1">
+            <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white">Consultation Terms</Link>
+            <span>ABN {siteConfig.abn} · Registered Migration Agent — MARN {siteConfig.marn}</span>
+          </p>
         </Container>
       </div>
     </footer>

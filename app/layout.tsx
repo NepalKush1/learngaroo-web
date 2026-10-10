@@ -11,6 +11,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.fullName,
     template: `%s | ${siteConfig.name}`,
@@ -20,7 +21,30 @@ export const metadata: Metadata = {
     title: siteConfig.fullName,
     description: siteConfig.description,
     images: ["/facebook-cover-page.png"],
+    locale: "en_AU",
+    type: "website",
   },
+};
+
+// Structured business details so search engines can show the practice
+// (name, MARN, phone, area served) in rich results.
+const organisationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: siteConfig.fullName,
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/brand/learniiz-lockup.png`,
+  image: `${siteConfig.url}/facebook-cover-page.png`,
+  description: siteConfig.description,
+  telephone: siteConfig.contact.phone,
+  ...(siteConfig.contact.email && { email: siteConfig.contact.email }),
+  ...(siteConfig.contact.address && { address: siteConfig.contact.address }),
+  areaServed: "Worldwide",
+  identifier: [
+    { "@type": "PropertyValue", name: "ABN", value: siteConfig.abn },
+    { "@type": "PropertyValue", name: "MARN", value: siteConfig.marn },
+  ],
+  sameAs: siteConfig.social.map((item) => item.href).filter(Boolean),
 };
 
 export default function RootLayout({
@@ -31,6 +55,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organisationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

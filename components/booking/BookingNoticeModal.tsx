@@ -101,14 +101,26 @@ export function BookingNoticeModal({
           <Link href={bookingNotice.termsHref} className="font-semibold text-brand-primary hover:underline">
             {bookingNotice.termsLabel}
           </Link>
-          , or contact us at{" "}
-          <a
-            href={`mailto:${bookingNotice.contactEmail}`}
-            className="font-semibold text-brand-primary hover:underline"
-          >
-            {bookingNotice.contactEmail}
-          </a>
-          .
+          {bookingNotice.contactEmail ? (
+            <>
+              , or contact us at{" "}
+              <a
+                href={`mailto:${bookingNotice.contactEmail}`}
+                className="font-semibold text-brand-primary hover:underline"
+              >
+                {bookingNotice.contactEmail}
+              </a>
+              .
+            </>
+          ) : (
+            <>
+              , or{" "}
+              <Link href="/contact" className="font-semibold text-brand-primary hover:underline">
+                get in touch
+              </Link>
+              .
+            </>
+          )}
         </p>
 
         <button

@@ -2,14 +2,15 @@ import { Container } from "@/components/ui/Container";
 import { Button, ArrowIcon } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { videos } from "@/data/videos";
+import { publishedVideos } from "@/data/videos";
+import { GeneralInfoNotice } from "@/components/ui/GeneralInfoNotice";
 import { VideoPlayer } from "./VideoPlayer";
 
 // Homepage video section: one large featured video plus a short list of
 // the other featured videos.
 export function VideoShowcase() {
-  const featured = videos.filter((video) => video.featured);
-  const [lead, ...rest] = featured.length ? featured : videos;
+  const featured = publishedVideos.filter((video) => video.featured);
+  const [lead, ...rest] = featured.length ? featured : publishedVideos;
   if (!lead) return null;
 
   return (
@@ -68,6 +69,7 @@ export function VideoShowcase() {
             ))}
           </div>
         </div>
+        <GeneralInfoNotice tone="light" className="mt-10" />
       </Container>
     </section>
   );

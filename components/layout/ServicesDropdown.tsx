@@ -5,12 +5,12 @@ import { ServiceIcon } from "@/components/icons/ServiceIcon";
 export function ServicesDropdown({ active = false }: { active?: boolean }) {
   return (
     <div className="group relative flex h-full items-center">
-      <Link href="/services" className="flex h-full items-center">
+      <Link href="/services" aria-haspopup="true" className="flex h-full items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary">
         <span
           className={`flex items-center gap-1 rounded-full px-3.5 py-2 text-[15px] font-semibold transition-colors duration-200 ${
             active
               ? "bg-brand-mint text-brand-primary"
-              : "text-brand-navy/80 group-hover:bg-brand-surface group-hover:text-brand-navy"
+              : "text-brand-navy/80 group-hover:bg-brand-surface group-hover:text-brand-navy group-focus-within:bg-brand-surface"
           }`}
         >
           Services
@@ -27,7 +27,7 @@ export function ServicesDropdown({ active = false }: { active?: boolean }) {
         </span>
       </Link>
 
-      <div className="invisible absolute left-1/2 top-full z-50 w-[380px] -translate-x-1/2 pt-2 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100">
+      <div className="invisible absolute left-1/2 top-full z-50 w-[380px] -translate-x-1/2 pt-2 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
         <div className="rounded-3xl border border-gray-100 bg-white p-4 shadow-2xl">
           <ul className="space-y-1">
             {services.map((service) => (

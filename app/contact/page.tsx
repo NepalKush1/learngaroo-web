@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
+import { ContactDetails } from "@/components/ui/ContactDetails";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { siteConfig } from "@/lib/site-config";
 
@@ -30,13 +31,10 @@ export default function ContactPage() {
               <h3 className="text-sm font-semibold uppercase tracking-wide text-brand-navy">
                 Contact details
               </h3>
-              <ul className="mt-4 space-y-2 text-sm text-gray-600">
-                <li>{siteConfig.contact.phone}</li>
-                <li>{siteConfig.contact.email}</li>
-                <li>{siteConfig.contact.address}</li>
-                <li>{siteConfig.contact.hours}</li>
-                <li>ABN {siteConfig.abn}</li>
-              </ul>
+              <ContactDetails
+                className="mt-4 space-y-2 text-sm text-gray-600"
+                linkClassName="hover:text-brand-primary"
+              />
             </div>
             <div className="rounded-2xl bg-brand-surface p-6">
               <h3 className="text-sm font-semibold uppercase tracking-wide text-brand-navy">

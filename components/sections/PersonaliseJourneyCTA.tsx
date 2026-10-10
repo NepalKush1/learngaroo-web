@@ -74,6 +74,7 @@ export function PersonaliseJourneyCTA() {
                   src={agent.photoSrc}
                   alt={agent.name}
                   fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
                   className="object-cover object-top"
                 />
               )}

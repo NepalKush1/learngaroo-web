@@ -5,7 +5,7 @@ export const agent = {
   title: "Registered Migration Agent",
   marn: siteConfig.marn,
   photoSrc: "/agent-photo.jpg" as string | null,
-  verifyUrl: null as string | null,
+  verifyUrl: "https://portal.mara.gov.au/search-the-register-of-migration-agents/" as string | null,
 
   // Concise bio for the homepage — the full story lives in `fullProfile`
   // below and is rendered on the About page.

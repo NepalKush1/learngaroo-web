@@ -1,6 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import { formatPrice, type ConsultationService } from "@/data/consultations";
 import type { ClientDetails } from "./StepDetails";
-import type { SelectedSlot } from "./StepDateTime";
+import { visitorTimeZone, type SelectedSlot } from "./StepDateTime";
+
+export interface BookingResult {
+  reference: string;
+  status: "requested" | "pending_payment";
+}
 
 function ReviewRow({ label, value }: { label: string; value: string }) {
   return (
@@ -18,7 +26,9 @@ export function StepReview({
   onEditService,
   onEditSlot,
   onEditDetails,
-  onConfirm,
+  onBooked,
+  onSlotTaken,
+  paymentsEnabled,
 }: {
   service: ConsultationService;
   slot: SelectedSlot;
@@ -26,8 +36,50 @@ export function StepReview({
   onEditService: () => void;
   onEditSlot: () => void;
   onEditDetails: () => void;
-  onConfirm: () => void;
+  onBooked: (result: BookingResult) => void;
+  onSlotTaken: (message: string) => void;
+  paymentsEnabled: boolean;
 }) {
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function submit() {
+    setSubmitting(true);
+    setError(null);
+    try {
+      const response = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          serviceId: service.id,
+          startsAt: slot.startsAt,
+          clientTimeZone: visitorTimeZone(),
+          details,
+        }),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (response.status === 409) {
+        onSlotTaken(result.error ?? "That time is no longer available.");
+        return;
+      }
+      if (!response.ok) {
+        setError(result.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+      if (result.checkoutUrl) {
+        // Hand over to Stripe's secure payment page.
+        window.location.assign(result.checkoutUrl);
+        return;
+      }
+      onBooked({ reference: result.reference, status: result.status });
+    } catch {
+      setError("We couldn't reach the server. Check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div className="rounded-2xl border border-gray-100 p-5">
@@ -65,8 +117,8 @@ export function StepReview({
             Edit
           </button>
         </div>
-        <ReviewRow label="Date and time" value={slot.label} />
-        <ReviewRow label="Timezone" value="Australia/Sydney (AEST/AEDT)" />
+        <ReviewRow label="Date and time (Melbourne)" value={slot.label} />
+        {slot.localLabel && <ReviewRow label="Your local time" value={slot.localLabel} />}
       </div>
 
       <div className="rounded-2xl border border-gray-100 p-5">
@@ -112,17 +164,28 @@ export function StepReview({
       </div>
 
       <div className="rounded-xl bg-brand-surface p-4 text-sm text-gray-600">
-        Payment processing isn&apos;t connected yet. Submitting this form will
-        record your booking request only — no payment will be taken, and no
-        confirmation email will be sent, until payment is set up.
+        {paymentsEnabled
+          ? "Your time is held while you complete payment on our secure payment page (powered by Stripe). Card details are entered with Stripe and are never seen or stored by us."
+          : "We'll reserve this time and contact you to confirm and arrange payment of the consultation fee."}
       </div>
+
+      {error && (
+        <p className="rounded-xl bg-red-50 p-4 text-sm font-medium text-red-700" role="alert">
+          {error}
+        </p>
+      )}
 
       <button
         type="button"
-        onClick={onConfirm}
-        className="inline-flex w-full items-center justify-center rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-dark"
+        onClick={submit}
+        disabled={submitting}
+        className="inline-flex w-full items-center justify-center rounded-full bg-brand-primary px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-brand-primary-dark disabled:cursor-wait disabled:opacity-70"
       >
-        Submit Booking Request
+        {submitting
+          ? "Securing your time…"
+          : paymentsEnabled
+            ? `Confirm & pay ${formatPrice(service.priceInCents, service.currency)}`
+            : "Send booking request"}
       </button>
     </div>
   );

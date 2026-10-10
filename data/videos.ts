@@ -7,8 +7,10 @@
 //   • a video file you've placed in /public/videos, e.g. "/videos/intro.mp4"
 //     (optionally add `poster: "/videos/intro.jpg"` as the cover image).
 //
-// Leave `src` empty ("") to show a tasteful "Coming soon" card until the
-// video is ready. Videos with `featured: true` appear on the homepage.
+// Videos with an empty `src` ("") stay hidden until you add the link. The
+// homepage video section and the "Videos" menu item only appear once at
+// least one video is published. Videos with `featured: true` appear on the
+// homepage (the first published videos are used if none are featured).
 // ─────────────────────────────────────────────────────────────────────────
 
 export const videoCategories = [
@@ -121,3 +123,8 @@ export function resolveVideoSource(src: string): ResolvedVideoSource {
   );
   return match ? { kind: "youtube", id: match[1] } : { kind: "none" };
 }
+
+// Only videos that actually have a source are shown on the site.
+export const publishedVideos: Video[] = videos.filter(
+  (video) => resolveVideoSource(video.src).kind !== "none",
+);

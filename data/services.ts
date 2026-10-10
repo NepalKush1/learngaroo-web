@@ -10,6 +10,26 @@ export interface Service {
 
 export const services: Service[] = [
   {
+    slug: "student-visas",
+    title: "Student Visas",
+    shortLabel: "Student Visas",
+    summary:
+      "Guidance on the Student visa (subclass 500), Genuine Student requirements, and planning your pathway beyond graduation.",
+    heroBlurb:
+      "Studying in Australia is often the first step of a longer journey. We help you understand Student visa (subclass 500) requirements, prepare a strong application, and plan ahead for post-study options such as the Temporary Graduate visa.",
+    whoItsFor: [
+      "International students applying for their first Australian Student visa",
+      "Current students changing courses, providers or extending their stay",
+      "Students planning their pathway after graduation",
+    ],
+    process: [
+      "Course, provider and eligibility review",
+      "Genuine Student and financial capacity guidance",
+      "Application preparation and lodgement support",
+      "Planning for post-study visa options",
+    ],
+  },
+  {
     slug: "skilled-visas",
     title: "Skilled Visas",
     shortLabel: "Skilled Visas",

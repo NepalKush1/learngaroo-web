@@ -1,114 +1,76 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { ConsultationService } from "@/data/consultations";
+import { addDaysToKey, formatInZone, weekdayOfKey } from "@/lib/timezone";
 
 export interface SelectedSlot {
-  date: string; // YYYY-MM-DD
-  time: string; // HH:mm, 24h
-  label: string; // human-readable, e.g. "Tue, 8 July · 10:00 AM"
+  startsAt: string; // UTC ISO
+  label: string; // in the practice's time zone, e.g. "Mon, 12 Oct 2026, 9:00 am AEDT"
+  localLabel: string | null; // in the visitor's time zone, when different
 }
 
-const BUSINESS_HOURS = { startHour: 9, endHour: 17 };
-const DAYS_AHEAD = 14;
+interface AvailabilityResponse {
+  timeZone: string;
+  days: { date: string; slots: string[] }[];
+}
+
 const WEEKDAY_LABELS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
-// Local-date key (YYYY-MM-DD) — deliberately not using date.toISOString(),
-// which converts to UTC first and can roll the date back a day for any
-// timezone ahead of UTC (e.g. Australia, the timezone this booking flow is
-// actually for).
-function toDateKey(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
-interface DayAvailability {
-  date: string;
-  label: string;
-  slots: { time: string; label: string }[];
-}
-
-// Placeholder availability logic only — no server/database exists yet, so
-// this cannot actually prevent double-booking. It generates business-hour
-// slots for the next two weeks (weekdays only) and filters out times that
-// have already passed today. Replace with a real server-validated
-// availability check once a backend is connected.
-function buildAvailableDays(durationMinutes: number): DayAvailability[] {
-  const days: DayAvailability[] = [];
-  const now = new Date();
-
-  for (let offset = 0; offset < DAYS_AHEAD; offset++) {
-    const day = new Date(now);
-    day.setDate(now.getDate() + offset);
-    const isWeekend = day.getDay() === 0 || day.getDay() === 6;
-    if (isWeekend) continue;
-
-    const slots: { time: string; label: string }[] = [];
-    for (
-      let minutes = BUSINESS_HOURS.startHour * 60;
-      minutes + durationMinutes <= BUSINESS_HOURS.endHour * 60;
-      minutes += 45
-    ) {
-      const slotDate = new Date(day);
-      slotDate.setHours(0, minutes, 0, 0);
-
-      if (slotDate.getTime() < now.getTime()) continue;
-
-      const hours24 = Math.floor(minutes / 60);
-      const mins = minutes % 60;
-      const time = `${String(hours24).padStart(2, "0")}:${String(mins).padStart(2, "0")}`;
-      const label = slotDate.toLocaleTimeString("en-AU", {
-        hour: "numeric",
-        minute: "2-digit",
-      });
-      slots.push({ time, label });
-    }
-
-    if (slots.length > 0) {
-      days.push({
-        date: toDateKey(day),
-        label: day.toLocaleDateString("en-AU", {
-          weekday: "short",
-          day: "numeric",
-          month: "short",
-        }),
-        slots,
-      });
-    }
+export function visitorTimeZone(): string {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone;
+  } catch {
+    return "UTC";
   }
-
-  return days;
 }
 
+function monthOf(dateKey: string) {
+  const [year, month] = dateKey.split("-").map(Number);
+  return { year, month }; // month 1–12
+}
+
+function keyFor(year: number, month: number, day: number) {
+  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+}
+
+function shiftMonth(year: number, month: number, delta: number) {
+  const index = year * 12 + (month - 1) + delta;
+  return { year: Math.floor(index / 12), month: (index % 12) + 1 };
+}
+
+// Calendar works purely on "YYYY-MM-DD" keys in the practice's time zone,
+// so the highlighted days match the practice's calendar wherever the
+// visitor is.
 function Calendar({
   availableDates,
+  firstDate,
+  lastDate,
   selectedDate,
   onSelectDate,
 }: {
-  availableDates: Map<string, string>; // date key -> short label
+  availableDates: Set<string>;
+  firstDate: string;
+  lastDate: string;
   selectedDate: string;
   onSelectDate: (date: string) => void;
 }) {
-  const todayKey = toDateKey(new Date());
-
-  const [viewMonth, setViewMonth] = useState(() => {
-    const now = new Date();
-    return new Date(now.getFullYear(), now.getMonth(), 1);
-  });
-
-  const year = viewMonth.getFullYear();
-  const month = viewMonth.getMonth();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const startWeekday = new Date(year, month, 1).getDay();
-
-  const cells: (Date | null)[] = [
+  const [view, setView] = useState(() => monthOf(selectedDate || firstDate));
+  const daysInMonth = new Date(Date.UTC(view.year, view.month, 0)).getUTCDate();
+  const startWeekday = weekdayOfKey(keyFor(view.year, view.month, 1));
+  const cells = [
     ...Array.from({ length: startWeekday }, () => null),
-    ...Array.from({ length: daysInMonth }, (_, i) => new Date(year, month, i + 1)),
+    ...Array.from({ length: daysInMonth }, (_, i) => keyFor(view.year, view.month, i + 1)),
   ];
 
-  const canGoPrev = !(year === new Date().getFullYear() && month === new Date().getMonth());
+  const first = monthOf(firstDate);
+  const last = monthOf(lastDate);
+  const canGoPrev = view.year * 12 + view.month > first.year * 12 + first.month;
+  const canGoNext = view.year * 12 + view.month < last.year * 12 + last.month;
+  const title = formatInZone(`${keyFor(view.year, view.month, 1)}T12:00:00Z`, "UTC", {
+    month: "long",
+    year: "numeric",
+  });
 
   return (
     <div className="rounded-2xl border border-gray-200 p-4">
@@ -116,7 +78,7 @@ function Calendar({
         <button
           type="button"
           disabled={!canGoPrev}
-          onClick={() => setViewMonth(new Date(year, month - 1, 1))}
+          onClick={() => setView(shiftMonth(view.year, view.month, -1))}
           aria-label="Previous month"
           className="flex h-8 w-8 items-center justify-center rounded-full text-brand-navy transition-colors hover:bg-brand-surface disabled:cursor-not-allowed disabled:opacity-30"
         >
@@ -124,14 +86,15 @@ function Calendar({
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <p className="font-heading text-sm font-semibold text-brand-navy">
-          {viewMonth.toLocaleDateString("en-AU", { month: "long", year: "numeric" })}
+        <p className="font-heading text-sm font-semibold text-brand-navy" aria-live="polite">
+          {title}
         </p>
         <button
           type="button"
-          onClick={() => setViewMonth(new Date(year, month + 1, 1))}
+          disabled={!canGoNext}
+          onClick={() => setView(shiftMonth(view.year, view.month, 1))}
           aria-label="Next month"
-          className="flex h-8 w-8 items-center justify-center rounded-full text-brand-navy transition-colors hover:bg-brand-surface"
+          className="flex h-8 w-8 items-center justify-center rounded-full text-brand-navy transition-colors hover:bg-brand-surface disabled:cursor-not-allowed disabled:opacity-30"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -146,13 +109,11 @@ function Calendar({
       </div>
 
       <div className="mt-1 grid grid-cols-7 gap-1">
-        {cells.map((date, index) => {
-          if (!date) return <div key={`empty-${index}`} />;
-
-          const key = toDateKey(date);
+        {cells.map((key, index) => {
+          if (!key) return <div key={`empty-${index}`} />;
           const isAvailable = availableDates.has(key);
           const isSelected = key === selectedDate;
-          const isToday = key === todayKey;
+          const isToday = key === firstDate;
 
           return (
             <button
@@ -162,15 +123,16 @@ function Calendar({
               onClick={() => onSelectDate(key)}
               aria-current={isToday ? "date" : undefined}
               aria-pressed={isSelected}
+              aria-label={`${formatInZone(`${key}T12:00:00Z`, "UTC", { weekday: "long", day: "numeric", month: "long" })}${isAvailable ? "" : " — unavailable"}`}
               className={`aspect-square rounded-lg text-sm font-medium transition-colors ${
                 isSelected
                   ? "bg-brand-primary text-white"
                   : isAvailable
-                    ? "text-brand-navy hover:bg-brand-surface"
+                    ? "bg-brand-mint/60 text-brand-navy hover:bg-brand-mint"
                     : "cursor-not-allowed text-gray-300"
               } ${isToday && !isSelected ? "ring-1 ring-inset ring-brand-green" : ""}`}
             >
-              {date.getDate()}
+              {Number(key.slice(8))}
             </button>
           );
         })}
@@ -181,41 +143,88 @@ function Calendar({
 
 export function StepDateTime({
   service,
+  notice,
   onSelect,
 }: {
   service: ConsultationService;
+  notice?: string | null;
   onSelect: (slot: SelectedSlot) => void;
 }) {
-  const days = useMemo(
-    () => buildAvailableDays(service.durationMinutes),
-    [service.durationMinutes],
-  );
-  const [activeDate, setActiveDate] = useState(days[0]?.date ?? "");
+  const [data, setData] = useState<AvailabilityResponse | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [activeDate, setActiveDate] = useState("");
+  const [localZone] = useState(visitorTimeZone);
 
-  const availableDates = useMemo(
-    () => new Map(days.map((day) => [day.date, day.label])),
-    [days],
-  );
-  const activeDay = days.find((day) => day.date === activeDate);
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`/api/availability?service=${encodeURIComponent(service.id)}`, { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) throw new Error();
+        return response.json() as Promise<AvailabilityResponse>;
+      })
+      .then((result) => {
+        if (cancelled) return;
+        setData(result);
+        setActiveDate(result.days[0]?.date ?? "");
+      })
+      .catch(() => {
+        if (!cancelled) setError("We couldn't load available times. Please refresh the page, or contact us to book.");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [service.id]);
 
-  if (days.length === 0) {
+  const availableDates = useMemo(() => new Set(data?.days.map((day) => day.date)), [data]);
+
+  if (error) return <p className="rounded-xl bg-red-50 p-4 text-sm text-red-700">{error}</p>;
+
+  if (!data) {
+    return (
+      <div className="grid gap-6 sm:grid-cols-[minmax(0,320px)_1fr]" aria-busy="true" aria-label="Loading available times">
+        <div className="h-72 animate-pulse rounded-2xl bg-gray-100" />
+        <div className="grid h-fit grid-cols-2 gap-3 sm:grid-cols-3">
+          {Array.from({ length: 6 }, (_, i) => (
+            <div key={i} className="h-11 animate-pulse rounded-xl bg-gray-100" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (data.days.length === 0) {
     return (
       <p className="text-gray-600">
-        There are no available times in the next {DAYS_AHEAD} days. Please
-        contact us directly to arrange a suitable time.
+        There are no available times at the moment. Please contact us
+        directly to arrange a suitable time.
       </p>
     );
   }
 
+  const practiceZone = data.timeZone;
+  const showLocal = localZone !== practiceZone;
+  const activeDay = data.days.find((day) => day.date === activeDate);
+  const firstDate = data.days[0].date;
+  const lastDate = data.days[data.days.length - 1].date ?? addDaysToKey(firstDate, 30);
+  const zoneName = formatInZone(new Date(), practiceZone, { timeZoneName: "short" }).split(" ").pop();
+
   return (
     <div>
+      {notice && (
+        <p className="mb-4 rounded-xl bg-amber-50 p-4 text-sm font-medium text-amber-800" role="alert">
+          {notice}
+        </p>
+      )}
       <p className="text-sm text-gray-500">
-        Times shown in Australia/Sydney (AEST/AEDT).
+        Times are shown in Melbourne time ({zoneName})
+        {showLocal && <> with your local time ({localZone.replace(/_/g, " ")}) underneath</>}.
       </p>
 
       <div className="mt-4 grid gap-6 sm:grid-cols-[minmax(0,320px)_1fr]">
         <Calendar
           availableDates={availableDates}
+          firstDate={firstDate}
+          lastDate={lastDate}
           selectedDate={activeDate}
           onSelectDate={setActiveDate}
         />
@@ -223,26 +232,54 @@ export function StepDateTime({
         <div>
           {activeDay ? (
             <>
-              <p className="text-sm font-medium text-brand-navy">
-                {activeDay.label}
+              <p className="text-sm font-semibold text-brand-navy">
+                {formatInZone(`${activeDay.date}T12:00:00Z`, "UTC", {
+                  weekday: "long",
+                  day: "numeric",
+                  month: "long",
+                })}
               </p>
               <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                {activeDay.slots.map((slot) => (
-                  <button
-                    key={slot.time}
-                    type="button"
-                    onClick={() =>
-                      onSelect({
-                        date: activeDay.date,
-                        time: slot.time,
-                        label: `${activeDay.label} · ${slot.label}`,
-                      })
-                    }
-                    className="rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-medium text-brand-navy transition-colors hover:border-brand-primary hover:bg-brand-surface"
-                  >
-                    {slot.label}
-                  </button>
-                ))}
+                {activeDay.slots.map((startsAt) => {
+                  const time = formatInZone(startsAt, practiceZone, { hour: "numeric", minute: "2-digit" });
+                  const local = showLocal
+                    ? formatInZone(startsAt, localZone, { weekday: "short", hour: "numeric", minute: "2-digit" })
+                    : null;
+                  return (
+                    <button
+                      key={startsAt}
+                      type="button"
+                      onClick={() =>
+                        onSelect({
+                          startsAt,
+                          label: formatInZone(startsAt, practiceZone, {
+                            weekday: "short",
+                            day: "numeric",
+                            month: "short",
+                            year: "numeric",
+                            hour: "numeric",
+                            minute: "2-digit",
+                            timeZoneName: "short",
+                          }),
+                          localLabel: showLocal
+                            ? formatInZone(startsAt, localZone, {
+                                weekday: "short",
+                                day: "numeric",
+                                month: "short",
+                                hour: "numeric",
+                                minute: "2-digit",
+                                timeZoneName: "short",
+                              })
+                            : null,
+                        })
+                      }
+                      className="rounded-xl border border-gray-200 px-3 py-2.5 text-sm font-semibold text-brand-navy transition-colors hover:border-brand-primary hover:bg-brand-mint"
+                    >
+                      {time}
+                      {local && <span className="block text-xs font-medium text-gray-500">{local} your time</span>}
+                    </button>
+                  );
+                })}
               </div>
             </>
           ) : (

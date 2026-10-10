@@ -20,6 +20,21 @@ export interface ConsultationService {
 // data/services.ts so the same icon set can be reused.
 export const consultations: ConsultationService[] = [
   {
+    id: "student-visa",
+    slug: "student-visas",
+    category: "Migration Consultation",
+    title: "Student Visa Consultation",
+    description:
+      "For international students seeking guidance on the Student visa (subclass 500), course changes, extensions and post-study pathways.",
+    consultantName: "Kush Kumar Nepal",
+    durationMinutes: 30,
+    priceInCents: 15000,
+    currency: "AUD",
+    gstIncluded: true,
+    active: true,
+    displayOrder: 0,
+  },
+  {
     id: "skilled-visa",
     slug: "skilled-visas",
     category: "Migration Consultation",

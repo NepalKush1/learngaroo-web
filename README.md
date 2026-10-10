@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Learniiz Migration & Visa Services — website
 
-## Getting Started
+Next.js 16 site with a built-in booking system: live availability in
+Melbourne time, slot locking, Stripe payments, email confirmations with
+calendar invites, a contact form and a password-protected admin dashboard.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
+cp .env.example .env.local   # then fill in at least ADMIN_PASSWORD + SESSION_SECRET
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. The admin dashboard is at http://localhost:3000/admin.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Requires **Node.js 22.13 or newer** (uses the built-in `node:sqlite` database).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Where to edit things
 
-## Learn More
+| What | File |
+| --- | --- |
+| Business name, phone, email, address, ABN, social links | `lib/site-config.ts` |
+| Services shown on the site | `data/services.ts` |
+| Bookable consultations and prices | `data/consultations.ts` |
+| Opening hours, buffers, notice period, closed dates | `data/availability.ts` |
+| Videos (YouTube links or files in `public/videos/`) | `data/videos.ts` |
+| Cancellation policy values used on the Terms page | `data/legal.ts` |
+| Agent profile | `data/agent.ts` |
 
-To learn more about Next.js, take a look at the following resources:
+Empty values (`""`) in `lib/site-config.ts` are hidden on the site until filled in.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How bookings work
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. The client picks a consultation and a time. Times come from
+   `/api/availability`, built in Melbourne time and shown in the client's
+   local time too. Booked, held and blocked times are excluded.
+2. On submit, `/api/bookings` re-checks the slot inside a database
+   transaction (so two people can't take the same time) and saves it.
+3. **With Stripe configured:** the slot is held for 30 minutes while the
+   client pays on Stripe's hosted page. Payment is confirmed by the Stripe
+   webhook and on the `/bookings/success` page; then the client and the
+   practice are emailed (with a calendar invite). Abandoned payments release
+   the slot.
+   **Without Stripe:** the booking is saved as *requested* and both sides are
+   emailed so the practice can arrange payment.
+4. Everything appears in `/admin`, where bookings can be cancelled (optionally
+   emailing the client) and time can be blocked out.
 
-## Deploy on Vercel
+Contact-form enquiries are stored in the database **and** emailed, so none
+are lost if email delivery fails.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Integrations (all optional — each switches on when its keys are set)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Stripe** — `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`. Add a webhook to
+  `https://<domain>/api/stripe/webhook` for `checkout.session.completed` and
+  `checkout.session.expired`. For local testing:
+  `stripe listen --forward-to localhost:3000/api/stripe/webhook`.
+- **Resend (email)** — `RESEND_API_KEY`, `EMAIL_FROM` (verified domain),
+  `NOTIFY_EMAIL`. Without it, emails are printed to the server log.
+
+## Deploying
+
+The database is a single SQLite file, so the site needs a host with a
+**persistent disk** and a long-running Node server — e.g. a VPS, Render,
+Railway or Fly.io. Set `DATABASE_PATH` to a path on that disk and back it up.
+Serverless hosts such as Vercel don't keep files between requests, so they'd
+need the storage layer (`lib/server/db.ts`) swapped for a hosted database.
+
+```bash
+npm run build && npm start
+```

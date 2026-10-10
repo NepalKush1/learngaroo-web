@@ -128,7 +128,7 @@ export default function Home() {
         {/* Service quick links — mirrors the row on the brand cover. */}
         <Container className="relative mt-14">
           <Reveal delay={200}>
-            <div className="grid grid-cols-2 gap-3 rounded-3xl bg-white/80 p-3 shadow-[0_20px_50px_-30px_rgba(11,26,46,0.35)] ring-1 ring-gray-100 backdrop-blur sm:grid-cols-3 lg:grid-cols-6">
+            <div className="grid grid-cols-2 gap-3 rounded-3xl bg-white/80 p-3 shadow-[0_20px_50px_-30px_rgba(11,26,46,0.35)] ring-1 ring-gray-100 backdrop-blur sm:grid-cols-4 lg:grid-cols-7">
               {services.map((service) => (
                 <Link
                   key={service.slug}
@@ -158,7 +158,7 @@ export default function Home() {
             />
           </Reveal>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, index) => (
+            {services.slice(0, 6).map((service, index) => (
               <Reveal key={service.slug} delay={index * 80}>
                 <ServiceCard service={service} />
               </Reveal>

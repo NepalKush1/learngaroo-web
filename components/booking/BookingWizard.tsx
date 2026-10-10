@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ConsultationService } from "@/data/consultations";
 import { StepDateTime, type SelectedSlot } from "./steps/StepDateTime";
 import { StepDetails, type ClientDetails } from "./steps/StepDetails";
-import { StepReview } from "./steps/StepReview";
+import { StepReview, type BookingResult } from "./steps/StepReview";
 import { StepConfirmation } from "./steps/StepConfirmation";
 
 type WizardStep = "service" | "datetime" | "details" | "review" | "confirmation";
@@ -13,25 +13,41 @@ const STEP_LABELS: { key: WizardStep; label: string }[] = [
   { key: "service", label: "Choose Service" },
   { key: "datetime", label: "Date & Time" },
   { key: "details", label: "Your Details" },
-  { key: "review", label: "Review & Payment" },
+  { key: "review", label: "Review & Confirm" },
   { key: "confirmation", label: "Confirmation" },
 ];
 
 export function BookingWizard({
   service,
   onChangeService,
+  paymentsEnabled,
 }: {
   service: ConsultationService;
   onChangeService: () => void;
+  paymentsEnabled: boolean;
 }) {
   const [step, setStep] = useState<WizardStep>("datetime");
   const [slot, setSlot] = useState<SelectedSlot | null>(null);
   const [details, setDetails] = useState<ClientDetails | null>(null);
+  const [result, setResult] = useState<BookingResult | null>(null);
+  const [slotNotice, setSlotNotice] = useState<string | null>(null);
 
   const stepIndex = STEP_LABELS.findIndex((s) => s.key === step);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const firstRender = useRef(true);
+
+  // Bring the wizard back into view on every step change, so the next step
+  // doesn't start scrolled down at the footer.
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    containerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [step]);
 
   return (
-    <div className="rounded-3xl border border-gray-100 bg-white p-7 shadow-md sm:p-10">
+    <div ref={containerRef} className="scroll-mt-28 rounded-3xl border border-gray-100 bg-white p-7 shadow-md sm:p-10">
       <div className="mb-2 flex items-center justify-between">
         <p className="text-sm text-gray-500">
           Booking: <span className="font-semibold text-brand-navy">{service.title}</span>
@@ -99,7 +115,9 @@ export function BookingWizard({
         {step === "datetime" && (
           <StepDateTime
             service={service}
+            notice={slotNotice}
             onSelect={(selected) => {
+              setSlotNotice(null);
               setSlot(selected);
               setStep("details");
             }}
@@ -125,12 +143,21 @@ export function BookingWizard({
             onEditService={onChangeService}
             onEditSlot={() => setStep("datetime")}
             onEditDetails={() => setStep("details")}
-            onConfirm={() => setStep("confirmation")}
+            paymentsEnabled={paymentsEnabled}
+            onBooked={(booked) => {
+              setResult(booked);
+              setStep("confirmation");
+            }}
+            onSlotTaken={(message) => {
+              setSlot(null);
+              setSlotNotice(message);
+              setStep("datetime");
+            }}
           />
         )}
 
-        {step === "confirmation" && slot && (
-          <StepConfirmation service={service} slot={slot} />
+        {step === "confirmation" && slot && result && details && (
+          <StepConfirmation service={service} slot={slot} result={result} email={details.emails[0]} />
         )}
       </div>
     </div>

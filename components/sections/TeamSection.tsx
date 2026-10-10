@@ -2,10 +2,12 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
-const roles = [
-  "Migration Case Manager",
-  "Education & Enrolment Advisor",
-  "Client Services Lead",
+// Add a name to show a team member on the About page. The section stays
+// hidden until at least one member has a name.
+const team: { name: string; role: string }[] = [
+  { name: "", role: "Migration Case Manager" },
+  { name: "", role: "Education & Enrolment Advisor" },
+  { name: "", role: "Client Services Lead" },
 ];
 
 function PersonIcon() {
@@ -28,28 +30,28 @@ function PersonIcon() {
 }
 
 export function TeamSection() {
+  const members = team.filter((member) => member.name);
+  if (members.length === 0) return null;
+
   return (
     <section className="py-20">
       <Container>
         <SectionHeading
           eyebrow="Our Team"
           title="The rest of the Learniiz team"
-          subtitle="Team profiles are being finalised — check back soon, or ask us directly when you book a consultation."
           align="center"
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
-          {roles.map((role, index) => (
-            <Reveal key={role} delay={index * 80}>
+          {members.map((member, index) => (
+            <Reveal key={member.name} delay={index * 80}>
               <div className="flex flex-col items-center rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm">
                 <div className="flex h-20 w-20 items-center justify-center rounded-full bg-brand-surface text-brand-navy/40">
                   <PersonIcon />
                 </div>
-                <p className="mt-4 text-sm italic text-gray-400">
-                  [Name to be added]
+                <p className="font-heading mt-4 font-bold text-brand-navy">
+                  {member.name}
                 </p>
-                <p className="font-heading mt-1 font-semibold text-brand-navy">
-                  {role}
-                </p>
+                <p className="mt-1 text-sm text-gray-500">{member.role}</p>
               </div>
             </Reveal>
           ))}

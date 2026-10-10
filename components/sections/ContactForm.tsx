@@ -5,32 +5,65 @@ import { services } from "@/data/services";
 import { siteConfig } from "@/lib/site-config";
 
 export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const name = formData.get("name")?.toString() ?? "";
-    const email = formData.get("email")?.toString() ?? "";
-    const phone = formData.get("phone")?.toString() ?? "";
-    const service = formData.get("service")?.toString() ?? "";
-    const message = formData.get("message")?.toString() ?? "";
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const value = (key: string) => formData.get(key)?.toString().trim() ?? "";
 
-    const subject = `Enquiry: ${service || "General"}`;
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone}`,
-      `Service of interest: ${service}`,
-      "",
-      message,
-    ].join("\n");
+    setState("sending");
+    setError(null);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: value("name"),
+          email: value("email"),
+          phone: value("phone") || undefined,
+          service: value("service") || undefined,
+          message: value("message"),
+          consent: formData.get("consent") === "on",
+          website: value("website"),
+        }),
+      });
+      if (!response.ok) {
+        const result = await response.json().catch(() => ({}));
+        throw new Error(result.error ?? "Something went wrong. Please try again.");
+      }
+      form.reset();
+      setState("sent");
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Something went wrong. Please try again.");
+      setState("error");
+    }
+  }
 
-    window.location.href = `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-
-    setSubmitted(true);
+  if (state === "sent") {
+    return (
+      <div className="rounded-3xl border border-brand-primary/15 bg-brand-surface p-8 text-center" role="status">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary text-white">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-7 w-7" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m5 12.5 4.5 4.5L19 7.5" />
+          </svg>
+        </div>
+        <h2 className="font-heading mt-4 text-2xl font-extrabold text-brand-navy">Thanks — message received</h2>
+        <p className="mx-auto mt-2 max-w-md text-gray-600">
+          We&apos;ll reply within one business day. If your matter is urgent, please call{" "}
+          {siteConfig.contact.phone}.
+        </p>
+        <button
+          type="button"
+          onClick={() => setState("idle")}
+          className="mt-5 text-sm font-semibold text-brand-primary hover:underline"
+        >
+          Send another message
+        </button>
+      </div>
+    );
   }
 
   return (
@@ -51,7 +84,7 @@ export function ContactForm() {
           <select
             id="service"
             name="service"
-            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-primary focus:outline-none"
+            className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20"
           >
             <option value="">Select a service</option>
             {services.map((service) => (
@@ -75,24 +108,46 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
-          className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-primary focus:outline-none"
+          className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20"
         />
       </div>
 
-      <button
-        type="submit"
-        className="inline-flex items-center justify-center rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-dark"
-      >
-        Send Enquiry
-      </button>
+      {/* Honeypot — hidden from people, tempting to bots. */}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
 
-      {submitted && (
-        <p className="text-sm text-gray-600">
-          Your email client should now be open with your message ready to
-          send. If it didn&apos;t open, email us directly at{" "}
-          {siteConfig.contact.email}.
+      <label className="flex items-start gap-3 text-sm text-gray-600">
+        <input
+          type="checkbox"
+          name="consent"
+          required
+          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-brand-primary focus:ring-brand-primary"
+        />
+        <span>
+          I agree to Learniiz using my details to respond to this enquiry, as
+          described in the{" "}
+          <a href="/privacy" target="_blank" className="font-semibold text-brand-primary underline">
+            Privacy Policy
+          </a>
+          .
+        </span>
+      </label>
+
+      {error && (
+        <p className="rounded-xl bg-red-50 p-4 text-sm font-medium text-red-700" role="alert">
+          {error}
         </p>
       )}
+
+      <button
+        type="submit"
+        disabled={state === "sending"}
+        className="inline-flex items-center justify-center rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-dark disabled:cursor-wait disabled:opacity-70"
+      >
+        {state === "sending" ? "Sending…" : "Send Enquiry"}
+      </button>
     </form>
   );
 }
@@ -121,7 +176,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-primary focus:outline-none"
+        className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm text-brand-navy focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20"
       />
     </div>
   );

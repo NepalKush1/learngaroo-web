@@ -1,35 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { z } from "zod";
+import { clientDetailsSchema, type ClientDetails } from "@/lib/booking-schema";
 import type { ConsultationService } from "@/data/consultations";
 
-export const clientDetailsSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  phoneCountryCode: z.string().min(1),
-  phone: z.string().min(6, "Enter a valid phone number"),
-  emails: z
-    .array(z.string().email("Enter a valid email address"))
-    .min(1, "At least one email address is required"),
-  addressLine1: z.string().min(1, "Address is required"),
-  addressLine2: z.string().optional(),
-  city: z.string().min(1, "City is required"),
-  state: z.string().min(1, "State is required"),
-  postcode: z.string().min(1, "Postcode is required"),
-  country: z.string().min(1, "Country is required"),
-  hearAboutUs: z.string().optional(),
-  enquiryDescription: z
-    .string()
-    .min(10, "Please provide a few details about your situation"),
-  decisionDate: z.string().optional(),
-  reviewDeadline: z.string().optional(),
-  agreeTerms: z.literal(true, {
-    error: "You must agree to the Consultation Terms and Conditions",
-  }),
-});
-
-export type ClientDetails = z.infer<typeof clientDetailsSchema>;
+export type { ClientDetails };
 
 const DEFAULT_VALUES: ClientDetails = {
   firstName: "",
@@ -275,21 +250,29 @@ function Field({
   error,
   hint,
   required,
+  group = false,
   children,
 }: {
   label: string;
   error?: string;
   hint?: string;
   required?: boolean;
+  // For composite controls with their own buttons (e.g. the email chips),
+  // which mustn't sit inside a <label>; their inputs carry aria-labels.
+  group?: boolean;
   children: React.ReactNode;
 }) {
+  const Wrapper = group ? "div" : "label";
   return (
     <div>
-      <label className="mb-2 block text-base font-semibold text-brand-navy">
-        {label}
-        {required && <span className="text-red-500"> *</span>}
-      </label>
-      {children}
+      {/* Wrapping the control in the <label> associates the two for screen readers. */}
+      <Wrapper className="block">
+        <span className="mb-2 block text-base font-semibold text-brand-navy">
+          {label}
+          {required && <span className="text-red-500"> *</span>}
+        </span>
+        {children}
+      </Wrapper>
       {hint && !error && <p className="mt-1.5 text-sm text-gray-500">{hint}</p>}
       {error && <p className="mt-1.5 text-sm text-red-600">{error}</p>}
     </div>
@@ -338,6 +321,7 @@ function EmailChipsField({
       error={error}
       hint="Use a comma or press enter/return to add additional email addresses."
       required
+      group
     >
       <div className="flex flex-wrap items-center gap-2 rounded-xl border border-gray-300 px-3.5 py-2.5 transition-colors focus-within:border-brand-primary focus-within:ring-4 focus-within:ring-brand-primary/10">
         {emails.map((email) => (
@@ -358,6 +342,8 @@ function EmailChipsField({
         ))}
         <input
           type="email"
+          aria-label="Email address"
+          autoComplete="email"
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -450,6 +436,7 @@ export function StepDetails({
         <Field label="Phone" error={errors.phone} required>
           <div className="flex gap-2">
             <select
+              aria-label="Country calling code"
               value={values.phoneCountryCode}
               onChange={(e) => update("phoneCountryCode", e.target.value)}
               className={`${inputClasses} w-auto shrink-0`}
@@ -462,6 +449,8 @@ export function StepDetails({
             </select>
             <input
               type="tel"
+              aria-label="Phone number"
+              autoComplete="tel-national"
               className={inputClasses}
               value={values.phone}
               onChange={(e) => update("phone", e.target.value)}
@@ -598,8 +587,8 @@ export function StepDetails({
           Consultation Terms &amp; Conditions
         </p>
         <p className="text-base leading-relaxed text-gray-600">
-          By booking this appointment, you agree to your credit card details
-          being collected for payment.
+          By booking this appointment, you agree to pay the consultation fee
+          online through our secure payment provider, Stripe.
         </p>
         <p className="text-base leading-relaxed text-gray-600">
           At the time of booking, the full appointment fee is charged. Our
@@ -624,7 +613,15 @@ export function StepDetails({
             className="mt-0.5 h-5 w-5 rounded border-gray-300 text-brand-primary focus:ring-brand-primary"
           />
           <span>
-            I have read and agree to the terms above
+            I have read and agree to the terms above, the{" "}
+            <a href="/terms" target="_blank" className="font-semibold text-brand-primary underline">
+              Consultation Terms and Conditions
+            </a>{" "}
+            and the{" "}
+            <a href="/privacy" target="_blank" className="font-semibold text-brand-primary underline">
+              Privacy Policy
+            </a>
+            , and consent to my details being used to provide this consultation.
             <span className="text-red-500">*</span>
           </span>
         </label>
@@ -637,7 +634,7 @@ export function StepDetails({
         type="submit"
         className="inline-flex w-full items-center justify-center rounded-full bg-brand-primary px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-colors hover:bg-brand-primary-dark hover:shadow-md sm:w-auto"
       >
-        Continue to Payment
+        Continue to Review
       </button>
     </form>
   );
