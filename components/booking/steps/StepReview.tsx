@@ -1,5 +1,8 @@
 "use client";
 
+import { Button } from "@/components/ui/Button";
+import { bookingNotice } from "@/lib/booking-notice";
+import { BookingNoticeList } from "../BookingNoticeList";
 import { useState } from "react";
 import { formatPrice, type ConsultationService } from "@/data/consultations";
 import type { ClientDetails } from "./StepDetails";
@@ -163,6 +166,18 @@ export function StepReview({
         )}
       </div>
 
+      <details className="group rounded-xl border border-gray-200 bg-white p-4" open>
+        <summary className="cursor-pointer list-none text-sm font-bold text-brand-navy [&::-webkit-details-marker]:hidden">
+          <span className="inline-flex items-center gap-2">
+            <span className="transition-transform group-open:rotate-90" aria-hidden="true">▸</span>
+            {bookingNotice.title}
+          </span>
+        </summary>
+        <div className="mt-3">
+          <BookingNoticeList compact />
+        </div>
+      </details>
+
       <div className="rounded-xl bg-brand-surface p-4 text-sm text-gray-600">
         {paymentsEnabled
           ? "Your time is held while you complete payment on our secure payment page (powered by Stripe). Card details are entered with Stripe and are never seen or stored by us."
@@ -175,18 +190,13 @@ export function StepReview({
         </p>
       )}
 
-      <button
-        type="button"
-        onClick={submit}
-        disabled={submitting}
-        className="inline-flex w-full items-center justify-center rounded-full bg-brand-primary px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-brand-primary-dark disabled:cursor-wait disabled:opacity-70"
-      >
+      <Button type="button" onClick={submit} disabled={submitting} size="lg" track="booking_submit" className="w-full">
         {submitting
           ? "Securing your time…"
           : paymentsEnabled
             ? `Confirm & pay ${formatPrice(service.priceInCents, service.currency)}`
             : "Send booking request"}
-      </button>
+      </Button>
     </div>
   );
 }

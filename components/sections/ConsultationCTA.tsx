@@ -11,7 +11,7 @@ export function ConsultationCTA({
   return (
     <section className="py-20">
       <Container>
-        <div className="bg-gradient-brand relative overflow-hidden rounded-[2rem] px-8 py-16 text-center text-white shadow-[0_30px_60px_-25px_rgba(31,127,83,0.55)] sm:px-16">
+        <div className="bg-gradient-brand-deep relative overflow-hidden rounded-[2rem] px-8 py-16 text-center text-white shadow-deep sm:px-16">
           <div className="bg-dots pointer-events-none absolute inset-0 opacity-40 invert" aria-hidden="true" />
           <div
             className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/15 blur-2xl"
@@ -19,7 +19,7 @@ export function ConsultationCTA({
           />
           <div className="relative flex flex-col items-center gap-6">
             <h2 className="font-heading max-w-2xl text-3xl font-extrabold sm:text-4xl">{title}</h2>
-            <p className="max-w-xl text-lg text-white/85">{subtitle}</p>
+            <p className="max-w-xl text-lg text-white/95">{subtitle}</p>
             <div className="flex flex-wrap justify-center gap-3">
               <Button href="/bookings" variant="outline" className="border-transparent text-base">
                 Book a Consultation

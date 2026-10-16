@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
+import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site-config";
 
 // Cross-promotes the Learniiz PTE practice platform, framed around what it
@@ -23,7 +24,7 @@ const features = [
 
 export function PteSection() {
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden py-16 sm:py-24">
       <div className="pointer-events-none absolute -right-32 top-10 h-96 w-96 rounded-full bg-brand-green/15 blur-3xl" aria-hidden="true" />
       <Container className="relative grid items-center gap-12 lg:grid-cols-2">
         <Reveal>
@@ -32,9 +33,8 @@ export function PteSection() {
             Your English score is worth up to <span className="text-gradient-brand">20 points</span>
           </h2>
           <p className="mt-4 max-w-xl text-lg text-gray-600">
-            For points-tested skilled visas, moving from Competent to Superior English adds
-            20 points, often one of the biggest gains available. Practise on Learniiz, our own
-            PTE, IELTS and NAATI CCL platform, then plan your visa with us.
+            Moving from Competent to Superior English adds 20 points for points-tested
+            visas. Practise on Learniiz, our own PTE, IELTS and NAATI CCL platform.
           </p>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             {features.map((feature) => (
@@ -49,27 +49,17 @@ export function PteSection() {
             ))}
           </ul>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href={siteConfig.pte.signupUrl}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-primary/25 transition-all hover:-translate-y-0.5 hover:bg-brand-primary-dark"
-            >
+            <Button href={siteConfig.pte.signupUrl} external track="pte_signup">
               Start practising free ↗
-            </a>
-            <a
-              href={siteConfig.pte.url}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 rounded-full border border-brand-navy/15 bg-white px-6 py-3 text-sm font-semibold text-brand-navy transition-all hover:-translate-y-0.5 hover:bg-brand-mint"
-            >
+            </Button>
+            <Button href={siteConfig.pte.url} external variant="outline" track="pte_visit">
               Explore learniiz.com
-            </a>
+            </Button>
           </div>
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="rounded-[2rem] bg-brand-navy p-7 text-white shadow-[0_30px_60px_-30px_rgba(11,26,46,0.6)] sm:p-9">
+          <div className="rounded-[2rem] bg-brand-navy p-7 text-white shadow-deep sm:p-9">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-green-light">
               English points for skilled visas
             </p>
@@ -92,9 +82,8 @@ export function PteSection() {
               <span className="font-heading text-3xl font-extrabold text-brand-green-light">+5</span>
             </div>
             <p className="mt-5 text-xs text-white/50">
-              Minimum PTE Academic score in each part, as set by the Department of Home Affairs
-              for tests taken on or after 7 August 2025. Check the latest requirements before
-              you test.
+              Home Affairs minimum PTE Academic score per part, for tests taken from 7 August
+              2025. Check the latest requirements before you test.
             </p>
           </div>
         </Reveal>

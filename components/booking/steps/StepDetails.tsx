@@ -1,8 +1,11 @@
 "use client";
 
+import { Button } from "@/components/ui/Button";
 import { useState } from "react";
 import { clientDetailsSchema, type ClientDetails } from "@/lib/booking-schema";
 import type { ConsultationService } from "@/data/consultations";
+
+const BOOKING_NOTE_KEY = "learniiz:booking-note";
 
 export type { ClientDetails };
 
@@ -334,7 +337,7 @@ function EmailChipsField({
               type="button"
               onClick={() => removeEmail(email)}
               aria-label={`Remove ${email}`}
-              className="text-gray-400 transition-colors hover:text-brand-navy"
+              className="text-gray-500 transition-colors hover:text-brand-navy"
             >
               ×
             </button>
@@ -374,9 +377,21 @@ export function StepDetails({
 }) {
   const isArtReview = service.slug === "art-reviews";
 
+  // A summary from the state nomination assessment, if the visitor came
+  // from its "Book a consultation" button. It stays in this browser tab
+  // until the booking is submitted.
+  const [fromAssessment] = useState(() => {
+    if (typeof window === "undefined" || initialValues?.enquiryDescription) return "";
+    try {
+      return window.sessionStorage.getItem(BOOKING_NOTE_KEY) ?? "";
+    } catch {
+      return "";
+    }
+  });
   const [values, setValues] = useState<ClientDetails>({
     ...DEFAULT_VALUES,
     ...initialValues,
+    ...(fromAssessment ? { enquiryDescription: fromAssessment } : {}),
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -401,6 +416,13 @@ export function StepDetails({
     }
 
     setErrors({});
+    if (fromAssessment) {
+      try {
+        window.sessionStorage.removeItem(BOOKING_NOTE_KEY);
+      } catch {
+        // Nothing to clear if storage is unavailable.
+      }
+    }
     onSubmit(result.data);
   }
 
@@ -550,6 +572,11 @@ export function StepDetails({
             error={errors.enquiryDescription}
             required
           >
+            {fromAssessment && (
+              <span className="mb-2 block rounded-xl bg-brand-mint px-3 py-2 text-xs font-semibold text-brand-primary-dark">
+                We&apos;ve added a summary of your state nomination assessment. Edit or add to it before you continue.
+              </span>
+            )}
             <textarea
               rows={4}
               className={inputClasses}
@@ -632,12 +659,9 @@ export function StepDetails({
         )}
       </div>
 
-      <button
-        type="submit"
-        className="inline-flex w-full items-center justify-center rounded-full bg-brand-primary px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-colors hover:bg-brand-primary-dark hover:shadow-md sm:w-auto"
-      >
+      <Button type="submit" size="lg" className="w-full sm:w-auto sm:px-8">
         Continue to Review
-      </button>
+      </Button>
     </form>
   );
 }

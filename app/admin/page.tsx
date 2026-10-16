@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 };
 
 const STATUS_STYLES: Record<BookingStatus, string> = {
-  confirmed: "bg-brand-mint text-brand-primary",
+  confirmed: "bg-brand-mint text-brand-primary-dark",
   requested: "bg-blue-50 text-blue-700",
   pending_payment: "bg-amber-50 text-amber-700",
   blocked: "bg-gray-100 text-gray-600",
@@ -198,7 +198,7 @@ function SetupStatus() {
         <li
           key={item.label}
           title={item.on ? "Connected" : item.hint}
-          className={`rounded-full px-3 py-1.5 text-xs font-bold ${item.on ? "bg-brand-mint text-brand-primary" : "bg-amber-50 text-amber-700"}`}
+          className={`rounded-full px-3 py-1.5 text-xs font-bold ${item.on ? "bg-brand-mint text-brand-primary-dark" : "bg-amber-50 text-amber-700"}`}
         >
           {item.on ? "✓" : "!"} {item.label}
           {!item.on && <span className="font-medium"> — {item.hint}</span>}
@@ -285,7 +285,7 @@ export default async function AdminPage({
       <div className="mt-10 grid gap-10 lg:grid-cols-[1.6fr_1fr]">
         <div>
           <h2 className="font-heading text-xl font-bold text-brand-navy">
-            Upcoming <span className="text-gray-400">({upcoming.length})</span>
+            Upcoming <span className="text-gray-500">({upcoming.length})</span>
           </h2>
           {upcoming.length === 0 ? (
             <p className="mt-4 rounded-2xl border border-dashed border-gray-300 bg-white p-6 text-sm text-gray-500">
@@ -348,7 +348,7 @@ export default async function AdminPage({
 
           <div>
             <h2 className="font-heading text-lg font-bold text-brand-navy">
-              Enquiries <span className="text-gray-400">({newEnquiries.length} new)</span>
+              Enquiries <span className="text-gray-500">({newEnquiries.length} new)</span>
             </h2>
             {enquiries.length === 0 ? (
               <p className="mt-4 rounded-2xl border border-dashed border-gray-300 bg-white p-6 text-sm text-gray-500">
@@ -372,7 +372,7 @@ export default async function AdminPage({
                       {enquiry.status === "new" && (
                         <form action={markEnquiryHandledAction}>
                           <input type="hidden" name="id" value={enquiry.id} />
-                          <button type="submit" className="rounded-full bg-brand-mint px-3 py-1 text-xs font-bold text-brand-primary hover:bg-brand-primary hover:text-white">
+                          <button type="submit" className="rounded-full bg-brand-mint px-3 py-1 text-xs font-bold text-brand-primary-dark hover:bg-brand-primary hover:text-white">
                             Mark handled
                           </button>
                         </form>

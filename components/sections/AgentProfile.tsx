@@ -42,12 +42,13 @@ function ShieldCheckIcon({ className = "h-5 w-5" }: { className?: string }) {
 // sites) beside the bio and quick facts. The full story is on /about.
 export function AgentProfile() {
   return (
-    <section className="bg-brand-surface py-24">
+    <section className="bg-brand-surface py-16 sm:py-24">
       <Container>
         <Reveal>
           <SectionHeading
             eyebrow="Who you’ll work with"
             title="Meet your Registered Migration Agent"
+            highlight="Migration Agent"
             subtitle="You work directly with a MARN-registered agent, from your first consultation onwards."
             align="center"
           />
@@ -56,7 +57,7 @@ export function AgentProfile() {
         <div className="mt-14 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14">
           <Reveal>
             <div className="relative mx-auto max-w-md lg:max-w-none">
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-[0_30px_60px_-30px_rgba(11,26,46,0.45)]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-deep">
                 {agent.photoSrc ? (
                   <Image
                     src={agent.photoSrc}
@@ -125,19 +126,6 @@ export function AgentProfile() {
                 {agent.languages.join(", ")}
               </p>
             )}
-
-            <ul className="mt-6 space-y-2">
-              {agent.credibilityPoints.map((point) => (
-                <li key={point} className="flex items-start gap-2.5 text-sm text-gray-700">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} className="h-3 w-3" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m5 12.5 4.5 4.5L19 7.5" />
-                    </svg>
-                  </span>
-                  {point}
-                </li>
-              ))}
-            </ul>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Button href="/bookings">

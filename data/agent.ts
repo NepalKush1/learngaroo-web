@@ -4,7 +4,7 @@ export const agent = {
   name: "Kush Kumar Nepal",
   title: "Registered Migration Agent",
   marn: siteConfig.marn,
-  photoSrc: "/agent-photo.jpg" as string | null,
+  photoSrc: "/agent-photo.webp" as string | null,
   verifyUrl: "https://portal.mara.gov.au/search-the-register-of-migration-agents/" as string | null,
   city: "Melbourne",
   state: "Victoria",
@@ -23,13 +23,8 @@ export const agent = {
   // Concise bio for the homepage — the full story lives in `fullProfile`
   // below and is rendered on the About page.
   shortBio:
-    "Kush Kumar Nepal is a Registered Migration Agent who began practising in 2024. Having first arrived in Australia as an international student in 2015, he combines first-hand migration experience with professional expertise gained through his Graduate Diploma in Australian Migration Law and Practice from Australian Catholic University. He provides clear, practical and personalised guidance to help clients understand their visa options and move forward with confidence.",
+    "Kush first came to Australia as an international student in 2015 and became a Registered Migration Agent in 2024. With a master's from RMIT and a Graduate Diploma in Australian Migration Law and Practice from ACU, he gives clear, practical advice shaped by his own journey.",
 
-  credibilityPoints: [
-    "Former international student in Australia",
-    "Master's degree completed at RMIT University",
-    "Graduate Diploma in Australian Migration Law and Practice from Australian Catholic University",
-  ],
 
   fullProfile: {
     introduction: [

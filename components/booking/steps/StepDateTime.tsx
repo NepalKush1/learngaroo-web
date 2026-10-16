@@ -102,7 +102,7 @@ function Calendar({
         </button>
       </div>
 
-      <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium text-gray-400">
+      <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium text-gray-500">
         {WEEKDAY_LABELS.map((label, index) => (
           <div key={`${label}-${index}`}>{label}</div>
         ))}

@@ -1,4 +1,8 @@
+"use client";
+
+import { useEffect } from "react";
 import { Button } from "@/components/ui/Button";
+import { track } from "@/lib/analytics";
 import type { ConsultationService } from "@/data/consultations";
 import type { SelectedSlot } from "./StepDateTime";
 import type { BookingResult } from "./StepReview";
@@ -16,6 +20,10 @@ export function StepConfirmation({
   result: BookingResult;
   email: string;
 }) {
+  useEffect(() => {
+    track("booking_requested", { service: service.id });
+  }, [service.id]);
+
   return (
     <div className="rounded-2xl border border-brand-primary/15 bg-brand-surface p-8 text-center">
       <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary text-white">

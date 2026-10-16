@@ -23,7 +23,7 @@ export function ContactDetails({
       )}
       {whatsappHref && (
         <li>
-          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className={linkClassName}>
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" data-track-label="contact" className={linkClassName}>
             WhatsApp {whatsappDisplay}
           </a>
         </li>

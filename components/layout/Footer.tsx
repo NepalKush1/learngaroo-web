@@ -50,6 +50,8 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp (opens in a new tab)"
+                data-track="whatsapp_click"
+                data-track-label="footer"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/10 transition-colors hover:bg-[#25d366] hover:ring-[#25d366]"
               >
                 <SocialIcon platform="whatsapp" />
@@ -76,9 +78,23 @@ export function Footer() {
                 )}
               </li>
             ))}
+            {[
+              { href: "/visas", label: "Visa Library" },
+              { href: "/occupations", label: "Occupations" },
+              { href: "/state-nomination", label: "State Nomination" },
+              { href: "/tools/points", label: "Points Calculators" },
+              { href: "/tools/fee-calculator", label: "Visa Fee Calculator" },
+              { href: "/tools/regional-postcode-checker", label: "Regional Postcode Checker" },
+            ].map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="text-[15px] text-white/80 transition-colors hover:text-brand-green-light">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
             <li>
-              <Link href="/tools/points-calculator" className="text-[15px] text-white/80 transition-colors hover:text-brand-green-light">
-                Points Calculator
+              <Link href="/faq" className="text-[15px] text-white/80 transition-colors hover:text-brand-green-light">
+                FAQ
               </Link>
             </li>
           </ul>
@@ -125,6 +141,8 @@ export function Footer() {
           <p className="flex flex-wrap gap-x-4 gap-y-1">
             <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white">Consultation Terms</Link>
+            <Link href="/complaints" className="hover:text-white">Complaints</Link>
+            <Link href="/accessibility" className="hover:text-white">Accessibility</Link>
             <span>ABN {siteConfig.abn} · Registered Migration Agent — MARN {siteConfig.marn}</span>
           </p>
         </Container>

@@ -1,0 +1,91 @@
+# Home Affairs "Current visa pricing" table, read on 12 October 2026 (charges from 1 July 2026). Amounts in AUD.
+# Columns: visa | base application charge | additional applicant 18+ | additional applicant under 18 | non-internet (paper) charge | subsequent temporary application charge
+# "-" = not applicable. Source: https://immi.homeaffairs.gov.au/visas/getting-a-visa/fees-and-charges/current-visa-pricing
+Adoption (102)|4,040|2,020|1,015|-|-
+Aged Dependent Relative (114)|6,600|3,300|1,655|-|-
+Aged Dependent Relative (838)|6,600|3,300|1,655|-|-
+Aged Parent (804)|6,600|3,300|1,655|-|-
+Bridging A (BVA) (010)|0|-|-|-|-
+Bridging B (BVB) (020)|575|-|-|-|-
+Bridging C (BVC) (030)|0|-|-|-|-
+Bridging E - BVE (050 and 051)|0|-|-|-|-
+Business Innovation and Investment (Permanent) (888) - all streams|4,375|2,195|1,090|-|-
+Business Innovation and Investment (Provisional) (188) - Business Innovation Extension stream|1,505|760|380|-|-
+Business Innovation and Investment (Provisional) (188) - Business Innovation stream|12,505|6,250|3,125|-|-
+Business Innovation and Investment (Provisional) (188) - Entrepreneur stream|8,455|4,230|2,115|-|-
+Business Innovation and Investment (Provisional) (188) - Investor stream|12,505|6,250|3,125|-|-
+Business Innovation and Investment (Provisional) (188) - Premium Investor stream|9,455|(see HA page)|(see HA page)|-|-
+Carer (116)|2,720|1,365|680|-|-
+Carer (836)|2,720|1,365|680|-|-
+Child (101)|4,040|2,020|1,015|-|-
+Child (802)|4,040|2,020|1,015|-|-
+Child (802) - State Government supported|0|-|-|-|-
+Contributory Aged Parent (Temporary) (884)|6,300|3,145|1,580|-|-
+Contributory Aged Parent (864) - standard (first instalment)|6,300|3,145|1,580|-|-
+Contributory Aged Parent (864) - applicant who holds/held subclass 884 (see HA note)|555|280|135|-|-
+Contributory Parent (Temporary) (173)|4,245|2,125|1,065|-|-
+Contributory Parent (143) - standard applicant (Note 19d2)|6,300|2,125|1,065|-|-
+Contributory Parent (143) - applicant who holds/held subclass 173 (Note 19b)|555|280|135|-|-
+Contributory Parent (143) - Note 19c applicants|4,040|2,020|1,015|-|-
+Dependent Child (445)|4,040|2,020|1,015|-|-
+Electronic Travel Authority (601)|0 (service fee A$20 via the app)|-|-|-|-
+Employer Nomination Scheme (186) - all streams|6,140|3,070|1,535|-|-
+eVisitor (651)|0|-|-|-|-
+Former Resident (151)|6,005|3,000|1,500|-|-
+Medical Treatment (602) - Inside Australia|480|240|120|-|-
+Medical Treatment (602) - Outside Australia|0|-|-|-|-
+National Innovation (858)|6,235|3,120|1,560|-|- (second instalment A$4,890 per HA page)
+New Zealand Citizen Family Relationship (Temporary) (461)|1,330|675|325|-|-
+Orphan Relative (117)|2,475|1,235|625|-|-
+Orphan Relative (837)|2,475|1,235|625|-|-
+Pacific Engagement (192) - Pacific Engagement stream|345|85|85|-|-
+Pacific Engagement (192) - Treaty stream (Tuvalu)|205|50|50|-|-
+Parent (103)|6,600|3,300|1,655|-|-
+Partner (Provisional and Migrant) (309/100)|11,710|5,860|2,935|-|-
+Partner (820/801)|11,710|5,860|2,935|-|-
+Partner (820/801) - Application by Prospective Marriage (300) holder|1,955|980|485|-|-
+Partner (820/801) - Ceased Prospective Marriage|2,475|1,235|625|-|-
+Permanent Residence (Skilled Regional) (191) - Hong Kong stream|6,135|3,065|1,535|-|-
+Permanent Residence (Skilled Regional) (191) - Regional Provisional stream|630|315|160|-|-
+Prospective Marriage (300)|11,710|5,860|2,935|-|-
+Remaining Relative (115)|6,600|3,300|1,655|-|-
+Remaining Relative (835)|6,600|3,300|1,655|-|-
+Resident Return (155/157)|1,475|-|-|80|-
+Skilled Employer Sponsored Regional (Provisional) (494) - Employer Sponsored, Labour Agreement and Subsequent entrant|6,140|3,070|1,535|-|-
+Skilled Independent (189) - Points tested stream|6,135|3,070|1,540|-|-
+Skilled Independent (189) - Hong Kong stream|6,135|3,070|1,535|-|-
+Skilled Nominated (190)|6,140|3,070|1,535|-|-
+Skilled Regional (887)|630|315|160|-|-
+Skilled Work Regional (Provisional) (491)|6,140|3,070|1,535|-|-
+Skills in Demand (482) - Core Skills, Specialist Skills and Labour agreement streams|4,015|4,015|1,005|-|700
+Special Category (444)|0|-|-|-|-
+Student Guardian (590)|2,500|-|500|-|700
+Student (500) - All other students|2,500|1,530|500|-|700
+Student (500) - ELICOS sector|2,050|1,255|410|-|700
+Student (500) - Non-Award sector|2,050|1,255|410|-|700
+Student (500) - Postgraduate research sector|2,500|-|-|-|700
+Student (500) - Foreign Affairs or Defence sector|0|-|-|-|-
+Student (500) - Secondary exchange (Schools sector)|0|-|-|-|-
+Temporary Activity (408) - all streams|535|535|135|-|700
+Temporary Graduate (485) - Post-Higher Education Work stream|5,750|2,875|1,450|80|-
+Temporary Graduate (485) - Post-Vocational Education Work stream|5,750|2,875|1,450|80|-
+Temporary Graduate (485) - Second Post-Higher Education Work stream|2,265|1,140|575|80|-
+Temporary Work (International Relations) (403) - Domestic Worker (Diplomatic or Consular) stream|470|-|-|-|-
+Temporary Work (International Relations) (403) - Foreign Government stream|470|470|120|-|-
+Temporary Work (International Relations) (403) - Government Agreement stream|470|470|120|-|-
+Temporary Work (International Relations) (403) - Mobility Arrangement for Talented Early-professionals Scheme (MATES)|470|470|120|-|-
+Temporary Work (International Relations) (403) - Pacific Australia Labour Mobility stream|365|355|85|-|-
+Temporary Work (International Relations) (403) - Privileges and Immunities stream|0|-|-|-|-
+Temporary Work (Short Stay Specialist) (400)|535|535|135|-|-
+Training (407)|535|535|135|-|700
+Visitor (600) - Tourist stream, outside Australia|250|-|-|-|-
+Visitor (600) - Tourist stream, in Australia|630|-|-|-|700
+Visitor (600) - Sponsored Family stream|250|-|-|-|-
+Visitor (600) - Business Visitor stream|250|-|-|-|-
+Visitor (600) - Approved Destination Status stream|250|-|-|-|-
+Visitor (600) - Frequent traveller stream|1,845|-|-|-|-
+Work and Holiday (462) - First|840|-|-|-|-
+Work and Holiday (462) - Second / Third|1,000|-|-|80|-
+Working Holiday (417) - First|840|-|-|80|-
+Working Holiday (417) - Second / Third|1,000|-|-|80|-
+# ART (Administrative Review Tribunal) fees from 1 July 2026 (https://www.art.gov.au/help-and-resources/fees): migration decisions under Part 5 of the Migration Act A$3,727 (50% reduction for financial hardship); protection decisions A$2,293 (payable only if the decision is affirmed); character-related refusals/cancellations use the standard fee A$1,195 (A$100 reduced). Pay before the application deadline.

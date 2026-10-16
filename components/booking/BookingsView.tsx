@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/SectionHeading";
@@ -12,12 +12,6 @@ import { bookingNotice } from "@/lib/booking-notice";
 import { agent } from "@/data/agent";
 import type { ConsultationService } from "@/data/consultations";
 
-const NOTICE_SESSION_KEY = "learniiz-booking-notice-seen";
-
-function noSubscription() {
-  return () => {};
-}
-
 export function BookingsView({
   paymentsEnabled,
   paymentCancelled,
@@ -25,16 +19,9 @@ export function BookingsView({
   paymentsEnabled: boolean;
   paymentCancelled: boolean;
 }) {
-  // SSR-safe one-time read of sessionStorage (server always assumes the
-  // notice hasn't been seen yet, matching the pre-hydration client render).
-  // Avoids calling setState from inside an effect.
-  const shouldShowByDefault = useSyncExternalStore(
-    noSubscription,
-    () => !window.sessionStorage.getItem(NOTICE_SESSION_KEY),
-    () => false,
-  );
-  const [manualNoticeOpen, setManualNoticeOpen] = useState<boolean | null>(null);
-  const noticeOpen = manualNoticeOpen ?? shouldShowByDefault;
+  // The booking notice is shown inline on the review step; this dialog is
+  // only for the "Booking and Payment Information" link.
+  const [noticeOpen, setNoticeOpen] = useState(false);
 
   const [selectedService, setSelectedService] = useState<ConsultationService | null>(
     null,
@@ -47,8 +34,7 @@ export function BookingsView({
   }
 
   function closeNotice() {
-    window.sessionStorage.setItem(NOTICE_SESSION_KEY, "1");
-    setManualNoticeOpen(false);
+    setNoticeOpen(false);
   }
 
   return (
@@ -115,7 +101,7 @@ export function BookingsView({
             </p>
             <button
               type="button"
-              onClick={() => setManualNoticeOpen(true)}
+              onClick={() => setNoticeOpen(true)}
               className="text-base font-semibold text-brand-primary hover:underline"
             >
               {bookingNotice.reopenLabel}

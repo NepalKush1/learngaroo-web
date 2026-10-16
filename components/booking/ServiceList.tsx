@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/Button";
 import { ServiceIcon } from "@/components/icons/ServiceIcon";
 import {
   formatPrice,
@@ -70,14 +71,16 @@ export function ServiceList({
                 </span>
               </div>
 
-              <button
+              <Button
                 type="button"
                 onClick={() => onSelect(service)}
                 aria-label={`Book ${service.title}`}
-                className="inline-flex w-full items-center justify-center rounded-full bg-brand-primary px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-brand-primary-dark hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary sm:w-auto sm:px-8"
+                size="lg"
+                track="booking_start"
+                className="w-full sm:w-auto sm:px-8"
               >
                 Book Consultation
-              </button>
+              </Button>
             </div>
           </div>
         );

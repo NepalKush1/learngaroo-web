@@ -78,7 +78,7 @@ export function BookingWizard({
                   ? "text-brand-primary"
                   : isDone
                     ? "text-brand-primary"
-                    : "text-gray-400"
+                    : "text-gray-500"
               }`}
             >
               <span
@@ -87,7 +87,7 @@ export function BookingWizard({
                     ? "bg-brand-primary text-white shadow-md ring-4 ring-brand-primary/15"
                     : isDone
                       ? "bg-brand-green text-white"
-                      : "bg-gray-100 text-gray-400"
+                      : "bg-gray-100 text-gray-500"
                 }`}
               >
                 {isDone ? (

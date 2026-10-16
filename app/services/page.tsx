@@ -4,6 +4,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { ConsultationCTA } from "@/components/sections/ConsultationCTA";
 import { services } from "@/data/services";
+import { ServiceComparisonTable } from "@/components/sections/ServiceComparisonTable";
 
 export const metadata: Metadata = {
   title: "Australian Visa & Migration Services",
@@ -29,6 +30,8 @@ export default function ServicesPage() {
           </div>
         </Container>
       </section>
+
+      <ServiceComparisonTable />
 
       <ConsultationCTA />
     </>

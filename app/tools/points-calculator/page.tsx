@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
+import { PointsHubBacklink } from "@/components/tools/PointsHubBacklink";
 import { PointsCalculator } from "@/components/tools/PointsCalculator";
 
 export const metadata: Metadata = {
@@ -19,7 +21,11 @@ export default function PointsCalculatorPage() {
       />
       <section className="bg-brand-surface py-16">
         <Container>
-          <PointsCalculator />
+          <PointsHubBacklink tab="federal" />
+          {/* useSearchParams inside needs a boundary so the page stays static. */}
+          <Suspense fallback={null}>
+            <PointsCalculator />
+          </Suspense>
         </Container>
       </section>
     </>

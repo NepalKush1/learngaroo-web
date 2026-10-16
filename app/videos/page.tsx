@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
 import { ConsultationCTA } from "@/components/sections/ConsultationCTA";
@@ -13,6 +14,9 @@ export const metadata: Metadata = {
 };
 
 export default function VideosPage() {
+  // 404 until the first video is published (see data/videos.ts).
+  if (publishedVideos.length === 0) notFound();
+
   return (
     <>
       <PageHero

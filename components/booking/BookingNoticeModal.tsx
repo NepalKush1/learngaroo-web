@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import { bookingNotice } from "@/lib/booking-notice";
+import { Button } from "@/components/ui/Button";
+import { BookingNoticeList } from "./BookingNoticeList";
 
 export function BookingNoticeModal({
   open,
@@ -73,7 +74,7 @@ export function BookingNoticeModal({
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-brand-surface hover:text-brand-navy"
+          className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-brand-surface hover:text-brand-navy"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -87,49 +88,13 @@ export function BookingNoticeModal({
           {bookingNotice.title}
         </h2>
 
-        <ul className="mt-4 space-y-3 text-sm text-gray-600">
-          {bookingNotice.paragraphs.map((paragraph) => (
-            <li key={paragraph} className="flex gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green" />
-              {paragraph}
-            </li>
-          ))}
-        </ul>
+        <div className="mt-4">
+          <BookingNoticeList />
+        </div>
 
-        <p className="mt-5 text-sm text-gray-600">
-          Read our{" "}
-          <Link href={bookingNotice.termsHref} className="font-semibold text-brand-primary hover:underline">
-            {bookingNotice.termsLabel}
-          </Link>
-          {bookingNotice.contactEmail ? (
-            <>
-              , or contact us at{" "}
-              <a
-                href={`mailto:${bookingNotice.contactEmail}`}
-                className="font-semibold text-brand-primary hover:underline"
-              >
-                {bookingNotice.contactEmail}
-              </a>
-              .
-            </>
-          ) : (
-            <>
-              , or{" "}
-              <Link href="/contact" className="font-semibold text-brand-primary hover:underline">
-                get in touch
-              </Link>
-              .
-            </>
-          )}
-        </p>
-
-        <button
-          type="button"
-          onClick={onClose}
-          className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-dark"
-        >
+        <Button type="button" onClick={onClose} className="mt-6 w-full">
           I understand, continue
-        </button>
+        </Button>
       </div>
     </div>
   );

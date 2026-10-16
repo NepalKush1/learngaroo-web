@@ -1,0 +1,195 @@
+skills-in-demand-visa-subclass-482 :: Skills in Demand visa (subclass 482)
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482/change-in-situation
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482/core-skills-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482/executive-or-senior-manager-occupations-for-the-purposes-of-international-trade-obligations
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482/exempt-occupations
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482/labour-agreement-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482/specialist-skills-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482/subsequent-entrant
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482/sufficient-english
+employer-nomination-scheme-186 :: Employer Nomination Scheme (subclass 186) visa
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186/direct-entry-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186/labour-agreement-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186/regional-postcodes
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186/temporary-residence-transition-stream
+skilled-employer-sponsored-regional-494 :: Skilled Employer Sponsored Regional (Provisional) visa (subclass 494)
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-employer-sponsored-regional-494/employer-sponsored-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-employer-sponsored-regional-494/labour-agreement-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-employer-sponsored-regional-494/regional-certifying-bodies
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-employer-sponsored-regional-494/subsequent-entrant
+skilled-regional-191 :: Permanent Residence (Skilled Regional) visa
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-regional-191/hong-kong
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-regional-191/regional-provisional
+temporary-work-400 :: 
+training-407 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/training-407/occupational-training-types
+temporary-activity-408 :: Temporary activity visa (subclass 408)
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/australian-government-endorsed-events
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/australian-government-endorsed-events-covid-19
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/australian-government-endorsed-events-workplace-justice-pilot
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/domestic-work-for-executives
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/entertainment-activities
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/exchange-arrangements
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/invited-for-other-social-and-cultural-activity
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/religious-work
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/research-activities
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/special-program
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/sporting-activities
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-activity-408/superyacht-crew
+temporary-work-403 :: Temporary Work (International Relations) (subclass 403) visa
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-work-403/domestic-worker
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-work-403/foreign-government-agency
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-work-403/government-agreement
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-work-403/mates
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-work-403/pacific-australia-labour-mobility-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-work-403/pacific-labour-scheme
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-work-403/privileges-immunities
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-work-403/seasonal-worker-program
+skilled-independent-189 :: Skilled Independent visa (subclass 189)
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189/australian-study-requirement
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189/hong-kong
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189/new-zealand
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189/points-table
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189/points-tested
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189/regional-postcodes
+skilled-nominated-190 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-nominated-190/australian-study-requirement
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-nominated-190/points-table
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-nominated-190/regional-post-codes
+skilled-work-regional-provisional-491 :: Skilled Work Regional (Provisional) visa (subclass 491)
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-work-regional-provisional-491/application
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-work-regional-provisional-491/points-table
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-work-regional-provisional-491/subsequent-entrant
+temporary-graduate-485 :: Temporary Graduate visa - Subclass 485
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/australian-study-requirement
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/changes
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/graduate-work
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/meeting-the-temporary-graduate-visa-subclass-485-study-requirement
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/post-higher-education-work
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/post-study-work
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/post-vocational-education-work
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/replacement-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/second-post-higher-education-work
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/second-post-study-work
+national-innovation-visa-858 :: 
+skilled-regional-887 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-regional-887/designated-area-of-australia
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-regional-887/regional-postcodes
+partner-onshore :: Partner visa (apply in Australia) (subclass 820 and 801)
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore/additional-sponsorship-requirements
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore/domestic-family-violence-and-your-visa
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore/family-violence-and-your-visa
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore/measures-for-the-protection-of-children
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore/permanent-801
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore/temporary-820
+partner-offshore :: Partner visa (apply overseas) (subclass 309 and 100)
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore/additional-sponsorship-requirements
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore/family-violence-and-your-visa
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore/measures-for-the-protection-of-children
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore/migrant-100
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore/provisional-309
+prospective-marriage-300 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/prospective-marriage-300/additional-sponsorship-requirements
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/prospective-marriage-300/family-violence-and-your-visa
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/prospective-marriage-300/measures-for-the-protection-of-children
+child-101 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/child-101/measures-for-the-protection-of-children
+child-802 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/child-802/measures-for-the-protection-of-children
+adoption-102 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/adoption-102/measures-for-the-protection-of-children
+orphan-relative-117 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/orphan-relative-117/measures-for-the-protection-of-children
+orphan-relative-837 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/orphan-relative-837/measures-for-the-protection-of-children
+dependent-child-445 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/dependent-child-445/measures-for-the-protection-of-children
+contributory-parent-143 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/contributory-parent-143/balance-of-family-test
+contributory-parent-temporary-173 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/contributory-parent-temporary-173/balance-of-family-test
+contributory-aged-parent-864 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/contributory-aged-parent-864/balance-of-family-test
+contributory-aged-parent-temporary-884 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/contributory-aged-parent-temporary-884/balance-of-family-test
+parent-103 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/parent-103/balance-of-family-test
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/parent-103/parent-visa-queue
+aged-parent-804 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/aged-parent-804/balance-of-family-test
+sponsored-parent-temporary-870 :: 
+remaining-relative-115 :: 
+remaining-relative-835 :: 
+carer-116 :: 
+carer-836 :: 
+aged-dependent-relative-114 :: 
+aged-dependent-relative-838 :: 
+new-zealand-citizen-family-relationship-temporary-461 :: 
+student-500 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/disclaimer-for-document-checklist
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/education-provider-default
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/foundation-extended-program-course-list
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/foundation-standard-program-course-list
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/genuine-access-to-funds
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/genuine-student-requirement
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/genuine-temporary-entrant
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/length-of-stay
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/pathway-program-course-list
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/temporary-relaxation-of-working-hours-for-student-visa-holders
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/welfare-arrangements-students-under-18
+student-590 :: 
+visitor-600 :: Visitor visa (subclass 600)
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/approved-destination-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/business-visitor-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/frequent-traveller-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/request-withdraw-sponsorship-sc-600-visa
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/sponsored-family-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-onshore
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas
+electronic-travel-authority-601 :: 
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601/eta-video-guides
+evisitor-651 :: 
+work-holiday-417 :: Working Holiday visa (subclass 417)
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417/6-month-work-limitation
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417/first-working-holiday-417
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417/second-working-holiday-417
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417/specified-work
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417/third-working-holiday-417
+work-holiday-462 :: Work and Holiday visa (subclass 462)
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/6-month-work-limitation
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/first-work-holiday-462
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/second-work-holiday-462
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/specified-462-work
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/third-work-and-holiday-462
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/tourism-hospitality-jobs-working-holiday-program
+bridging-visa-a-010 :: 
+bridging-visa-b-020 :: 
+bridging-visa-c-030 :: 
+bridging-visa-e-050-051 :: Bridging visa E (BVE) - Subclass 050 and 051
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/bridging-visa-e-050-051/subclass-050
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/bridging-visa-e-050-051/subclass-051
+resident-return-visa-155-157 :: 
+special-category-visa-subclass-444 :: 
+business-innovation-and-investment-188 :: Business Innovation and Investment (Provisional) visa - subclass 188
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-188/business-innovation-extension-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-188/business-innovation-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-188/entrepreneur-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-188/investor-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-188/points-table
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-188/premium-investor
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-188/significant-investor-extension-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-188/significant-investor-stream
+business-innovation-and-investment-888 :: Business Innovation and Investment (Permanent) visa - subclass 888
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-888/business-innovation-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-888/entrepreneur-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-888/investor-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-888/premium-investor
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/business-innovation-and-investment-888/significant-investor-stream
+former-resident-151 :: 
+medical-treatment-602 :: 
+pacific-engagement :: Pacific Engagement
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/pacific-engagement/ballot-registration
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/pacific-engagement/meeting-the-health-requirement
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/pacific-engagement/pacific-engagement-visa-subclass-192
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/pacific-engagement/subclass-192-pacific-engagement-stream
+   https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/pacific-engagement/subclass-192-treaty-stream

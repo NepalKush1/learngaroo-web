@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
 import { ConsultationCTA } from "@/components/sections/ConsultationCTA";
@@ -9,7 +10,13 @@ export const metadata: Metadata = {
     "The latest news and updates from Learniiz on Australian visa and migration pathways.",
 };
 
+// No articles yet: the route 404s so a "coming soon" page is never indexed
+// or stumbled upon. Remove the guard when the first article is published.
+const articles: unknown[] = [];
+
 export default function NewsPage() {
+  if (articles.length === 0) notFound();
+
   return (
     <>
       <PageHero

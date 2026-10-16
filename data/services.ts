@@ -4,6 +4,8 @@ export interface Service {
   shortLabel: string;
   // Visa subclasses covered, shown as tags on service cards.
   subclasses?: string[];
+  // Short line for service cards; `summary` is the fuller page description.
+  tagline: string;
   summary: string;
   heroBlurb: string;
   whoItsFor: string[];
@@ -16,6 +18,7 @@ export const services: Service[] = [
     title: "Student Visas",
     shortLabel: "Student Visas",
     subclasses: ["500", "485"],
+    tagline: "Plan your studies in Australia and your options after graduation.",
     summary:
       "Guidance on the Student visa (subclass 500), the Genuine Student requirement and your options after graduation, such as the subclass 485 visa.",
     heroBlurb:
@@ -37,6 +40,7 @@ export const services: Service[] = [
     title: "Skilled Visas",
     shortLabel: "Skilled Visas",
     subclasses: ["189", "190", "491"],
+    tagline: "Points-tested pathways for skilled workers, with or without nomination.",
     summary:
       "Points-tested skilled visas: Skilled Independent (subclass 189), Skilled Nominated (subclass 190) and Skilled Work Regional (Provisional) (subclass 491).",
     heroBlurb:
@@ -57,6 +61,7 @@ export const services: Service[] = [
     slug: "skills-assessments",
     title: "Skills Assessments",
     shortLabel: "Skills Assessments",
+    tagline: "Prepare the skills assessment most skilled visas need first.",
     summary:
       "Guidance on the formal skills assessment that most skilled and many employer-sponsored visas need before you can apply.",
     heroBlurb:
@@ -78,6 +83,7 @@ export const services: Service[] = [
     title: "Employer-Sponsored Visas",
     shortLabel: "Employer-Sponsored",
     subclasses: ["482", "186", "494"],
+    tagline: "Sponsorship pathways for skilled workers and their employers.",
     summary:
       "Employer sponsorship, including the Skills in Demand visa (subclass 482), Employer Nomination Scheme (subclass 186) and regional subclass 494 visa.",
     heroBlurb:
@@ -99,6 +105,7 @@ export const services: Service[] = [
     title: "Family and Partner Visas",
     shortLabel: "Family & Partner",
     subclasses: ["820/801", "309/100", "300"],
+    tagline: "Bring your partner or family together in Australia.",
     summary:
       "Partner visas (subclasses 820/801 and 309/100), the Prospective Marriage visa (subclass 300) and other family visa options.",
     heroBlurb:
@@ -120,6 +127,7 @@ export const services: Service[] = [
     title: "Visitor and Tourist Visas",
     shortLabel: "Visitor & Tourist",
     subclasses: ["600"],
+    tagline: "Visit family, take a holiday or attend business meetings.",
     summary:
       "Guidance on the Visitor visa (subclass 600) for holidays, family visits and business visitor activities in Australia.",
     heroBlurb:
@@ -141,6 +149,7 @@ export const services: Service[] = [
     title: "ART Reviews",
     shortLabel: "ART Reviews",
     subclasses: ["ART"],
+    tagline: "Your options after a visa refusal or cancellation. Act quickly.",
     summary:
       "Help after a visa refusal or cancellation, including whether you can apply for review by the Administrative Review Tribunal (ART) and by when.",
     heroBlurb:
@@ -158,6 +167,15 @@ export const services: Service[] = [
     ],
   },
 ];
+
+// A service title for use mid-sentence: lower case, but acronyms stay as
+// they are ("ART Reviews" → "ART reviews", "Skilled Visas" → "skilled visas").
+export function serviceTitleInSentence(title: string): string {
+  return title
+    .split(" ")
+    .map((word) => (word.length > 1 && word === word.toUpperCase() ? word : word.toLowerCase()))
+    .join(" ");
+}
 
 export function getServiceBySlug(slug: string): Service | undefined {
   return services.find((service) => service.slug === slug);

@@ -37,24 +37,27 @@ export function SocialSection() {
   if (channels.length === 0) return null;
 
   return (
-    <section className="py-24">
+    <section className="py-16 sm:py-24">
       <Container>
         <Reveal>
           <SectionHeading
             eyebrow="Stay connected"
             title="Follow along on our socials"
-            subtitle="Plain-English visa explainers, updates and tips from a Registered Migration Agent, wherever you like to scroll."
+            highlight="our socials"
+            subtitle="Plain-English visa tips and updates from a Registered Migration Agent."
             align="center"
           />
         </Reveal>
-        <ul className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {channels.map((channel, index) => (
             <Reveal as="li" key={channel.platform} delay={index * 80}>
               <a
                 href={channel.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-full flex-col rounded-3xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary/20 hover:shadow-[0_24px_50px_-20px_rgba(31,127,83,0.35)]"
+                data-track={channel.platform === "whatsapp" ? "whatsapp_click" : "social_click"}
+                data-track-label={channel.platform}
+                className="group flex h-full flex-col rounded-3xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary/20 hover:shadow-glow"
               >
                 <span
                   className={`flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 ${platformStyles[channel.platform] ?? "bg-brand-primary"}`}
@@ -72,8 +75,7 @@ export function SocialSection() {
           ))}
         </ul>
         <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-gray-500">
-          Social media posts are general information only, not migration advice for your situation.
-          Book a consultation for advice on your circumstances.
+          Social media posts are general information, not advice for your situation.
         </p>
       </Container>
     </section>

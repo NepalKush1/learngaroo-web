@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@/components/ui/Button";
+
 import { useState, type FormEvent } from "react";
 import { services } from "@/data/services";
 import { siteConfig } from "@/lib/site-config";
@@ -141,13 +143,9 @@ export function ContactForm() {
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={state === "sending"}
-        className="inline-flex items-center justify-center rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-dark disabled:cursor-wait disabled:opacity-70"
-      >
+      <Button type="submit" disabled={state === "sending"} track="enquiry_submit">
         {state === "sending" ? "Sending…" : "Send Enquiry"}
-      </button>
+      </Button>
     </form>
   );
 }

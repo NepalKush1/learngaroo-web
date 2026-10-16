@@ -1,7 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { track } from "@/lib/analytics";
+import { saveFederalPoints } from "@/lib/points-store";
+import { Button } from "@/components/ui/Button";
 import {
   employmentCap,
   passMark,
@@ -80,7 +84,17 @@ function OptionGroup({
 }
 
 export function PointsCalculator() {
-  const [answers, setAnswers] = useState<Answers>(DEFAULT_ANSWERS);
+  // Prefill from the home-page estimate (?age=25-32&english=proficient&…),
+  // accepting only values that exist in the points table.
+  const searchParams = useSearchParams();
+  const [answers, setAnswers] = useState<Answers>(() => {
+    const prefilled = { ...DEFAULT_ANSWERS };
+    for (const question of pointsQuestions) {
+      const value = searchParams.get(question.id);
+      if (value && question.options.some((option) => option.value === value)) prefilled[question.id] = value;
+    }
+    return prefilled;
+  });
   const [bonuses, setBonuses] = useState<Record<string, boolean>>({});
 
   const result = useMemo(() => {
@@ -115,6 +129,13 @@ export function PointsCalculator() {
       answered,
     };
   }, [answers, bonuses]);
+
+  // Record once when all questions are answered (no personal data sent).
+  useEffect(() => {
+    if (!result.complete) return;
+    track("points_calculated", { points: result.base });
+    saveFederalPoints(result.base);
+  }, [result.complete, result.base]);
 
   const englishUpgrade =
     answers.english === "competent"
@@ -194,7 +215,7 @@ export function PointsCalculator() {
       </div>
 
       <aside className="space-y-4 lg:sticky lg:top-28" aria-live="polite">
-        <div className="overflow-hidden rounded-3xl bg-brand-navy text-white shadow-[0_30px_60px_-30px_rgba(11,26,46,0.6)]">
+        <div className="overflow-hidden rounded-3xl bg-brand-navy text-white shadow-deep">
           <div className="bg-gradient-brand h-1.5" aria-hidden="true" />
           <div className="p-6">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-green-light">
@@ -276,16 +297,27 @@ export function PointsCalculator() {
               {englishUpgrade.next && <> — reaching {englishUpgrade.next} adds {englishUpgrade.total}</>}.
               Improving your English is often one of the quickest ways to raise your score.
             </p>
-            <a
-              href={siteConfig.pte.signupUrl}
-              target="_blank"
-              rel="noopener"
-              className="mt-3 inline-flex items-center gap-2 rounded-full bg-brand-primary px-4 py-2 text-sm font-semibold text-white hover:bg-brand-primary-dark"
-            >
+            <Button href={siteConfig.pte.signupUrl} external size="sm" track="pte_signup" className="mt-3">
               Practise PTE free on Learniiz ↗
-            </a>
+            </Button>
           </div>
         )}
+
+        <div className="rounded-3xl border border-gray-100 bg-white p-5 shadow-sm">
+          <p className="font-heading font-bold text-brand-navy">A few points short? Ways to gain more</p>
+          <ul className="mt-2 space-y-1.5 text-sm text-gray-600">
+            <li><span className="font-semibold text-brand-navy">English:</span> Proficient adds 10, Superior adds 20. Often the fastest gain.</li>
+            <li><span className="font-semibold text-brand-navy">State or regional nomination:</span> +5 for subclass 190, +15 for subclass 491. <Link href="/state-nomination" className="font-semibold text-brand-primary hover:underline">See which states are open →</Link> Tasmania and the ACT rank with their own scoring: try the <Link href="/tools/tasmania-points-calculator" className="font-semibold text-brand-primary hover:underline">Tasmania</Link> and <Link href="/tools/canberra-matrix-calculator" className="font-semibold text-brand-primary hover:underline">Canberra Matrix</Link> calculators.</li>
+            <li><span className="font-semibold text-brand-navy">NAATI CCL:</span> +5 for a credentialled community language test.</li>
+            <li><span className="font-semibold text-brand-navy">Professional Year:</span> +5 for accounting, ICT or engineering graduates.</li>
+            <li><span className="font-semibold text-brand-navy">Regional study:</span> +5 on top of the Australian study requirement. <Link href="/tools/regional-postcode-checker" className="font-semibold text-brand-primary hover:underline">Check a postcode →</Link></li>
+            <li><span className="font-semibold text-brand-navy">Work experience:</span> each extra band of skilled work adds points, up to the cap.</li>
+          </ul>
+          <p className="mt-3 text-xs text-gray-500">
+            Remember that {passMark} is the floor for lodging an EOI, not the score that gets invited. Check your occupation&apos;s lists and competition on its{" "}
+            <Link href="/occupations" className="font-semibold text-brand-primary hover:underline">occupation guide</Link>.
+          </p>
+        </div>
 
         <div className="rounded-3xl border border-gray-100 bg-white p-5 shadow-sm">
           <p className="font-heading font-bold text-brand-navy">Get your score checked by an agent</p>
@@ -294,12 +326,9 @@ export function PointsCalculator() {
             recognised. Meeting the pass mark doesn&apos;t guarantee an invitation: invitations
             often go to people with well above {passMark} points.
           </p>
-          <Link
-            href="/bookings"
-            className="mt-3 inline-flex items-center gap-2 rounded-full bg-brand-navy px-4 py-2 text-sm font-semibold text-white hover:bg-brand-navy-light"
-          >
+          <Button href="/bookings" variant="secondary" size="sm" track="book_cta" className="mt-3">
             Book a Skilled Visa Consultation →
-          </Link>
+          </Button>
         </div>
 
         <p className="text-xs leading-relaxed text-gray-500">

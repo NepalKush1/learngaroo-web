@@ -15,7 +15,7 @@ export function MobileActionBar() {
       <div className="h-16 bg-brand-navy lg:hidden" aria-hidden="true" />
       <nav
         aria-label="Quick contact"
-        className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 shadow-[0_-8px_30px_-12px_rgba(11,26,46,0.2)] backdrop-blur lg:hidden"
+        className="no-print fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 shadow-raised backdrop-blur lg:hidden"
       >
         <div className="mx-auto flex max-w-md gap-2">
           <a
@@ -32,7 +32,9 @@ export function MobileActionBar() {
               href={whatsappHref}
               target="_blank"
               rel="noopener"
-              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25d366] py-2.5 text-sm font-semibold text-white"
+              data-track="whatsapp_click"
+              data-track-label="mobile-bar"
+              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25d366] py-2.5 text-sm font-bold text-brand-navy"
             >
               <SocialIcon platform="whatsapp" className="h-4 w-4" />
               WhatsApp
@@ -40,6 +42,7 @@ export function MobileActionBar() {
           )}
           <Link
             href="/bookings"
+            data-track="book_cta"
             className="flex flex-[1.3] items-center justify-center rounded-full bg-brand-primary py-2.5 text-sm font-semibold text-white"
           >
             Book consultation
@@ -53,7 +56,9 @@ export function MobileActionBar() {
           target="_blank"
           rel="noopener"
           aria-label="Chat with us on WhatsApp"
-          className="fixed bottom-6 right-6 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-xl transition-transform hover:scale-110 lg:flex"
+          data-track="whatsapp_click"
+          data-track-label="floating"
+          className="no-print fixed bottom-6 right-6 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-xl transition-transform hover:scale-110 lg:flex"
         >
           <SocialIcon platform="whatsapp" className="h-7 w-7" />
         </a>

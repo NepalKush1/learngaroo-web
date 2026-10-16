@@ -41,6 +41,23 @@
   --font-heading: var(--font-manrope);
 }
 
+/* ── Elevation scale (use these instead of ad-hoc shadow values) ─────── */
+@utility shadow-card {
+  box-shadow: 0 1px 2px rgba(11, 26, 46, 0.04);
+}
+@utility shadow-raised {
+  box-shadow: 0 8px 30px -12px rgba(11, 26, 46, 0.15);
+}
+@utility shadow-float {
+  box-shadow: 0 24px 50px -24px rgba(11, 26, 46, 0.3);
+}
+@utility shadow-deep {
+  box-shadow: 0 30px 60px -30px rgba(11, 26, 46, 0.55);
+}
+@utility shadow-glow {
+  box-shadow: 0 24px 50px -20px rgba(31, 127, 83, 0.35);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -60,6 +77,12 @@ body {
 
 .bg-gradient-brand {
   background-image: linear-gradient(120deg, var(--brand-primary) 0%, var(--brand-green) 45%, var(--brand-blue) 100%);
+}
+
+/* Deeper version for anything with white text on it: every stop keeps
+   white text above 4.5:1 (#17663f 7.0, #1f7f53 5.0, #2272c9 4.9). */
+.bg-gradient-brand-deep {
+  background-image: linear-gradient(120deg, var(--brand-primary-dark) 0%, var(--brand-primary) 50%, var(--brand-blue-dark) 100%);
 }
 
 /* Subtle dotted backdrop used behind light hero sections. */
@@ -199,21 +222,6 @@ body {
   }
 }
 
-/* Endless ticker; content is duplicated so -50% loops seamlessly. */
-.marquee {
-  animation: marquee 40s linear infinite;
-}
-
-.marquee-pause:hover .marquee {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 /* Process timeline: the connector draws itself once revealed. */
 .draw-line {
   transform: scaleX(0);
@@ -246,7 +254,8 @@ body {
   border-radius: inherit;
   opacity: 0;
   transition: opacity 0.3s ease;
-  background: radial-gradient(360px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(60, 159, 108, 0.12), transparent 60%);
+  background: radial-gradient(320px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(255, 255, 255, 0.22), transparent 60%);
+  z-index: 1;
 }
 
 .spotlight:hover::before {
@@ -286,8 +295,7 @@ body {
   .float-slow,
   .text-gradient-animated,
   .cta-shimmer::after,
-  .pulse-ring::before,
-  .marquee {
+  .pulse-ring::before {
     animation: none;
   }
 
@@ -305,5 +313,114 @@ body {
 
   .scroll-progress {
     display: none;
+  }
+}
+
+/* Journey timeline: autoplay progress ring around the active stage. */
+.journey-ring {
+  stroke-dasharray: 138.2;
+  stroke-dashoffset: 138.2;
+  animation: journey-ring linear forwards;
+}
+@keyframes journey-ring {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── Visa explainers ─────────────────────────────────────────────── */
+
+/* Animated dashes travelling along an active arrow in the "who does what" diagram. */
+.flow-dash {
+  stroke-dasharray: 7 9;
+  animation: flow-dash 1.1s linear infinite;
+}
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+/* Myth / fact flip cards: both faces share one grid cell so the card is as tall as its longer side. */
+.flip-card {
+  perspective: 1400px;
+}
+.flip-inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.flip-card[data-flipped="true"] .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+/* Small celebration burst when a self-check comes back on track. */
+.burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.burst span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: burst 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes burst {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--bx)), calc(-50% + var(--by))) rotate(var(--br)) scale(0.5);
+  }
+}
+
+/* Gentle bob for the "you are here" marker on timelines. */
+.bob {
+  animation: float-y 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-dash,
+  .burst span,
+  .bob {
+    animation: none;
+  }
+  .flip-inner {
+    transition: none;
+  }
+}
+
+/* Printing the state nomination assessment: only the results. The class is
+   set on <html> by the assessment's Print button and removed afterwards. */
+@media print {
+  html.print-assessment header,
+  html.print-assessment footer,
+  html.print-assessment .no-print {
+    display: none !important;
+  }
+  html.print-assessment body {
+    background: #fff;
+  }
+  html.print-assessment .hero-rise {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  html.print-assessment article {
+    break-inside: avoid;
+    box-shadow: none !important;
   }
 }

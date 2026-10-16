@@ -7,12 +7,13 @@ export function TestimonialsSection() {
   if (testimonials.length === 0) return null;
 
   return (
-    <section className="py-24">
+    <section className="py-16 sm:py-24">
       <Container>
         <Reveal>
           <SectionHeading
             eyebrow="Client stories"
             title="In our clients' words"
+            highlight="clients' words"
             align="center"
           />
         </Reveal>

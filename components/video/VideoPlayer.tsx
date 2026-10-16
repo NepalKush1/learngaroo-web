@@ -32,7 +32,7 @@ export function VideoPlayer({
   if (source.kind === "none") {
     return (
       <div className={frame}>
-        <div className="bg-gradient-brand absolute inset-0 opacity-90" aria-hidden="true" />
+        <div className="bg-gradient-brand-deep absolute inset-0 opacity-90" aria-hidden="true" />
         <div className="bg-dots absolute inset-0 opacity-40 invert" aria-hidden="true" />
         <div className="relative flex h-full flex-col items-center justify-center gap-2 text-white">
           <span className={`flex items-center justify-center rounded-full bg-white/20 ring-1 ring-white/40 backdrop-blur ${compact ? "h-10 w-10" : "h-14 w-14"}`}>
@@ -91,7 +91,7 @@ export function VideoPlayer({
       {cover ? (
         <Image src={cover} alt="" fill sizes={sizes} className="object-cover transition-transform duration-500 group-hover:scale-105" />
       ) : (
-        <div className="bg-gradient-brand absolute inset-0" aria-hidden="true" />
+        <div className="bg-gradient-brand-deep absolute inset-0" aria-hidden="true" />
       )}
       <span className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/10 to-transparent" aria-hidden="true" />
       <span className="absolute inset-0 flex items-center justify-center">

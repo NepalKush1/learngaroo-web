@@ -7,10 +7,16 @@
 //   • a video file you've placed in /public/videos, e.g. "/videos/intro.mp4"
 //     (optionally add `poster: "/videos/intro.jpg"` as the cover image).
 //
-// Videos with an empty `src` ("") stay hidden until you add the link. The
-// homepage video section and the "Videos" menu item only appear once at
-// least one video is published. Videos with `featured: true` appear on the
-// homepage (the first published videos are used if none are featured).
+// Videos with an empty `src` ("") stay hidden until you add the link.
+//
+// Where a published video appears:
+//   • /videos            — every published video, filterable by category
+//   • Homepage           — "Watch & learn" section (featured videos first)
+//   • Service pages      — set `service` to a slug from data/services.ts and
+//                          the video appears on that service's page
+//   • Hero "Watch intro" — the `introVideo` below
+// The Videos menu item switches on automatically with the first video.
+// `language` adds a chip on the card ("Nepali", "Hindi"); English is assumed.
 // ─────────────────────────────────────────────────────────────────────────
 
 export const videoCategories = [
@@ -32,6 +38,9 @@ export interface Video {
   poster?: string;
   duration?: string;
   featured?: boolean;
+  // Slug from data/services.ts; shows the video on that service's page.
+  service?: string;
+  language?: "Nepali" | "Hindi";
 }
 
 // Optional short welcome video. When set, a "Watch our intro" button
@@ -48,6 +57,7 @@ export const videos: Video[] = [
     description:
       "Who can apply, the key requirements, and the common mistakes to avoid before you lodge.",
     category: "Student Visas",
+    service: "student-visas",
     src: "",
     duration: "6 min",
     featured: true,
@@ -58,6 +68,7 @@ export const videos: Video[] = [
     description:
       "A walkthrough of the points table for subclass 189, 190 and 491 visas, and how you may be able to improve your score.",
     category: "Skilled Migration",
+    service: "skilled-visas",
     src: "",
     duration: "8 min",
     featured: true,
@@ -68,6 +79,7 @@ export const videos: Video[] = [
     description:
       "The Skills in Demand (subclass 482) and Employer Nomination Scheme (subclass 186) visas compared, and which might suit you.",
     category: "Employer-Sponsored",
+    service: "employer-sponsored-visas",
     src: "",
     duration: "7 min",
     featured: true,
@@ -78,6 +90,7 @@ export const videos: Video[] = [
     description:
       "The four areas the Department considers when assessing a genuine and continuing relationship.",
     category: "Partner & Family",
+    service: "family-partner-visas",
     src: "",
     duration: "9 min",
   },
@@ -87,6 +100,7 @@ export const videos: Video[] = [
     description:
       "Review rights, time limits and options after a refusal, and why acting quickly matters.",
     category: "Tips & Updates",
+    service: "art-reviews",
     src: "",
     duration: "5 min",
   },
@@ -122,6 +136,10 @@ export function resolveVideoSource(src: string): ResolvedVideoSource {
     /(?:youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([\w-]{11})/,
   );
   return match ? { kind: "youtube", id: match[1] } : { kind: "none" };
+}
+
+export function getVideosForService(slug: string): Video[] {
+  return publishedVideos.filter((video) => video.service === slug);
 }
 
 // Only videos that actually have a source are shown on the site.

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "validate:visas": "sh scripts/validate-visas.sh",
+    "validate:states": "sh scripts/validate-state-assessment.sh"
   },
   "dependencies": {
     "next": "16.2.10",

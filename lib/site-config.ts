@@ -23,13 +23,17 @@ export const siteConfig = {
     url: "https://www.learniiz.com",
     signupUrl: "https://app.learniiz.com/auth/signup",
   },
+  // Flat page list for the footer "Explore" column. The header menus are
+  // defined in lib/navigation.ts.
   nav: [
-    { label: "Home", href: "/" },
+    { label: "Visas", href: "/visas" },
+    { label: "Skilled Migration Tools", href: "/tools" },
+    { label: "State Nomination", href: "/state-nomination" },
+    { label: "Occupations", href: "/occupations" },
     { label: "Services", href: "/services" },
-    { label: "Free Tools", href: "/tools" },
+    { label: "Policy Updates", href: "/updates" },
     ...(publishedVideos.length > 0 ? [{ label: "Videos", href: "/videos" }] : []),
     { label: "PTE Practice", href: "https://www.learniiz.com", external: true },
-    // "News & Updates" (/news) is hidden until the first articles are ready.
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ] as NavItem[],

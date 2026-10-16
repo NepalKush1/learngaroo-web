@@ -1,0 +1,656 @@
+import type { VisaExplainer } from "../types";
+import { ICON } from "../icons";
+
+// Interactive explainer for the Temporary Activity visa (subclass 408). Every
+// figure matches data/visas/employer-sponsored.ts (checked against Home
+// Affairs and the Migration Regulations on 12 October 2026).
+
+const PAGE = "/visas/employer-sponsored/temporary-activity-visa-408";
+
+export const temporaryActivity408Explainer: VisaExplainer = {
+  slug: "temporary-activity-visa-408",
+  factsAsAt: "12 October 2026",
+  oneLiner:
+    "A temporary visa for a specific activity in Australia, such as entertainment, sport, religious work, research or a staff exchange. A sponsor or supporter backs you, and stays run from 3 months to 2 years.",
+  bigIdeas: [
+    {
+      title: "One activity, one visa",
+      body: "You come for a specific approved activity, such as a tour, a sports season, a research project or religious work.",
+      icon: ICON.star,
+    },
+    {
+      title: "Someone backs you",
+      body: "A supporter for a short stay applied for offshore; an approved sponsor for longer stays or applications in Australia.",
+      icon: ICON.buildingOffice2,
+    },
+    {
+      title: "The stream sets the stay",
+      body: "From 3 months for invited events to 2 years for most streams. It doesn't lead to permanent residence.",
+      icon: ICON.clock,
+    },
+  ],
+  heroCard: [
+    { label: "Who backs you", value: "A sponsor, or a supporter for short offshore stays", icon: ICON.buildingOffice2 },
+    { label: "How long", value: "3 months to 2 years, depending on the stream", icon: ICON.clock },
+    { label: "Your work", value: "Only the approved activity", icon: ICON.briefcase },
+    { label: "Where you apply", value: "In or outside Australia", icon: ICON.globeAsiaAustralia },
+    { label: "Family", value: "Can come in most streams", icon: ICON.users },
+    { label: "Visa charge", value: "A$535 (nil for Rugby League World Cup 2026)", icon: ICON.currencyDollar },
+  ],
+  actors: [
+    {
+      id: "sponsor",
+      name: "Your sponsor or supporter",
+      short: "Sponsor",
+      icon: ICON.buildingOffice2,
+      tone: "pink",
+      role: "The Australian organisation (or, in some streams, a person) backing your activity.",
+      does: [
+        "Becomes an approved [[tas|temporary activities sponsor]], or acts as a [[supporter]]",
+        "Gives you a contract, invitation or agreement",
+        "Consults the relevant union first, for entertainment work",
+        "Tells Home Affairs within 28 days if you don't start or you stop",
+      ],
+    },
+    {
+      id: "endorser",
+      name: "Endorsing bodies",
+      short: "Endorsers",
+      icon: ICON.checkBadge,
+      tone: "teal",
+      role: "Bodies whose backing some streams need, alongside your sponsor.",
+      does: [
+        "National sporting bodies endorse sports people",
+        "The ATO endorses religious institutions as charities",
+        "An approved organisation endorses event participants",
+      ],
+    },
+    {
+      id: "you",
+      name: "You (the participant)",
+      short: "You",
+      icon: ICON.user,
+      tone: "green",
+      role: "Apply with proof of the activity, then do only that activity.",
+      does: [
+        "Show the skills and experience the activity needs",
+        "Apply and pay A$535 (nil for Rugby League World Cup 2026 participants)",
+        "Hold health insurance and enough money for your stay",
+        "Do only the approved activity ([[c8107|condition 8107]])",
+      ],
+    },
+    {
+      id: "government",
+      name: "Department of Home Affairs",
+      short: "Home Affairs",
+      icon: ICON.buildingLibrary,
+      tone: "blue",
+      role: "Checks the activity, your backing and your intentions, then decides.",
+      does: [
+        "Checks your sponsor, supporter or endorsement",
+        "Assesses whether you're a [[gte|genuine temporary entrant]]",
+        "Sets your stay period and conditions",
+        "Generally won't extend temporary stays beyond 4 years through this visa",
+      ],
+    },
+  ],
+  flows: [
+    {
+      from: "sponsor",
+      to: "government",
+      label: "Sponsors or supports",
+      detail: "Your host becomes an approved [[tas|temporary activities sponsor]], or acts as a [[supporter]] for a short stay applied for offshore.",
+    },
+    {
+      from: "endorser",
+      to: "you",
+      label: "Endorses you",
+      detail: "Some streams need backing: union consultation and an [[arts-certificate|Arts certificate]] for entertainment, a national sporting body's endorsement for sport, or an endorsement letter for an event.",
+    },
+    {
+      from: "you",
+      to: "government",
+      label: "You apply",
+      detail: "You apply with your contract, invitation or agreement, plus any endorsements your stream needs.",
+    },
+    {
+      from: "government",
+      to: "you",
+      label: "Visa granted",
+      detail: "The grant letter sets your stay period and conditions.",
+    },
+    {
+      from: "you",
+      to: "sponsor",
+      label: "You do the activity",
+      detail: "You do only the approved activity, for the sponsor or supporter named in your application.",
+    },
+  ],
+  journeyTitle: "From invitation to approved activity",
+  journeyHighlight: "approved activity",
+  stages: [
+    {
+      id: "stream",
+      short: "Stream",
+      title: "Find your stream",
+      who: ["you", "sponsor"],
+      description: "Each stream covers a different activity, with its own sponsor type and length of stay.",
+      points: [
+        "Entertainment, sport, religious work, research, exchanges and executives' domestic work: up to 2 years",
+        "Special programs and superyacht crew: up to 12 months",
+        "Invited community events: up to 3 months",
+        "Government endorsed events: the event's length, or up to 4 years",
+      ],
+      youHold: "Your stream, and who needs to back you",
+      icon: ICON.map,
+    },
+    {
+      id: "backing",
+      short: "Backing",
+      title: "Get a sponsor or supporter",
+      who: ["sponsor"],
+      description: "Who you need depends on where you apply and how long you'll stay.",
+      points: [
+        "Outside Australia and under 3 months: a [[supporter]] who passes the support test",
+        "In Australia, or over 3 months: an approved [[tas|temporary activities sponsor]]",
+        "Sponsorship costs the organisation A$420 and lasts 5 years",
+        "Endorsed events need only a letter of endorsement",
+      ],
+      youHold: "An approved sponsor or an eligible supporter",
+      cost: "A$420 sponsorship, paid by the organisation",
+      icon: ICON.buildingOffice2,
+    },
+    {
+      id: "documents",
+      short: "Documents",
+      title: "Gather the activity documents",
+      who: ["endorser", "you"],
+      description: "Collect proof of the activity and anything your stream needs on top.",
+      points: [
+        "A contract, invitation, exchange agreement or program approval",
+        "Entertainment: union consultation, and an [[arts-certificate|Arts certificate]] for film and TV performers",
+        "Sport: the national sporting body's endorsement",
+        "Religious work: the institution's ATO charity endorsement",
+      ],
+      youHold: "Proof of the activity and any endorsements",
+      icon: ICON.documentText,
+    },
+    {
+      id: "apply",
+      short: "Apply",
+      title: "Apply in or outside Australia",
+      who: ["you", "government"],
+      description: "Apply online, but not in immigration clearance.",
+      points: [
+        "A$535 for you, A$535 per adult and A$135 per child",
+        "In Australia: hold a visa, or apply within 28 days of your last one ending",
+        "The A$700 [[stac|subsequent temporary application charge]] may apply in Australia",
+        "Don't arrange travel until the visa is granted",
+      ],
+      youHold: "A lodged application, and a bridging visa if you're in Australia",
+      cost: "From A$535, paid by you",
+      icon: ICON.paperAirplane,
+    },
+    {
+      id: "activity",
+      short: "Activity",
+      title: "Do the approved activity",
+      who: ["you", "sponsor"],
+      description: "Your grant letter sets your stay period and conditions.",
+      points: [
+        "Do only the approved activity ([[c8107|condition 8107]])",
+        "Entertainers: don't change engagement times or places without written permission ([[c8109|condition 8109]])",
+        "If the activity ends early, apply for another visa or leave within 28 days",
+        "Keep your health insurance ([[c8501|condition 8501]])",
+      ],
+      youHold: "A subclass 408 visa for your approved activity",
+      icon: ICON.sparkles,
+    },
+  ],
+  check: {
+    ok: {
+      title: "You look on track",
+      body: "Nothing in your answers rules you out. The next step is checking the details: your stream, your sponsor or supporter, and your documents.",
+    },
+    disclaimer: "A general self-check, not advice or a prediction. Your stream's criteria and your full circumstances decide the outcome.",
+  },
+  quiz: [
+    {
+      id: "activity",
+      topic: "Your activity",
+      question: "Do you have a specific activity lined up in Australia?",
+      options: [
+        { value: "yes", label: "Yes, with a contract, invitation or agreement", status: "ok", note: "The 408 is built around one approved activity." },
+        { value: "arranging", label: "It's being arranged", status: "todo", note: "You'll need written proof: a contract, invitation, agreement or program approval." },
+        {
+          value: "job",
+          label: "No, I'm looking for a job",
+          status: "stop",
+          note: "The 408 is only for a specific approved activity. For an ongoing skilled job, look at the employer-sponsored visas.",
+          link: { label: "Employer-sponsored visas", href: "/visas/employer-sponsored" },
+        },
+      ],
+    },
+    {
+      id: "backing",
+      topic: "Sponsor or supporter",
+      question: "Where will you apply, and for how long?",
+      options: [
+        { value: "offshort", label: "From outside Australia, for less than 3 months", status: "ok", note: "A [[supporter]] who passes the support test is enough." },
+        {
+          value: "sponsored",
+          label: "In Australia, or for more than 3 months, with an approved sponsor",
+          status: "ok",
+          note: "That's what you need: an approved [[tas|temporary activities sponsor]].",
+        },
+        {
+          value: "nosponsor",
+          label: "In Australia, or for more than 3 months, but there's no approved sponsor",
+          status: "stop",
+          note: "You need an approved temporary activities sponsor. Applying with a supporter when a sponsor is needed can't be fixed after lodgement.",
+        },
+        {
+          value: "event",
+          label: "For an Australian Government endorsed event",
+          status: "ok",
+          note: "You need a letter of endorsement from the approved organisation instead of a sponsor.",
+        },
+      ],
+    },
+    {
+      id: "endorse",
+      topic: "Endorsements",
+      question: "Has your activity got the endorsements your stream needs?",
+      help: "Entertainment: union consultation and, for film and TV performers, an Arts certificate. Sport: the national sporting body's endorsement. Religious work: an ATO-endorsed charity.",
+      options: [
+        { value: "yes", label: "Yes", status: "ok", note: "Include them with your application." },
+        { value: "notyet", label: "Not yet", status: "todo", note: "Get them before you apply. Applications without them risk refusal." },
+        { value: "none", label: "My stream doesn't need one", status: "ok", note: "Check your stream's document list to be sure." },
+      ],
+    },
+    {
+      id: "location",
+      topic: "Where you apply",
+      question: "Where are you now?",
+      options: [
+        { value: "outside", label: "Outside Australia", status: "ok", note: "You can apply from overseas." },
+        { value: "onshore", label: "In Australia, holding a visa", status: "ok", note: "You can apply in Australia with an approved sponsor, but not in immigration clearance." },
+        { value: "ended", label: "In Australia, and my last visa ended in the last 28 days", status: "todo", note: "You can still apply, but only within 28 days of it ending." },
+        {
+          value: "late",
+          label: "In Australia, and my last visa ended more than 28 days ago",
+          status: "stop",
+          note: "An application in Australia would be invalid. Get advice before you do anything else.",
+          link: { label: "Book urgent advice", href: "/bookings" },
+        },
+      ],
+    },
+    {
+      id: "time",
+      topic: "Time already here",
+      question: "How long have you already spent in Australia on temporary visas?",
+      options: [
+        { value: "little", label: "Little or none", status: "ok", note: "Nothing extra to explain." },
+        {
+          value: "close",
+          label: "Close to 4 years",
+          status: "todo",
+          note: "Home Affairs generally won't let temporary residents stay beyond 4 years through the 408, and it looks closely at your history.",
+        },
+      ],
+    },
+    {
+      id: "insurance",
+      topic: "Insurance and funds",
+      question: "Will you have health insurance and enough money for your stay?",
+      options: [
+        { value: "yes", label: "Yes", status: "ok", note: "Keeping health insurance is [[c8501|condition 8501]] on your visa." },
+        {
+          value: "notyet",
+          label: "Not yet",
+          status: "todo",
+          note: "Arrange both before you apply: adequate health insurance for your whole stay, and funds for you and any dependants.",
+        },
+      ],
+    },
+    {
+      id: "health",
+      topic: "Health and character",
+      question: "Any health or character concerns?",
+      options: [
+        { value: "clear", label: "No concerns", status: "ok", note: "Home Affairs may still ask for health examinations or police certificates." },
+        {
+          value: "concern",
+          label: "I have a significant health condition or a criminal record",
+          status: "todo",
+          note: "It doesn't automatically rule you out, but it needs careful preparation and advice.",
+          link: { label: "Get advice", href: "/bookings" },
+        },
+      ],
+    },
+  ],
+  myths: [
+    {
+      myth: "A supporter is enough for any 408.",
+      fact: "Only if you apply from outside Australia and will stay less than 3 months. Applying in Australia, or staying longer, needs an approved temporary activities sponsor, and using a supporter by mistake can't be fixed after lodgement.",
+    },
+    {
+      myth: "Entertainers can just use the 400.",
+      fact: "No. Performing, supporting performers or working on a production shown in Australia needs the 408 Entertainment stream. The 400 covers only promotional appearances and productions for overseas markets.",
+    },
+    {
+      myth: "Any job at a church counts as religious work.",
+      fact: "No. It must be full-time work that directly serves the institution's religious aims, for an ATO-endorsed charity. Secular work, such as administration or aged care, doesn't count.",
+    },
+    {
+      myth: "Once I'm here I can change sponsor or job.",
+      fact: "No. Condition 8107 stops you changing position or employer, or doing unrelated work. If the activity ends early, apply for another visa if you're eligible, or leave within 28 days.",
+    },
+    {
+      myth: "Every 408 lasts 2 years.",
+      fact: "It depends on the stream: up to 3 months for invited events, 12 months for special programs and superyacht crew, and 2 years for most others.",
+    },
+    {
+      myth: "The 408 can lead to permanent residence.",
+      fact: "No. It's a temporary visa for a specific activity, and Home Affairs generally won't use it to extend temporary stays beyond 4 years.",
+    },
+  ],
+  glossary: [
+    {
+      id: "supporter",
+      term: "Supporter",
+      definition: "The organisation, government agency or, in some streams, person backing a short stay. It's enough only if you apply from outside Australia for less than 3 months, and it must pass the support test.",
+    },
+    {
+      id: "tas",
+      term: "Temporary activities sponsor",
+      definition: "An organisation approved by Home Affairs to sponsor people for activities like these. Approval costs A$420 and lasts five years, with no charge for each person it sponsors after that.",
+    },
+    {
+      id: "gte",
+      term: "Genuine temporary entrant",
+      definition: "Someone who intends to stay temporarily and do only what the visa allows. Home Affairs considers your immigration history and compliance.",
+    },
+    {
+      id: "arts-certificate",
+      term: "Arts certificate",
+      definition: "A certificate the sponsor of a film or television performer must obtain for the Entertainment stream, as well as consulting the relevant union.",
+    },
+    {
+      id: "c8107",
+      term: "Condition 8107",
+      definition: "Don't stop the activity the visa was granted for, change position or employer, work for yourself or do unrelated activities.",
+    },
+    { id: "c8106", term: "Condition 8106", definition: "Work only where it's relevant to the activity or business in your application." },
+    {
+      id: "c8109",
+      term: "Condition 8109",
+      definition: "Entertainment: don't change the times and places of your engagements without written permission from Home Affairs.",
+    },
+    { id: "c8114", term: "Condition 8114", definition: "Superyacht crew: work only as a member of the crew of a superyacht." },
+    { id: "c8501", term: "Condition 8501", definition: "Keep adequate health insurance for your whole stay." },
+    {
+      id: "stac",
+      term: "Subsequent temporary application charge",
+      definition: "An extra A$700 charge when you apply in Australia while holding, or after holding, certain temporary visas.",
+    },
+    {
+      id: "spa",
+      term: "Special Program Agreement",
+      definition: "The agreement under which non-profit organisations or government agencies run approved cultural, youth and school exchange programs.",
+    },
+  ],
+  finder: {
+    id: "408-streams",
+    navLabel: "Your stream",
+    eyebrow: "Stream finder",
+    title: "Which 408 stream fits your activity?",
+    highlight: "408 stream",
+    subtitle: "Two taps to the likely stream for what you'll be doing, and what to check before you rely on it.",
+    start: "area",
+    questions: [
+      {
+        id: "area",
+        question: "Which area is your activity in?",
+        options: [
+          { label: "Arts and entertainment", next: "arts" },
+          { label: "Sport", next: "sport" },
+          { label: "Religion, research or training", next: "learning" },
+          { label: "An exchange, a program or an event", next: "events" },
+          { label: "Domestic work or superyacht crew", next: "service" },
+        ],
+      },
+      {
+        id: "arts",
+        question: "Which describes your role?",
+        options: [
+          { label: "Performing, or crew or support staff on a production shown in Australia", next: "entertainment" },
+          { label: "Exhibiting my work, or competing in a non-sporting competition, at an invited event", next: "invited" },
+          { label: "A promotional appearance without performing, or a production for overseas release only", next: "to400" },
+        ],
+      },
+      {
+        id: "sport",
+        question: "What's the arrangement?",
+        options: [
+          { label: "Signed to play, coach, instruct or adjudicate for an Australian team or club", next: "sporting" },
+          { label: "Full-time structured training with a sports organisation", next: "sporting" },
+          { label: "Visiting with a team for a specific community event", next: "invited" },
+          { label: "Taking part in the Rugby League World Cup 2026", next: "endorsed" },
+        ],
+      },
+      {
+        id: "learning",
+        question: "Which fits best?",
+        options: [
+          { label: "Full-time religious work for a religious institution", next: "religious" },
+          { label: "Invited to observe or join a research project at a university or research institution", next: "research" },
+          { label: "Structured workplace training or professional development", next: "to407" },
+          { label: "None of these", next: "other" },
+        ],
+      },
+      {
+        id: "events",
+        question: "Which fits best?",
+        options: [
+          { label: "A reciprocal staff exchange in a skilled job, under a written agreement", next: "exchange" },
+          { label: "A cultural, youth or school exchange program, such as a school language assistant", next: "special" },
+          { label: "An invitation to a community-based event", next: "invited" },
+          { label: "An event endorsed by the Australian Government", next: "endorsed" },
+          { label: "None of these", next: "other" },
+        ],
+      },
+      {
+        id: "service",
+        question: "Who will you work for?",
+        options: [
+          { label: "The household of a senior foreign executive", next: "domestic" },
+          { label: "The household of a diplomat", next: "to403" },
+          { label: "A superyacht, as a crew member", next: "superyacht" },
+        ],
+      },
+    ],
+    outcomes: [
+      {
+        id: "entertainment",
+        title: "Entertainment activities stream",
+        body: "For performers, production and support staff on film, television, live and online productions, including non-profit engagements. Stays are up to 2 years.",
+        watch: [
+          "Your sponsor must consult the relevant union before engaging you",
+          "Film and television performers need an [[arts-certificate|Arts certificate]]",
+          "Don't change the times and places of engagements without written permission",
+        ],
+        href: PAGE,
+      },
+      {
+        id: "sporting",
+        title: "Sporting activities stream",
+        body: "For elite players, coaches, instructors and adjudicators with a formal agreement with an Australian club, and sports trainees in full-time structured training. Stays are up to 2 years.",
+        watch: ["A national sporting body must endorse you", "Visiting for a one-off community event is the invited stream instead"],
+        href: PAGE,
+      },
+      {
+        id: "religious",
+        title: "Religious work stream",
+        body: "For full-time work that directly serves the religious aims of an Australian religious institution endorsed as a charity by the ATO. Stays are up to 2 years.",
+        watch: [
+          "Secular work, such as administration or aged care, doesn't count",
+          "You need a full-time employment agreement at award wages",
+          "A second visa is possible, but the total stay is capped at 4 years",
+        ],
+        href: PAGE,
+      },
+      {
+        id: "research",
+        title: "Research activities stream",
+        body: "For academics with significant achievements, and overseas students or recent graduates, invited to observe or take part in a research project at an Australian tertiary or research institution. Stays are up to 2 years, usually up to 12 months.",
+        watch: [
+          "The sponsor must be a tertiary or research institution",
+          "This stream has had processing delays, so don't arrange travel until the visa is granted",
+        ],
+        href: PAGE,
+      },
+      {
+        id: "exchange",
+        title: "Exchange arrangements stream",
+        body: "For reciprocal staff exchanges in skilled positions under a written agreement between an overseas organisation and an Australian one. You swap jobs with an Australian citizen or permanent resident, and both should benefit. Stays are up to 2 years.",
+        watch: [
+          "The agreement must name the participants and positions",
+          "Family can come only if the agreement and the sponsor's support letter allow it",
+        ],
+        href: PAGE,
+      },
+      {
+        id: "special",
+        title: "Special program stream",
+        body: "For cultural, youth and school exchange programs run by non-profit organisations or government agencies under a [[spa|Special Program Agreement]], including school language assistants. Stays are up to 12 months.",
+        watch: [
+          "Programs usually run for 3 to 12 months",
+          "Family can come only if the agreement and the sponsor's support letter allow it",
+        ],
+        href: PAGE,
+      },
+      {
+        id: "invited",
+        title: "Invited for other social and cultural activity stream",
+        body: "For people invited by an Australian organisation to a community-based event, such as visiting sports teams, artists exhibiting work and competitors in non-sporting competitions. Stays are up to 3 months.",
+        watch: [
+          "It isn't for people contracted to play for or coach an Australian team",
+          "If you apply from outside Australia for under 3 months, a [[supporter]] can back you",
+        ],
+        href: PAGE,
+      },
+      {
+        id: "endorsed",
+        title: "Australian Government endorsed events stream",
+        body: "For participants in events the Australian Government endorses, currently the Rugby League World Cup 2026. You need a letter of endorsement from the approved organisation instead of a sponsor.",
+        watch: ["Rugby League World Cup 2026 participants pay no visa charge", "The stay is the event's length, or up to 4 years"],
+        href: PAGE,
+      },
+      {
+        id: "domestic",
+        title: "Domestic work for executives stream",
+        body: "For full-time domestic work in the household of a senior foreign executive. The executive must hold a 403 Privileges and Immunities visa, or a 482 as national managing director or state manager. Stays are up to 2 years.",
+        watch: ["You must be an experienced domestic worker aged 18 or over", "The executive's foreign organisation invites you"],
+        href: PAGE,
+      },
+      {
+        id: "superyacht",
+        title: "Superyacht crew stream",
+        body: "For crew members with a contract and a letter from the superyacht's owner confirming their employment on the vessel. Stays are up to 12 months.",
+        watch: ["You can work only as crew on a superyacht ([[c8114|condition 8114]])", "The owner, captain or operator sponsors or supports you"],
+        href: PAGE,
+      },
+      {
+        id: "to400",
+        title: "Temporary Work (Short Stay Specialist) visa (subclass 400)",
+        body: "Promotional appearances without performances, and productions made only for overseas release, can use the 400 instead. It needs no sponsor, and stays are up to 6 months.",
+        watch: ["You apply from outside Australia", "A production for overseas release needs a distribution contract"],
+        href: "/visas/employer-sponsored/temporary-work-short-stay-specialist-visa-400",
+      },
+      {
+        id: "to407",
+        title: "Training visa (subclass 407)",
+        body: "Structured workplace training or professional development fits the Training visa (subclass 407) rather than the 408. It lasts up to 2 years.",
+        watch: ["An approved temporary activities sponsor runs the program and usually nominates you first"],
+        href: "/visas/employer-sponsored/training-visa-407",
+      },
+      {
+        id: "to403",
+        title: "Temporary Work (International Relations) visa (subclass 403)",
+        body: "Domestic work in a diplomat's household uses the 403 Domestic Worker (Diplomatic or Consular) stream, with the support of the Department of Foreign Affairs and Trade.",
+        watch: ["You must be 18 or over, with a contract that meets Australian workplace law"],
+        href: "/visas/employer-sponsored/temporary-work-international-relations-visa-403",
+      },
+      {
+        id: "other",
+        title: "Probably not a 408",
+        body: "The 408 only covers the activities in its streams. For an ongoing job, an employer-sponsored visa may fit; for meetings or conferences that aren't work, a visitor visa may be enough.",
+        href: "/tools/visa-finder",
+        tone: "stop",
+      },
+    ],
+    footnote: "A general guide, not advice. Your contract, your sponsor and the full stream criteria decide which stream fits.",
+  },
+  fees: {
+    variantLabel: "Who backs you?",
+    variants: [
+      {
+        id: "sponsor",
+        label: "An approved sponsor",
+        hint: "Applying in Australia, or staying over 3 months",
+        primary: [{ label: "Base application charge (you)", amount: 535 }],
+        adult: [{ label: "Each additional applicant aged 18 or over", amount: 535 }],
+        child: [{ label: "Each additional applicant under 18", amount: 135 }],
+        sponsor: {
+          heading: "Your sponsor pays",
+          lines: [{ label: "Temporary activities sponsorship (valid 5 years)", amount: 420, per: "once" }],
+          note: "There's no charge to sponsor each applicant once the organisation is approved.",
+        },
+      },
+      {
+        id: "supporter",
+        label: "A supporter",
+        hint: "Applying from outside Australia for less than 3 months",
+        primary: [{ label: "Base application charge (you)", amount: 535 }],
+        adult: [{ label: "Each additional applicant aged 18 or over", amount: 535 }],
+        child: [{ label: "Each additional applicant under 18", amount: 135 }],
+        sponsor: {
+          heading: "Your supporter pays",
+          lines: [],
+          note: "A supporter isn't an approved sponsor, so there's no sponsorship charge to show.",
+        },
+      },
+      {
+        id: "rlwc",
+        label: "Rugby League World Cup 2026 participant",
+        hint: "Australian Government endorsed events stream",
+        primary: [{ label: "Base application charge (you)", amount: 0 }],
+        sponsor: {
+          heading: "Your sponsor pays",
+          lines: [],
+          note: "Endorsed event participants need a letter of endorsement, not a sponsor.",
+        },
+      },
+    ],
+    maxAdults: 3,
+    maxChildren: 6,
+    addOns: [
+      {
+        id: "stac",
+        label: "Subsequent temporary application charge",
+        hint: "If you apply in Australia and hold, or last held, certain temporary visas",
+        amount: 700,
+        per: "application",
+      },
+    ],
+    notIncluded: "Not included: health insurance, health examinations and police certificates.",
+    notes: [
+      "A concession may apply if your sponsor or supporter is an ACNC-registered charity or a foreign government agency, embassy or consulate.",
+      "A lower charge applies to eligible Pacific Island and Timor-Leste passport holders.",
+      "Family charges for Rugby League World Cup 2026 participants aren't stated here, so they aren't added.",
+    ],
+    confirmUrl: "https://immi.homeaffairs.gov.au/visas/visa-pricing-estimator",
+    confirmLabel: "Home Affairs Visa Pricing Estimator",
+  },
+};

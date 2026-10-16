@@ -50,7 +50,7 @@ export default async function BookingSuccessPage({
   return (
     <section className="bg-brand-surface py-24">
       <Container className="max-w-2xl">
-        <div className="rounded-[2rem] bg-white p-10 text-center shadow-[0_30px_60px_-30px_rgba(11,26,46,0.3)]">
+        <div className="rounded-[2rem] bg-white p-10 text-center shadow-deep">
           <div
             className={`mx-auto flex h-16 w-16 items-center justify-center rounded-full ${
               paid ? "bg-brand-primary text-white" : "bg-amber-100 text-amber-700"

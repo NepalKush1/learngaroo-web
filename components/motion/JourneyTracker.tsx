@@ -47,15 +47,15 @@ export function JourneyTracker({ className = "" }: { className?: string }) {
                   current
                     ? "scale-110 bg-brand-primary text-white shadow-md shadow-brand-primary/30"
                     : done
-                      ? "bg-brand-mint text-brand-primary"
-                      : "bg-gray-100 text-gray-400"
+                      ? "bg-brand-mint text-brand-primary-dark"
+                      : "bg-gray-100 text-gray-500"
                 }`}
               >
                 {done ? "✓" : index + 1}
               </span>
               <span
                 className={`text-[11px] font-semibold transition-colors duration-500 ${
-                  current ? "text-brand-navy" : "text-gray-400"
+                  current ? "text-brand-navy" : "text-gray-500"
                 }`}
               >
                 {stage}

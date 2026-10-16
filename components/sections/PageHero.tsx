@@ -11,7 +11,7 @@ export function PageHero({
   subtitle?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-brand-navy py-20 text-white sm:py-24">
+    <section className="relative overflow-hidden bg-brand-navy py-20 text-white sm:py-16 sm:py-24">
       <div className="bg-dots pointer-events-none absolute inset-0 opacity-30 invert" aria-hidden="true" />
       <div
         className="hero-blob pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-green/25 blur-3xl"

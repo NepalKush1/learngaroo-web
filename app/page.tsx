@@ -1,18 +1,20 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button, ArrowIcon } from "@/components/ui/Button";
-import { SectionHeading, Eyebrow } from "@/components/ui/SectionHeading";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { ConsultationCTA } from "@/components/sections/ConsultationCTA";
 import { AgentProfile } from "@/components/sections/AgentProfile";
 import { WorldFlightMap } from "@/components/sections/WorldFlightMap";
-import { ServiceIcon } from "@/components/icons/ServiceIcon";
 import { VideoShowcase } from "@/components/video/VideoShowcase";
 import { IntroVideoButton } from "@/components/video/IntroVideoButton";
 import { ToolsSection } from "@/components/sections/ToolsSection";
+import { HeroPointsPicker } from "@/components/sections/HeroPointsPicker";
+import { VisaLibrarySection } from "@/components/sections/VisaLibrarySection";
 import { WhyLearniiz } from "@/components/sections/WhyLearniiz";
+import { JourneySection } from "@/components/sections/JourneySection";
+import { ComparisonSection } from "@/components/sections/ComparisonSection";
 import { PteSection } from "@/components/sections/PteSection";
 import { FeesSection } from "@/components/sections/FeesSection";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -20,7 +22,9 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { SocialSection } from "@/components/sections/SocialSection";
 import { JourneyTracker } from "@/components/motion/JourneyTracker";
 import { Spotlight } from "@/components/motion/Spotlight";
-import { VisaTicker } from "@/components/motion/VisaTicker";
+import { Confetti } from "@/components/motion/Confetti";
+import { RotatingWord } from "@/components/motion/RotatingWord";
+import { serviceAccent } from "@/lib/accents";
 import { agent } from "@/data/agent";
 import { services } from "@/data/services";
 import { siteConfig } from "@/lib/site-config";
@@ -29,22 +33,22 @@ const steps = [
   {
     title: "Assess",
     description:
-      "We start by understanding your goals, background and eligibility across visa and study pathways.",
+      "We start with your goals, background and eligibility.",
   },
   {
     title: "Plan",
     description:
-      "You get a straightforward plan setting out the pathway that suits you, the likely steps and the documents needed.",
+      "You get a clear plan: the right pathway, the steps and the documents.",
   },
   {
     title: "Apply",
     description:
-      "If you engage us, we help prepare and lodge your application, keeping you informed at every step.",
+      "If you engage us, we prepare and lodge your application and keep you updated.",
   },
   {
     title: "Support",
     description:
-      "We stay with you after lodgement, responding to requests and planning your next steps.",
+      "We stay with you after lodgement and help plan your next steps.",
   },
 ];
 
@@ -53,6 +57,12 @@ const trustPoints = [
   "OMARA registered",
   "Personalised advice",
 ];
+
+// Words for the hero typewriter line, each in its service colour.
+const rotatingServices = services.map((service) => ({
+  text: service.shortLabel.toLowerCase().replace("art reviews", "ART reviews"),
+  className: serviceAccent(service.slug).text,
+}));
 
 function CheckIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -66,29 +76,28 @@ export default function Home() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="relative -mt-20 overflow-hidden bg-gradient-to-b from-brand-mint/70 via-white to-white pb-16 pt-32 lg:pb-24 lg:pt-36">
+      <section className="relative -mt-20 overflow-hidden bg-gradient-to-b from-brand-mint/70 via-white to-white pb-10 pt-32 lg:pb-12 lg:pt-36">
         <div className="bg-dots pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" aria-hidden="true" />
         <div className="hero-blob pointer-events-none absolute -left-32 top-24 h-96 w-96 rounded-full bg-brand-green/20 blur-3xl" aria-hidden="true" />
         <div className="hero-blob pointer-events-none absolute -right-20 top-10 h-[28rem] w-[28rem] rounded-full bg-brand-blue/15 blur-3xl" aria-hidden="true" />
+        <Confetti preset="hero" />
 
         <Container className="relative grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
           <div>
-            <div className="hero-rise">
-              <Eyebrow>Registered Migration Agent · Melbourne</Eyebrow>
-            </div>
-            <h1 className="hero-rise [--rise-delay:120ms] font-heading mt-6 text-5xl font-extrabold leading-[1.05] text-brand-navy sm:text-6xl lg:text-7xl">
+            <h1 className="hero-rise font-heading text-5xl font-extrabold leading-[1.05] text-brand-navy sm:text-6xl lg:text-7xl">
               <span className="text-gradient-brand text-gradient-animated">Your journey.</span>
               <br />
               Our guidance.
             </h1>
+            <p className="hero-rise font-heading mt-4 text-xl font-bold text-brand-navy/80 [--rise-delay:200ms] sm:text-2xl">
+              Clear advice on <RotatingWord words={rotatingServices} />
+            </p>
             <p className="hero-rise [--rise-delay:260ms] mt-6 max-w-xl text-lg leading-relaxed text-gray-600">
-              Building your future in Australia shouldn&apos;t feel
-              overwhelming. At {siteConfig.fullName}, we make each step of
-              your migration journey clearer, with honest advice, personalised
-              guidance and professional support.
+              Honest, personalised advice from a Registered Migration Agent, so
+              every step of your journey to Australia feels clear.
             </p>
             <div className="hero-rise [--rise-delay:400ms] mt-9 flex flex-wrap items-center gap-3">
-              <Button href="/bookings" className="cta-shimmer px-7 py-3.5 text-base">
+              <Button href="/bookings" size="lg" track="book_cta" className="cta-shimmer px-7">
                 Book a Consultation
                 <ArrowIcon />
               </Button>
@@ -107,31 +116,29 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <Link
-              href="/tools/points-calculator"
-              className="hero-rise [--rise-delay:640ms] mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-primary hover:underline"
-            >
-              Planning a skilled visa? Check your points free →
-            </Link>
+            <HeroPointsPicker />
           </div>
 
           <Reveal delay={120} className="relative">
             <div className="relative mx-auto max-w-xl lg:max-w-none">
+              {/* Bold colour blocks behind the artwork, Expert-style. */}
+              <div className="absolute right-[4%] top-[2%] h-[80%] w-[66%] rotate-3 rounded-[2.5rem] bg-gradient-to-br from-amber-200 to-amber-300" aria-hidden="true" />
+              <div className="absolute bottom-[6%] left-[8%] h-[46%] w-[40%] -rotate-6 rounded-[2rem] bg-gradient-to-br from-emerald-200 to-brand-green-light/70" aria-hidden="true" />
               <Image
-                src="/brand/hero-australia.png"
+                src="/brand/hero-australia.webp"
                 alt="Sydney Opera House and city skyline set within a map of Australia"
                 width={885}
                 height={635}
                 priority
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="h-auto w-full drop-shadow-[0_30px_40px_rgba(11,26,46,0.12)]"
+                className="relative h-auto w-full drop-shadow-deep"
               />
 
               <a
                 href={agent.verifyUrl ?? "/about"}
                 target={agent.verifyUrl ? "_blank" : undefined}
                 rel={agent.verifyUrl ? "noopener noreferrer" : undefined}
-                className="float-slow group absolute -left-2 bottom-10 flex items-center gap-3 rounded-2xl bg-white/90 p-3 pr-5 shadow-xl ring-1 ring-gray-100 backdrop-blur transition-shadow hover:shadow-2xl sm:left-0"
+                className="group absolute -left-2 bottom-10 flex items-center gap-3 rounded-2xl bg-white/90 p-3 pr-5 shadow-xl ring-1 ring-gray-100 backdrop-blur transition-shadow hover:shadow-2xl sm:left-0"
               >
                 <span className="pulse-ring flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary text-white">
                   <CheckIcon className="h-5 w-5" />
@@ -147,46 +154,30 @@ export default function Home() {
                 </span>
               </a>
 
-              <JourneyTracker className="float-slow absolute -top-2 right-2 hidden [animation-delay:-5s] md:block lg:-right-2" />
+              {/* Anchored to the bottom-right over open water, mirroring the MARN badge
+                  on the left, so the plane, skyline and pin stay clear. */}
+              <JourneyTracker className="absolute -bottom-8 -right-4 hidden md:block lg:-right-10" />
 
-              <div className="float-slow absolute bottom-24 right-0 hidden rounded-2xl bg-white/90 p-3 px-4 shadow-xl ring-1 ring-gray-100 backdrop-blur [animation-delay:-3s] sm:block">
-                <span className="block text-xs font-semibold text-gray-500">{siteConfig.values}</span>
-              </div>
             </div>
           </Reveal>
         </Container>
 
-        {/* Service quick links — mirrors the row on the brand cover. */}
-        <Container className="relative mt-14">
-          <Reveal delay={200}>
-            <div className="grid grid-cols-2 gap-3 rounded-3xl bg-white/80 p-3 shadow-[0_20px_50px_-30px_rgba(11,26,46,0.35)] ring-1 ring-gray-100 backdrop-blur sm:grid-cols-4 lg:grid-cols-7">
-              {services.map((service) => (
-                <Link
-                  key={service.slug}
-                  href={`/services/${service.slug}`}
-                  className="group flex items-center gap-3 rounded-2xl p-3 transition-colors hover:bg-brand-mint"
-                >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-mint text-brand-primary transition-colors group-hover:bg-brand-primary group-hover:text-white">
-                    <ServiceIcon slug={service.slug} className="h-5 w-5" />
-                  </span>
-                  <span className="text-sm font-bold leading-tight text-brand-navy">{service.shortLabel}</span>
-                </Link>
-              ))}
-            </div>
-          </Reveal>
-        </Container>
       </section>
 
-      <VisaTicker />
+      <ToolsSection />
+
+      <JourneySection />
 
       {/* ── Services ─────────────────────────────────────────────────── */}
-      <section className="py-24">
-        <Container>
+      <section className="relative py-16 sm:py-24">
+        <Confetti />
+        <Container className="relative">
           <Reveal>
             <SectionHeading
               eyebrow="Migration assistance"
               title="Services built around your pathway"
-              subtitle="Every migration journey is different. Here are our main services. Explore the full list to find the right fit for you."
+              highlight="your pathway"
+              subtitle="Every journey is different. Find the service that fits yours."
               align="center"
             />
           </Reveal>
@@ -208,9 +199,11 @@ export default function Home() {
         </Container>
       </section>
 
-      <ToolsSection />
+      <VisaLibrarySection />
 
       <WhyLearniiz />
+
+      <ComparisonSection />
 
       <VideoShowcase />
 
@@ -219,12 +212,13 @@ export default function Home() {
       <PteSection />
 
       {/* ── Process ──────────────────────────────────────────────────── */}
-      <section className="bg-brand-surface py-24">
+      <section className="bg-brand-surface py-16 sm:py-24">
         <Container>
           <Reveal>
             <SectionHeading
               eyebrow="How it works"
               title="A straightforward process, from first chat to lodgement"
+              highlight="first chat to lodgement"
               align="center"
             />
           </Reveal>
@@ -234,8 +228,8 @@ export default function Home() {
             </Reveal>
             {steps.map((step, index) => (
               <Reveal key={step.title} delay={index * 220}>
-                <div className="relative h-full rounded-3xl border border-gray-100 bg-white p-7 text-center shadow-[0_1px_2px_rgba(11,26,46,0.04)]">
-                  <span className="bg-gradient-brand step-pop mx-auto -mt-0 flex h-14 w-14 items-center justify-center rounded-2xl text-lg font-extrabold text-white shadow-lg shadow-brand-primary/25">
+                <div className="relative h-full rounded-3xl border border-gray-100 bg-white p-7 text-center shadow-card">
+                  <span className="bg-gradient-brand-deep step-pop mx-auto -mt-0 flex h-14 w-14 items-center justify-center rounded-2xl text-lg font-extrabold text-white shadow-lg shadow-brand-primary/25">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="font-heading mt-5 text-xl font-bold text-brand-navy">
@@ -258,7 +252,7 @@ export default function Home() {
       <FaqSection />
 
       {/* ── Global reach ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-brand-navy py-24 text-white">
+      <section className="relative overflow-hidden bg-brand-navy py-16 sm:py-24 text-white">
         <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-green/20 blur-3xl" aria-hidden="true" />
         <Container className="relative grid items-center gap-12 lg:grid-cols-[1fr_1.5fr]">
           <Reveal>
@@ -266,7 +260,7 @@ export default function Home() {
               tone="light"
               eyebrow="From anywhere to Australia"
               title="Guiding people from around the world"
-              subtitle="Whether you're starting from Kathmandu, Delhi, Manila or London, we help you understand the visa pathways that may be open to you."
+              subtitle="From Kathmandu to London, we help you understand the visa pathways that may be open to you."
             />
             <div className="mt-8">
               <Button href="/bookings">

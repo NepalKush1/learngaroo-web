@@ -168,7 +168,7 @@ export function VisaFinder() {
       {result && primary && (
         <section
           aria-live="polite"
-          className="overflow-hidden rounded-3xl bg-brand-navy text-white shadow-[0_30px_60px_-30px_rgba(11,26,46,0.6)]"
+          className="overflow-hidden rounded-3xl bg-brand-navy text-white shadow-deep"
         >
           <div className="bg-gradient-brand h-1.5" aria-hidden="true" />
           <div className="grid gap-8 p-7 sm:p-9 lg:grid-cols-[1.3fr_1fr]">
