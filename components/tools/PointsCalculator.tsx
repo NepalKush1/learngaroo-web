@@ -106,8 +106,9 @@ export function PointsCalculator() {
     const employment = Math.min(employmentCap, rawEmployment);
     const education = pointsFor("education", answers.education);
     const partner = pointsFor("partner", answers.partner);
+    // Regional study (6D101) only counts when the Australian study requirement (6D81) is met.
     const extra = pointsBonuses
-      .filter((bonus) => bonuses[bonus.id])
+      .filter((bonus) => bonuses[bonus.id] && (bonus.id !== "regional" || bonuses.australianStudy))
       .reduce((sum, bonus) => sum + bonus.points, 0);
 
     const base = age + english + employment + education + partner + extra;
@@ -193,6 +194,11 @@ export function PointsCalculator() {
                   <span>
                     <span className="font-semibold text-brand-navy">{bonus.label}</span>
                     {bonus.help && <span className="block text-xs text-gray-500">{bonus.help}</span>}
+                    {bonus.id === "regional" && bonuses.regional && !bonuses.australianStudy && (
+                      <span className="mt-1 block text-xs font-semibold text-amber-700">
+                        Not counted yet: regional study points need the Australian study requirement ticked above.
+                      </span>
+                    )}
                     {bonus.learniiz === "ccl" && !bonuses[bonus.id] && (
                       <a
                         href={siteConfig.pte.url}
